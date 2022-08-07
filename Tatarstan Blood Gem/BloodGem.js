@@ -1,24 +1,44 @@
 class WidgetBase {
-    constructor(color) {
+    constructor(color, border_width) {
+        this.selectorWidget = null;
+        this.dragSelect = false;
         this.color = color;
-        this.mouseSensor = new MouseSensor(this);
+        this.border_width = border_width;
+        this.mouseSensor = new MouseSensor();
     }
 
     draw(traverseObj) {
         traverseObj["traverse" + this.constructor.name](this);
+        if (this.selectorWidget) {
+            this.selectorWidget.draw(traverseObj);
+        }
+    }
+
+    move(deltaX, deltaY) {
+        throw new Error("Widgetbase move cannot be accessed");
+    }
+
+    toRect() {
+        throw new Error("Widgetbase toRect cannot be accessed");
     }
 
     sensor(handlerName, x, y, evt) {
-        let handler = this.mouseSensor["on" + handlerName];
-        if (handler && this.isInside(x, y)) {
-            handler(x, y, evt);
+        if (this.isInside(x, y)) {
+            if (this.mouseSensor["on" + handlerName]) {
+                this.mouseSensor["on" + handlerName](x, y, evt, this);
+            }
+        }
+        else {
+            if (this.mouseSensor["on" + handlerName + "Out"]) {
+                this.mouseSensor["on" + handlerName + "Out"](x, y, evt, this);
+            }
         }
     }
 }
 
 class SolidShapeBase extends WidgetBase{
-    constructor(x, y, color) {
-        super(color);
+    constructor(x, y, color, border_width) {
+        super(color, border_width);
         this.x = x;
         this.y = y;
     }
@@ -30,8 +50,8 @@ class SolidShapeBase extends WidgetBase{
 }
 
 class Rect extends SolidShapeBase {
-    constructor(x, y, width, height, color = "black") {
-        super(x, y, color);
+    constructor(x, y, width, height, color = "black", border_width = 0) {
+        super(x, y, color, border_width);
         this.width = width;
         this.height = height;
     }
@@ -46,8 +66,8 @@ class Rect extends SolidShapeBase {
 }
 
 class Circle extends SolidShapeBase {
-    constructor(x, y, radius, color = "black") {
-        super(x, y, color);
+    constructor(x, y, radius, color = "black", border_width = 0) {
+        super(x, y, color, border_width);
         this.radius = radius;
     }
 
@@ -86,13 +106,12 @@ class Txt extends Rect {
 }
 
 class Line extends WidgetBase {
-    constructor(x1, y1, x2, y2, width = 1, color = "black") {
-        super(color);
+    constructor(x1, y1, x2, y2, color = "black", border_width = 1) {
+        super(color, border_width);
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
-        this.width = width;
     }
 
     static cross(x1, y1, x2, y2, x, y) {
@@ -111,7 +130,7 @@ class Line extends WidgetBase {
     }
 
     isInside(x, y) {
-        let margin = this.width + 5;
+        let margin = this.border_width + 5;
         let y1Top = this.y1 - margin;
         let y2Top = this.y2 - margin;
         let y1Bottom = this.y1 + margin;
@@ -142,6 +161,10 @@ class LayoutBase extends Rect {
         }
     }
 
+    get(index) {
+        return this.lowerWidgets[index];
+    }
+
     move(deltaX, deltaY) {
         super.move(deltaX, deltaY);
         for (let lowerWidget of this.lowerWidgets) {
@@ -150,7 +173,7 @@ class LayoutBase extends Rect {
     }
 }
 
-class Group extends LayoutBase {
+class CoordinatorLayoutBase extends LayoutBase {
     draw(traverseObj) {
         super.draw(traverseObj);
         for (let lowerWidget of this.lowerWidgets) {
@@ -159,26 +182,42 @@ class Group extends LayoutBase {
     }
 }
 
+class CoordinatorLayout extends CoordinatorLayoutBase {
+    sensor(handlerName, x, y, evt) {
+        for (let lowerWidget of this.lowerWidgets) {
+            lowerWidget.sensor(handlerName, x, y, evt);
+        }
+    }
+}
+
+class Group extends CoordinatorLayoutBase {
+    constructor(x, y, width, height, lowerWidgets) {
+        super(x, y, width, height, "transparent", lowerWidgets);
+    }
+}
+
 class MouseSensor {
-    constructor(widget) {
-        this.widget = widget;
+    constructor() {
         this.onMouseDown = null;
+        this.onMouseDownOut = null;
         this.onMouseUp = null;
-        this.onMouseMove = null;
+        this.onMouseUpOut = null;
+        this.onMouseMove = null
+        this.onMouseMoveOut = null;
     }
 }
 
 class ConsoleDraw {
     traverseRect(widget) {
-        console.log("Rect", widget.x, widget.y, widget.width, widget.height, widget.color);
+        console.log("Rect", widget.x, widget.y, widget.width, widget.height, widget.color, widget.border_width);
     }
 
     traverseCircle(widget) {
-        console.log("Circle", widget.x, widget.y, widget.radius, widget.color);
+        console.log("Circle", widget.x, widget.y, widget.radius, widget.color, widget.border_width);
     }
 
     traverseEllipse(widget) {
-        console.log("Ellipse", widget.x, widget.y, widget.width, widget.height, widget.color);
+        console.log("Ellipse", widget.x, widget.y, widget.width, widget.height, widget.color, widget.border_width);
     }
 
     traverseImg(widget) {
@@ -190,11 +229,11 @@ class ConsoleDraw {
     }
 
     traverseLine(widget) {
-        console.log("Line", widget.x1, widget.y1, widget.x2, widget.y2, widget.color);
+        console.log("Line", widget.x1, widget.y1, widget.x2, widget.y2, widget.color, widget.border_width);
     }
 
     traverseGroup(widget) {
-        console.log("Group(Rect)", widget.x, widget.y, widget.width, widget.height, widget.color);
+        console.log("Group(Rect)", widget.x, widget.y, widget.width, widget.height);
     }
 }
 
@@ -216,10 +255,12 @@ class CanvasDraw {
         this.canvas.addEventListener("mousemove", this.createMouseEventListener("MouseMove"));
         setInterval(function (traverseObj) {
             if (traverseObj.refresh) {
+                //console.log("canvas refreshing");
+                traverseObj.clearScreen();
                 traverseObj.widget.draw(traverseObj);
                 traverseObj.refresh = false;
             }
-        }, 500, this);
+        }, 1, this);
     }
 
     createMouseEventListener(type) {
@@ -228,9 +269,20 @@ class CanvasDraw {
         }
     }
 
+    clearScreen() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
     traverseRect(widget) {
-        this.ctx.fillStyle = widget.color;
-        this.ctx.fillRect(widget.x, widget.y, widget.width, widget.height);
+        if (widget.border_width == 0) {
+            this.ctx.fillStyle = widget.color;
+            this.ctx.fillRect(widget.x, widget.y, widget.width, widget.height);
+        }
+        else {
+            this.ctx.strokeStyle = widget.color;
+            this.ctx.lineWidth = widget.border_width;
+            this.ctx.strokeRect(widget.x, widget.y, widget.width, widget.height);
+        }
     }
 
     traverseCircle(widget) {
@@ -271,28 +323,79 @@ class CanvasDraw {
 
     traverseLine(widget) {
         this.ctx.strokeStyle = widget.color;
-        this.ctx.lineWidth = widget.width;
+        this.ctx.lineWidth = widget.border_width;
         this.ctx.beginPath();
         this.ctx.moveTo(widget.x1, widget.y1);
         this.ctx.lineTo(widget.x2, widget.y2);
         this.ctx.stroke();
     }
+
+    traverseGroup(widget) { }
+
+    traverseCoordinatorLayout(widget) {
+        this.traverseRect(widget);
+    }
 }
 
-/*
-let w = new Ellipse(100, 100, 30, 50, "red");
-w.mouseSensor.onMouseMove = function (x, y, evt) {
-    console.log("touch ellipse", x, y, evt)
-}
-let d = new CanvasDraw(w);
-*/
+//let w = new Txt(100, 200, 210, 9, "Welcome to Tatarstan!", "red");
 
-let d = new ConsoleDraw();
-let w = new Group(2, 3, 100, 100, "transparent", [
-    new Rect(7, 8, 3, 2),
-    new Circle(2, 3, 7, "purple")
+
+let w = new CoordinatorLayout(20, 30, 300, 250, "purple", [
+    new Txt(100, 200, 210, 9, "Welcome to Tatarstan!", "red"),
+    new Rect(50, 100, 25, 50, "green"),
 ]);
 
-w.move(8, 12)
 
-w.draw(d);
+/*
+let w = new Group(20, 30, 300, 250, [
+    new Txt(100, 200, 210, 9, "Welcome to Tatarstan!", "red"),
+    new Rect(50, 100, 25, 50, "green"),
+]);
+*/
+
+w.get(0).mouseSensor.onMouseDown = function (x, y, evt, widget) {
+    if (!widget.selectorWidget) {
+        let [x1, y1, x2, y2] = widget.toRect();
+        widget.selectorWidget = new Rect(x1, y1, x2 - x1, y2 - y1, "#3D81E9", 1);
+        d.refresh = true;
+    }
+    if (!widget.dragSelect) {
+        widget.dragSelect = true;
+    }
+}
+
+w.get(0).mouseSensor.onMouseDownOut = function (x, y, evt, widget) {
+    if (widget.selectorWidget) {
+        widget.selectorWidget = null;
+        widget.dragSelect = false;
+        d.refresh = true;
+    }
+}
+
+w.get(0).mouseSensor.onMouseUp = function (x, y, evt, widget) {
+    if (widget.dragSelect) {
+        widget.dragSelect = false;
+    }
+}
+
+w.get(0).mouseSensor.onMouseUpOut = function (x, y, evt, widget) {
+    if (widget.dragSelect) {
+        widget.dragSelect = false;
+    }
+}
+
+
+w.get(0).mouseSensor.onMouseMove = function (x, y, evt, widget) {
+    if (widget.dragSelect) {
+        console.log("dragging");
+    }
+}
+
+w.get(0).mouseSensor.onMouseMoveOut = function (x, y, evt, widget) {
+    if (widget.dragSelect) {
+        console.log("dragging");
+    }
+}
+
+
+let d = new CanvasDraw(w);
