@@ -160,6 +160,14 @@ class LayoutBase extends Rect {
             this.push(widget);
         }
     }
+    
+    remove(index){
+        this.lowerWidgets.splice(index, 1);
+    }
+    
+    removeWidget(widget){
+        this.remove(this.lowerWidgets.indexOf(widget));
+    }
 
     get(index) {
         return this.lowerWidgets[index];
@@ -196,16 +204,13 @@ class Group extends CoordinatorLayoutBase {
     }
 }
 
-class MouseSensor {
-    constructor() {
-        this.onMouseDown = null;
-        this.onMouseDownOut = null;
-        this.onMouseUp = null;
-        this.onMouseUpOut = null;
-        this.onMouseMove = null
-        this.onMouseMoveOut = null;
+class SelectorWidget extends CoordinatorLayout {
+    constructor(x, y, width, height){
+        super(x, y, width, height, "#3D81E9", []);
+        this.border_width = 1;
     }
 }
+
 
 class ConsoleDraw {
     traverseRect(widget) {
@@ -234,6 +239,10 @@ class ConsoleDraw {
 
     traverseGroup(widget) {
         console.log("Group(Rect)", widget.x, widget.y, widget.width, widget.height);
+    }
+    
+    traverseCoordinatorLayout(widget) {
+        console.log("CoordinatorLayout(Rect)", widget.x, widget.y, widget.width, widget.height, widget.color, widget.border_width);
     }
 }
 
@@ -335,67 +344,92 @@ class CanvasDraw {
     traverseCoordinatorLayout(widget) {
         this.traverseRect(widget);
     }
+    
+    traverseSelectorWidget(widget) {
+        this.traverseRect(widget);
+    }
 }
 
-//let w = new Txt(100, 200, 210, 9, "Welcome to Tatarstan!", "red");
+class MouseSensor {
+    constructor() {
+        this.onMouseDown = null;
+        this.onMouseDownOut = null;
+        this.onMouseUp = null;
+        this.onMouseUpOut = null;
+        this.onMouseMove = null
+        this.onMouseMoveOut = null;
+    }
+}
 
+class ImageWidgetMouseSensor{
+    onMouseDown(x, y, evt, widget){
+        if (!widget.selectorWidget) {
+            let [x1, y1, x2, y2] = widget.toRect();
+            widget.selectorWidget = new SelectorWidget(x1, y1, x2 - x1, y2 - y1);
+            d.refresh = true;
+        }
+        if (!widget.dragSelect) {
+            widget.dragSelect = true;
+            oldX = x;
+            oldY = y;
+        }
+    }
+    
+    onMouseDownOut(x, y, evt, widget){
+        if (widget.selectorWidget) {
+            widget.selectorWidget = null;
+            widget.dragSelect = false;
+            d.refresh = true;
+        }
+    }
+    
+    onMouseUp(x, y, evt, widget){
+        this.mouseUp(widget);
+    }
+    
+    onMouseUpOut(x, y, evt, widget){
+        this.mouseUp(widget);
+    }
+    
+    mouseUp(widget){
+        if (widget.dragSelect) {
+            widget.dragSelect = false;
+            let [x1New, y1New, , ] = widget.selectorWidget.toRect();
+            let [x1Old, y1Old, , ] = widget.toRect();
+            widget.move(x1New - x1Old, y1New - y1Old);
+            d.refresh = true;
+        }
+    }
+    
+    onMouseMove(x, y, evt, widget){
+        this.mouseMove(x, y, evt, widget);
+    }
+    
+    onMouseMoveOut(x, y, evt, widget){
+        this.mouseMove(x, y, evt, widget);
+    }
+    
+    mouseMove(x, y, evt, widget){
+        if (widget.dragSelect) {
+            let deltaX = x - oldX;
+            let deltaY = y - oldY;
+            widget.selectorWidget.move(deltaX, deltaY);
+            oldX = x;
+            oldY = y;
+            d.refresh = true;
+        }
+    }
+}
+
+var oldX = 0;
+var oldY = 0;
 
 let w = new CoordinatorLayout(20, 30, 300, 250, "purple", [
     new Txt(100, 200, 210, 9, "Welcome to Tatarstan!", "red"),
     new Rect(50, 100, 25, 50, "green"),
 ]);
 
-
-/*
-let w = new Group(20, 30, 300, 250, [
-    new Txt(100, 200, 210, 9, "Welcome to Tatarstan!", "red"),
-    new Rect(50, 100, 25, 50, "green"),
-]);
-*/
-
-w.get(0).mouseSensor.onMouseDown = function (x, y, evt, widget) {
-    if (!widget.selectorWidget) {
-        let [x1, y1, x2, y2] = widget.toRect();
-        widget.selectorWidget = new Rect(x1, y1, x2 - x1, y2 - y1, "#3D81E9", 1);
-        d.refresh = true;
-    }
-    if (!widget.dragSelect) {
-        widget.dragSelect = true;
-    }
-}
-
-w.get(0).mouseSensor.onMouseDownOut = function (x, y, evt, widget) {
-    if (widget.selectorWidget) {
-        widget.selectorWidget = null;
-        widget.dragSelect = false;
-        d.refresh = true;
-    }
-}
-
-w.get(0).mouseSensor.onMouseUp = function (x, y, evt, widget) {
-    if (widget.dragSelect) {
-        widget.dragSelect = false;
-    }
-}
-
-w.get(0).mouseSensor.onMouseUpOut = function (x, y, evt, widget) {
-    if (widget.dragSelect) {
-        widget.dragSelect = false;
-    }
-}
-
-
-w.get(0).mouseSensor.onMouseMove = function (x, y, evt, widget) {
-    if (widget.dragSelect) {
-        console.log("dragging");
-    }
-}
-
-w.get(0).mouseSensor.onMouseMoveOut = function (x, y, evt, widget) {
-    if (widget.dragSelect) {
-        console.log("dragging");
-    }
-}
-
-
 let d = new CanvasDraw(w);
+
+w.get(0).mouseSensor = new ImageWidgetMouseSensor();
+w.get(1).mouseSensor = new ImageWidgetMouseSensor();
