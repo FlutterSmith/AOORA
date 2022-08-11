@@ -430,15 +430,48 @@ class ImageWidgetMouseSensor{
 }
 
 class ImageMouseSensor{
+    constructor(){
+        this.state = new ReadyState(this);
+    }
+    
+    changeState(newState){
+        this.state = newState;
+    }
     
     onMouseDown(x, y, evt, widget){
-        this.mousedown(x, y, evt, widget)
+        this.state.mousedown(x, y, evt, widget)
     }
     
     onMouseDownOut(x, y, evt, widget){
-        this.mousedown(x, y, evt, widget)
+        this.state.mousedown(x, y, evt, widget)
     }
     
+    onDragStart(x, y, evt, widget){
+        this.state.dragstart(x, y, evt, widget)
+    }
+    
+    onDragStartOut(x, y, evt, widget){
+        this.state.dragstart(x, y, evt, widget)
+    }
+    
+    /*
+    onDragEnd(x, y, evt, widget){
+        console.log("dragEnd")
+    }
+    
+    onDragEndOut(x, y, evt, widget){
+        console.log("dragEnd")
+    }
+    */
+}
+
+class State{
+    constructor(stateController){
+        this.stateController = stateController;
+    }
+}
+
+class ReadyState extends State{
     mousedown(x, y, evt, widget){
         let insideSelectedWidget = false;
         for (let lowerWidget of widget.lowerWidgets){
@@ -448,6 +481,11 @@ class ImageMouseSensor{
                     d.refresh = true;
                 }
                 else{
+                    insideSelectedWidget = true;
+                }
+            }
+            else if (lowerWidget.selectorWidget){
+                if (lowerWidget.selectorWidget.lowerWidgets[0].isInside(x, y)){
                     insideSelectedWidget = true;
                 }
             }
@@ -471,7 +509,7 @@ class ImageMouseSensor{
         oldY = y;
     }
     
-    onDragStart(x, y, evt, widget){
+    dragstart(x, y, evt, widget){
         //console.log("dragStart", widget.lowerWidgets.filter(item => item.selectorWidget));
         let deltaX = x - oldX;
         let deltaY = y - oldY;
@@ -482,29 +520,8 @@ class ImageMouseSensor{
         }
         d.refresh = true;
     }
-    
-    onDragStartOut(x, y, evt, widget){
-        //console.log("dragStart", widget.lowerWidgets.filter(item => item.selectorWidget));
-        let deltaX = x - oldX;
-        let deltaY = y - oldY;
-        oldX = x;
-        oldY = y;
-        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)){
-            item.selectorWidget.move(deltaX, deltaY);
-        }
-        d.refresh = true;
-    }
-    
-    /*
-    onDragEnd(x, y, evt, widget){
-        console.log("dragEnd")
-    }
-    
-    onDragEndOut(x, y, evt, widget){
-        console.log("dragEnd")
-    }
-    */
 }
+
 
 var oldX = 0;
 var oldY = 0;
