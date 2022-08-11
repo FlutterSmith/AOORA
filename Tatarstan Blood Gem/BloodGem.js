@@ -455,8 +455,11 @@ class ImageMouseSensor{
         
         if (!insideSelectedWidget){
             for (let lowerWidget of widget.lowerWidgets){
-                if (!lowerWidget.isInside(x, y)){
-                    if (lowerWidget.selectorWidget && (!evt.ctrlKey)) {
+                if ((!lowerWidget.isInside(x, y)) && lowerWidget.selectorWidget){
+                    if (lowerWidget.selectorWidget.lowerWidgets[0].isInside(x, y)){
+                        console.log("detected inside dimentionball")
+                    }
+                    if ((!evt.ctrlKey) && (!lowerWidget.selectorWidget.lowerWidgets[0].isInside(x, y))) {
                         //console.log(lowerWidget, insideSelectedWidget)
                         lowerWidget.selectorWidget = null;
                         d.refresh = true;
