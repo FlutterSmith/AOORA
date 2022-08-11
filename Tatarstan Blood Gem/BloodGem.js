@@ -2,6 +2,7 @@ class WidgetBase {
     constructor(color, border_width) {
         this.selectorWidget = null;
         this.dragSelect = false;
+        this.multiSelect = false;
         this.color = color;
         this.border_width = border_width;
         this.mouseSensor = new MouseSensor();
@@ -12,6 +13,16 @@ class WidgetBase {
         if (this.selectorWidget) {
             this.selectorWidget.draw(traverseObj);
         }
+        
+    }
+    
+    select(){
+        let [x1, y1, x2, y2] = this.toRect();
+        this.selectorWidget = new SelectorWidget(x1, y1, x2 - x1, y2 - y1);
+    }
+    
+    unselect(){
+        
     }
 
     move(deltaX, deltaY) {
@@ -23,6 +34,9 @@ class WidgetBase {
     }
 
     sensor(handlerName, x, y, evt) {
+        if (this.selectorWidget) {
+            this.selectorWidget.sensor(handlerName, x, y, evt);
+        }
         if (this.isInside(x, y)) {
             if (this.mouseSensor["on" + handlerName]) {
                 this.mouseSensor["on" + handlerName](x, y, evt, this);
@@ -192,6 +206,7 @@ class CoordinatorLayoutBase extends LayoutBase {
 
 class CoordinatorLayout extends CoordinatorLayoutBase {
     sensor(handlerName, x, y, evt) {
+        super.sensor(handlerName, x, y, evt);
         for (let lowerWidget of this.lowerWidgets) {
             lowerWidget.sensor(handlerName, x, y, evt);
         }
@@ -206,8 +221,14 @@ class Group extends CoordinatorLayoutBase {
 
 class SelectorWidget extends CoordinatorLayout {
     constructor(x, y, width, height){
-        super(x, y, width, height, "#3D81E9", []);
+        super(x, y, width, height, "#3D81E9", [
+            new Circle(0, 0, 5, "#3D81E9"),
+            new Circle(width, 0, 5, "#3D81E9"),
+            new Circle(0, height, 5, "#3D81E9"),
+            new Circle(width, height, 5, "#3D81E9")
+        ]);
         this.border_width = 1;
+        this.lowerWidgets[0].mouseSensor = new DimentionBallMouseSensor();
     }
 }
 
@@ -254,14 +275,29 @@ class CanvasDraw {
         this.ctx = this.canvas.getContext("2d");
         this.ctx.textBaseline = "top";
         this.canvas.cargo = this;
+        this.dragging = false;
         this.start();
     }
 
     start() {
         this.widget.draw(this);
-        this.canvas.addEventListener("mousedown", this.createMouseEventListener("MouseDown"));
-        this.canvas.addEventListener("mouseup", this.createMouseEventListener("MouseUp"));
-        this.canvas.addEventListener("mousemove", this.createMouseEventListener("MouseMove"));
+        this.canvas.addEventListener("mousedown", function(evt){
+            this.cargo.widget.sensor("MouseDown", evt.offsetX, evt.offsetY, evt);
+            this.cargo.dragging = true;
+        });
+        this.canvas.addEventListener("mouseup", function(evt){
+            this.cargo.widget.sensor("MouseUp", evt.offsetX, evt.offsetY, evt);
+            if (this.cargo.dragging){
+                this.cargo.widget.sensor("DragEnd", evt.offsetX, evt.offsetY, evt);
+                this.cargo.dragging = false;
+            }
+        });
+        this.canvas.addEventListener("mousemove", function(evt){
+            this.cargo.widget.sensor("MouseMove", evt.offsetX, evt.offsetY, evt);
+            if (this.cargo.dragging){
+                this.cargo.widget.sensor("DragStart", evt.offsetX, evt.offsetY, evt);
+            }
+        });
         setInterval(function (traverseObj) {
             if (traverseObj.refresh) {
                 //console.log("canvas refreshing");
@@ -270,12 +306,6 @@ class CanvasDraw {
                 traverseObj.refresh = false;
             }
         }, 1, this);
-    }
-
-    createMouseEventListener(type) {
-        return function (evt) {
-            this.cargo.widget.sensor(type, evt.offsetX, evt.offsetY, evt)
-        }
     }
 
     clearScreen() {
@@ -358,67 +388,119 @@ class MouseSensor {
         this.onMouseUpOut = null;
         this.onMouseMove = null
         this.onMouseMoveOut = null;
+        this.onClick = null;
+        this.onClickOut = null;
+        this.onDragStart = null;
+        this.onDragStartOut = null;
+        this.onDragEnd = null;
+        this.onDragEndOut = null;
+    }
+}
+
+class DimentionBallMouseSensor{
+    
+    onMouseDown(x, y, evt, widget){
+        console.log("touched on one dimentionball", x, y);
+    }
+    
+    onDragStart(x, y, evt, widget){
+        console.log("dragging dimentionball")
     }
 }
 
 class ImageWidgetMouseSensor{
-    onMouseDown(x, y, evt, widget){
-        if (!widget.selectorWidget) {
-            let [x1, y1, x2, y2] = widget.toRect();
-            widget.selectorWidget = new SelectorWidget(x1, y1, x2 - x1, y2 - y1);
+    onDragEnd(x, y, evt, widget){
+        if (widget.selectorWidget){
+            let [x1New, y1New, , ] = widget.selectorWidget.toRect();
+            let [x1Old, y1Old, , ] = widget.toRect();
+            widget.move(x1New - x1Old, y1New - y1Old);
             d.refresh = true;
         }
-        if (!widget.dragSelect) {
-            widget.dragSelect = true;
-            oldX = x;
-            oldY = y;
-        }
+        
     }
     
-    onMouseDownOut(x, y, evt, widget){
-        if (widget.selectorWidget) {
-            widget.selectorWidget = null;
-            widget.dragSelect = false;
-            d.refresh = true;
-        }
-    }
-    
-    onMouseUp(x, y, evt, widget){
-        this.mouseUp(widget);
-    }
-    
-    onMouseUpOut(x, y, evt, widget){
-        this.mouseUp(widget);
-    }
-    
-    mouseUp(widget){
-        if (widget.dragSelect) {
-            widget.dragSelect = false;
+    onDragEndOut(x, y, evt, widget){
+        if (widget.selectorWidget){
             let [x1New, y1New, , ] = widget.selectorWidget.toRect();
             let [x1Old, y1Old, , ] = widget.toRect();
             widget.move(x1New - x1Old, y1New - y1Old);
             d.refresh = true;
         }
     }
+}
+
+class ImageMouseSensor{
     
-    onMouseMove(x, y, evt, widget){
-        this.mouseMove(x, y, evt, widget);
+    onMouseDown(x, y, evt, widget){
+        this.mousedown(x, y, evt, widget)
     }
     
-    onMouseMoveOut(x, y, evt, widget){
-        this.mouseMove(x, y, evt, widget);
+    onMouseDownOut(x, y, evt, widget){
+        this.mousedown(x, y, evt, widget)
     }
     
-    mouseMove(x, y, evt, widget){
-        if (widget.dragSelect) {
-            let deltaX = x - oldX;
-            let deltaY = y - oldY;
-            widget.selectorWidget.move(deltaX, deltaY);
-            oldX = x;
-            oldY = y;
-            d.refresh = true;
+    mousedown(x, y, evt, widget){
+        let insideSelectedWidget = false;
+        for (let lowerWidget of widget.lowerWidgets){
+            if (lowerWidget.isInside(x, y)){
+                if (!lowerWidget.selectorWidget) {
+                    lowerWidget.select();
+                    d.refresh = true;
+                }
+                else{
+                    insideSelectedWidget = true;
+                }
+            }
         }
+        
+        if (!insideSelectedWidget){
+            for (let lowerWidget of widget.lowerWidgets){
+                if (!lowerWidget.isInside(x, y)){
+                    if (lowerWidget.selectorWidget && (!evt.ctrlKey)) {
+                        //console.log(lowerWidget, insideSelectedWidget)
+                        lowerWidget.selectorWidget = null;
+                        d.refresh = true;
+                    }
+                }
+            }
+        }
+        oldX = x;
+        oldY = y;
     }
+    
+    onDragStart(x, y, evt, widget){
+        //console.log("dragStart", widget.lowerWidgets.filter(item => item.selectorWidget));
+        let deltaX = x - oldX;
+        let deltaY = y - oldY;
+        oldX = x;
+        oldY = y;
+        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)){
+            item.selectorWidget.move(deltaX, deltaY);
+        }
+        d.refresh = true;
+    }
+    
+    onDragStartOut(x, y, evt, widget){
+        //console.log("dragStart", widget.lowerWidgets.filter(item => item.selectorWidget));
+        let deltaX = x - oldX;
+        let deltaY = y - oldY;
+        oldX = x;
+        oldY = y;
+        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)){
+            item.selectorWidget.move(deltaX, deltaY);
+        }
+        d.refresh = true;
+    }
+    
+    /*
+    onDragEnd(x, y, evt, widget){
+        console.log("dragEnd")
+    }
+    
+    onDragEndOut(x, y, evt, widget){
+        console.log("dragEnd")
+    }
+    */
 }
 
 var oldX = 0;
@@ -427,9 +509,20 @@ var oldY = 0;
 let w = new CoordinatorLayout(20, 30, 300, 250, "purple", [
     new Txt(100, 200, 210, 9, "Welcome to Tatarstan!", "red"),
     new Rect(50, 100, 25, 50, "green"),
+    new Circle(95, 100, 15, "green"),
+    new Rect(215, 100, 25, 50, "green"),
+    new Group(300, 140, 100, 100, [
+        new Rect(10, 10, 90, 70, "aquamarine"),
+        new Ellipse(40, 30, 30, 20)
+    ]),
+    new Img(0, 0, 20, 20, "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png")
 ]);
 
 let d = new CanvasDraw(w);
 
+w.mouseSensor = new ImageMouseSensor();
 w.get(0).mouseSensor = new ImageWidgetMouseSensor();
 w.get(1).mouseSensor = new ImageWidgetMouseSensor();
+w.get(2).mouseSensor = new ImageWidgetMouseSensor();
+w.get(3).mouseSensor = new ImageWidgetMouseSensor();
+w.get(4).mouseSensor = new ImageWidgetMouseSensor();
