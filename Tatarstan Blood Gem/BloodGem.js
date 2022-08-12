@@ -28,6 +28,10 @@ class WidgetBase {
     move(deltaX, deltaY) {
         throw new Error("Widgetbase move cannot be accessed");
     }
+    
+    addSize(deltaX, deltaY){
+        throw new Error("Widgetbase addSize cannot be accessed");
+    }
 
     toRect() {
         throw new Error("Widgetbase toRect cannot be accessed");
@@ -73,6 +77,11 @@ class Rect extends SolidShapeBase {
     toRect() {
         return [this.x, this.y, this.x + this.width, this.y + this.height];
     }
+    
+    addSize(deltaX, deltaY){
+        this.width = this.width + deltaX;
+        this.height = this.height + deltaY;
+    }
 
     isInside(x, y) {
         return this.x <= x && x <= (this.width + this.x) && this.y <= y && y <= (this.height + this.y);
@@ -87,6 +96,10 @@ class Circle extends SolidShapeBase {
 
     toRect() {
         return [this.x - this.radius, this.y - this.radius, this.x + this.radius, this.y + this.radius];
+    }
+    
+    addSize(deltaX, deltaY){
+        this.radius = this.radius + deltaX;
     }
 
     isInside(x, y) {
@@ -139,6 +152,11 @@ class Line extends WidgetBase {
     move(deltaX, deltaY) {
         this.x1 = this.x1 + deltaX;
         this.y1 = this.y1 + deltaY;
+        this.x2 = this.x2 + deltaX;
+        this.y2 = this.y2 + deltaY;
+    }
+    
+    addSize(deltaX, deltaY){
         this.x2 = this.x2 + deltaX;
         this.y2 = this.y2 + deltaY;
     }
@@ -221,14 +239,13 @@ class Group extends CoordinatorLayoutBase {
 
 class SelectorWidget extends CoordinatorLayout {
     constructor(x, y, width, height){
-        super(x, y, width, height, "#3D81E9", [
+        super(x+0.5, y+0.5, width, height, "#3D81E9", [
             new Circle(0, 0, 5, "#3D81E9"),
             new Circle(width, 0, 5, "#3D81E9"),
             new Circle(0, height, 5, "#3D81E9"),
             new Circle(width, height, 5, "#3D81E9")
         ]);
         this.border_width = 1;
-        this.lowerWidgets[0].mouseSensor = new DimentionBallMouseSensor();
     }
 }
 
@@ -397,17 +414,6 @@ class MouseSensor {
     }
 }
 
-class DimentionBallMouseSensor{
-    
-    onMouseDown(x, y, evt, widget){
-        console.log("touched on one dimentionball", x, y);
-    }
-    
-    onDragStart(x, y, evt, widget){
-        console.log("dragging dimentionball")
-    }
-}
-
 class ImageWidgetMouseSensor{
     onDragEnd(x, y, evt, widget){
         if (widget.selectorWidget){
@@ -432,9 +438,11 @@ class ImageWidgetMouseSensor{
 class ImageMouseSensor{
     constructor(){
         this.state = new ReadyState(this);
+        this.oldX = 0;
+        this.oldY = 0;
     }
     
-    changeState(newState){
+    change(newState){
         this.state = newState;
     }
     
@@ -486,6 +494,7 @@ class ReadyState extends State{
             }
             else if (lowerWidget.selectorWidget){
                 if (lowerWidget.selectorWidget.lowerWidgets[0].isInside(x, y)){
+                    this.stateController.change(new DimentionState(this.stateController));
                     insideSelectedWidget = true;
                 }
             }
@@ -505,16 +514,16 @@ class ReadyState extends State{
                 }
             }
         }
-        oldX = x;
-        oldY = y;
+        this.stateController.oldX = x;
+        this.stateController.oldY = y;
     }
     
     dragstart(x, y, evt, widget){
         //console.log("dragStart", widget.lowerWidgets.filter(item => item.selectorWidget));
-        let deltaX = x - oldX;
-        let deltaY = y - oldY;
-        oldX = x;
-        oldY = y;
+        let deltaX = x - this.stateController.oldX;
+        let deltaY = y - this.stateController.oldY;
+        this.stateController.oldX = x;
+        this.stateController.oldY = y;
         for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)){
             item.selectorWidget.move(deltaX, deltaY);
         }
@@ -522,9 +531,25 @@ class ReadyState extends State{
     }
 }
 
-
-var oldX = 0;
-var oldY = 0;
+class DimentionState extends State{
+    mousedown(x, y, evt, widget){
+        this.stateController.change(new ReadyState(this.stateController));
+        this.stateController.state.mousedown(x, y, evt, widget);
+    }
+    
+    dragstart(x, y, evt, widget){
+        console.log("dragstart");
+        let deltaX = x - this.stateController.oldX;
+        let deltaY = y - this.stateController.oldY;
+        this.stateController.oldX = x;
+        this.stateController.oldY = y;
+        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)){
+            item.selectorWidget.move(deltaX, deltaY);
+            item.selectorWidget.addSize(-deltaX, -deltaY);
+        }
+        d.refresh = true;
+    }
+}
 
 let w = new CoordinatorLayout(20, 30, 300, 250, "purple", [
     new Txt(100, 200, 210, 9, "Welcome to Tatarstan!", "red"),
