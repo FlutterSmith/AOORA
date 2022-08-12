@@ -447,19 +447,27 @@ class ImageMouseSensor{
     }
     
     onMouseDown(x, y, evt, widget){
-        this.state.mousedown(x, y, evt, widget)
+        this.state.mousedown(x, y, evt, widget);
     }
     
     onMouseDownOut(x, y, evt, widget){
-        this.state.mousedown(x, y, evt, widget)
+        this.state.mousedown(x, y, evt, widget);
     }
     
     onDragStart(x, y, evt, widget){
-        this.state.dragstart(x, y, evt, widget)
+        this.state.dragstart(x, y, evt, widget);
     }
     
     onDragStartOut(x, y, evt, widget){
-        this.state.dragstart(x, y, evt, widget)
+        this.state.dragstart(x, y, evt, widget);
+    }
+    
+    onDragEnd(x, y, evt, widget){
+        this.state.dragend(x, y, evt, widget);
+    }
+    
+    onDragEndOut(x, y, evt, widget){
+        this.state.dragend(x, y, evt, widget);
     }
     
     /*
@@ -494,7 +502,19 @@ class ReadyState extends State{
             }
             else if (lowerWidget.selectorWidget){
                 if (lowerWidget.selectorWidget.lowerWidgets[0].isInside(x, y)){
-                    this.stateController.change(new DimentionState(this.stateController));
+                    this.stateController.change(new DimentionState(this.stateController, -1, -1));
+                    insideSelectedWidget = true;
+                }
+                else if (lowerWidget.selectorWidget.lowerWidgets[1].isInside(x, y)){
+                    this.stateController.change(new DimentionState(this.stateController, 1, -1));
+                    insideSelectedWidget = true;
+                }
+                else if (lowerWidget.selectorWidget.lowerWidgets[2].isInside(x, y)){
+                    this.stateController.change(new DimentionState(this.stateController, -1, 1));
+                    insideSelectedWidget = true;
+                }
+                else if (lowerWidget.selectorWidget.lowerWidgets[3].isInside(x, y)){
+                    this.stateController.change(new DimentionState(this.stateController, 1, 1));
                     insideSelectedWidget = true;
                 }
             }
@@ -529,23 +549,52 @@ class ReadyState extends State{
         }
         d.refresh = true;
     }
+    
+    dragend(x, y, evt, widget){
+        
+    }
 }
 
 class DimentionState extends State{
+    constructor(stateController, factorX, factorY){
+        super(stateController);
+        this.factorX = factorX;
+        this.factorY = factorY;
+        console.log(this.factorX, this.factorY)
+    }
     mousedown(x, y, evt, widget){
         this.stateController.change(new ReadyState(this.stateController));
         this.stateController.state.mousedown(x, y, evt, widget);
     }
     
     dragstart(x, y, evt, widget){
-        console.log("dragstart");
+        //console.log("dragstart");
         let deltaX = x - this.stateController.oldX;
         let deltaY = y - this.stateController.oldY;
         this.stateController.oldX = x;
         this.stateController.oldY = y;
         for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)){
-            item.selectorWidget.move(deltaX, deltaY);
-            item.selectorWidget.addSize(-deltaX, -deltaY);
+            if (this.factorX != 1){
+                item.selectorWidget.move(deltaX, 0);
+            }
+            if (this.factorY != 1){
+                item.selectorWidget.move(0, deltaY);
+            }
+            item.selectorWidget.addSize(this.factorX * deltaX, this.factorY * deltaY);
+        }
+        d.refresh = true;
+    }
+    
+    dragend(x, y, evt, widget){
+        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)){
+            let [x1New, y1New, x2New, y2New] = item.selectorWidget.toRect();
+            let [x1Old, y1Old, x2Old, y2Old] = item.toRect();
+            let widthNew = x2New - x1New;
+            let widthOld = x2Old - x1Old;
+            let heightNew = y2New - y1New;
+            let heightOld = y2Old - y1Old;
+            console.log(widthNew, widthOld, heightNew, heightOld)
+            item.addSize((x2New - x1New) - (x2Old - x1Old), (y2New - y1New) - (y2Old - y1Old));
         }
         d.refresh = true;
     }
@@ -560,10 +609,18 @@ let w = new CoordinatorLayout(20, 30, 300, 250, "purple", [
         new Rect(10, 10, 90, 70, "aquamarine"),
         new Ellipse(40, 30, 30, 20)
     ]),
+    new Line(50, 350, 250, 350, "yellow"),
     new Img(0, 0, 20, 20, "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png")
 ]);
 
 let d = new CanvasDraw(w);
+
+/*
+d.canvas.addEventListener("contextmenu", function(evt){
+    evt.preventDefault();
+})
+*/
+
 
 w.mouseSensor = new ImageMouseSensor();
 w.get(0).mouseSensor = new ImageWidgetMouseSensor();
@@ -571,3 +628,5 @@ w.get(1).mouseSensor = new ImageWidgetMouseSensor();
 w.get(2).mouseSensor = new ImageWidgetMouseSensor();
 w.get(3).mouseSensor = new ImageWidgetMouseSensor();
 w.get(4).mouseSensor = new ImageWidgetMouseSensor();
+w.get(5).mouseSensor = new ImageWidgetMouseSensor();
+w.get(6).mouseSensor = new ImageWidgetMouseSensor();
