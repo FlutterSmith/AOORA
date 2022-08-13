@@ -13,24 +13,32 @@ class WidgetBase {
         if (this.selectorWidget) {
             this.selectorWidget.draw(traverseObj);
         }
-        
+
     }
-    
-    select(){
-        let [x1, y1, x2, y2] = this.toRect();
+
+    select() {
+        let [x1, y1, x2, y2] = this.toPoints();
         this.selectorWidget = new SelectorWidget(x1, y1, x2 - x1, y2 - y1);
     }
-    
-    unselect(){
-        
+
+    unselect() {
+        this.selectorWidget = null;
+    }
+
+    setTopLeft(newX, newY) {
+        throw new Error("Widgetbase setTopLeft cannot be accessed");
     }
 
     move(deltaX, deltaY) {
         throw new Error("Widgetbase move cannot be accessed");
     }
-    
-    addSize(deltaX, deltaY){
+
+    addSize(deltaX, deltaY) {
         throw new Error("Widgetbase addSize cannot be accessed");
+    }
+
+    toPoints() {
+        throw new Error("Widgetbase toPoints cannot be accessed");
     }
 
     toRect() {
@@ -54,11 +62,16 @@ class WidgetBase {
     }
 }
 
-class SolidShapeBase extends WidgetBase{
+class SolidShapeBase extends WidgetBase {
     constructor(x, y, color, border_width) {
         super(color, border_width);
         this.x = x;
         this.y = y;
+    }
+
+    setTopLeft(newX, newY) {
+        this.x = newX;
+        this.y = newY;
     }
 
     move(deltaX, deltaY) {
@@ -74,11 +87,15 @@ class Rect extends SolidShapeBase {
         this.height = height;
     }
 
-    toRect() {
+    toPoints() {
         return [this.x, this.y, this.x + this.width, this.y + this.height];
     }
-    
-    addSize(deltaX, deltaY){
+
+    toRect() {
+        return [this.x, this.y, this.width, this.height];
+    }
+
+    addSize(deltaX, deltaY) {
         this.width = this.width + deltaX;
         this.height = this.height + deltaY;
     }
@@ -94,12 +111,18 @@ class Circle extends SolidShapeBase {
         this.radius = radius;
     }
 
-    toRect() {
+    toPoints() {
         return [this.x - this.radius, this.y - this.radius, this.x + this.radius, this.y + this.radius];
     }
-    
-    addSize(deltaX, deltaY){
-        this.radius = this.radius + Math.min(deltaX, deltaY) / 2;
+
+    toRect() {
+        return [this.x - this.radius, this.y - this.radius, 2 * this.radius, 2 * this.radius];
+    }
+
+    addSize(deltaX, deltaY) {
+        let deltaValue = Math.min(deltaX, deltaY) / 2;
+        this.move(deltaValue, deltaValue);
+        this.radius = this.radius + deltaValue;
     }
 
     isInside(x, y) {
@@ -108,15 +131,20 @@ class Circle extends SolidShapeBase {
 }
 
 class Ellipse extends Rect {
-    toRect() {
+    toPoints() {
         return [this.x - this.width, this.y - this.height, this.x + this.width, this.y + this.height];
+    }
+
+    toRect() {
+        return [this.x - this.width, this.y - this.height, 2 * this.width, 2 * this.height];
     }
 
     isInside(x, y) {
         return (x - this.x) ** 2 / this.width ** 2 + (y - this.y) ** 2 / this.height ** 2 <= 1;
     }
-    
-    addSize(deltaX, deltaY){
+
+    addSize(deltaX, deltaY) {
+        super.move(deltaX / 2, deltaY / 2);
         super.addSize(deltaX / 2, deltaY / 2);
     }
 }
@@ -149,8 +177,21 @@ class Line extends WidgetBase {
         return (x - x1) * Math.abs(y2 - y1) - (y - y1) * Math.abs(x2 - x1);
     }
 
-    toRect() {
+    toPoints() {
         return [this.x1, this.y1, this.x2, this.y2];
+    }
+
+    toRect() {
+        return [this.x1, this.y1, this.x2 - this.x1, this.y2 - this.y1];
+    }
+
+    setTopLeft(newX, newY) {
+        let width = this.x2 - this.x1;
+        let height = this.y2 - this.y1;
+        this.x1 = newX;
+        this.y1 = newY;
+        this.x2 = newX + width;
+        this.y2 = newY + height;
     }
 
     move(deltaX, deltaY) {
@@ -159,8 +200,8 @@ class Line extends WidgetBase {
         this.x2 = this.x2 + deltaX;
         this.y2 = this.y2 + deltaY;
     }
-    
-    addSize(deltaX, deltaY){
+
+    addSize(deltaX, deltaY) {
         this.x2 = this.x2 + deltaX;
         this.y2 = this.y2 + deltaY;
     }
@@ -174,7 +215,7 @@ class Line extends WidgetBase {
         let top = Line.cross(this.x1, y1Top, this.x2, y2Top, x, y);
         let bottom = Line.cross(this.x1, y1Bottom, this.x2, y2Bottom, x, y);
         return top <= 0 && bottom >= 0;
-        
+
         // return this.x1 <= x && x <= this.x2 && this.y1 <= y && y <= this.y2;
     }
 }
@@ -196,12 +237,12 @@ class LayoutBase extends Rect {
             this.push(widget);
         }
     }
-    
-    remove(index){
+
+    remove(index) {
         this.lowerWidgets.splice(index, 1);
     }
-    
-    removeWidget(widget){
+
+    removeWidget(widget) {
         this.remove(this.lowerWidgets.indexOf(widget));
     }
 
@@ -242,14 +283,14 @@ class Group extends CoordinatorLayoutBase {
 }
 
 class SelectorWidget extends CoordinatorLayout {
-    constructor(x, y, width, height){
-        super(x+0.5, y+0.5, width, height, "#3D81E9", [
+    constructor(x, y, width, height) {
+        super(x, y, width, height, "#3D81E9", [
             new Circle(0, 0, 5, "#3D81E9"),
             new Circle(width, 0, 5, "#3D81E9"),
             new Circle(0, height, 5, "#3D81E9"),
             new Circle(width, height, 5, "#3D81E9")
         ]);
-        this.border_width = 1;
+        this.border_width = 1.25;
     }
 }
 
@@ -282,7 +323,7 @@ class ConsoleDraw {
     traverseGroup(widget) {
         console.log("Group(Rect)", widget.x, widget.y, widget.width, widget.height);
     }
-    
+
     traverseCoordinatorLayout(widget) {
         console.log("CoordinatorLayout(Rect)", widget.x, widget.y, widget.width, widget.height, widget.color, widget.border_width);
     }
@@ -302,20 +343,20 @@ class CanvasDraw {
 
     start() {
         this.widget.draw(this);
-        this.canvas.addEventListener("mousedown", function(evt){
+        this.canvas.addEventListener("mousedown", function (evt) {
             this.cargo.widget.sensor("MouseDown", evt.offsetX, evt.offsetY, evt);
             this.cargo.dragging = true;
         });
-        this.canvas.addEventListener("mouseup", function(evt){
+        this.canvas.addEventListener("mouseup", function (evt) {
             this.cargo.widget.sensor("MouseUp", evt.offsetX, evt.offsetY, evt);
-            if (this.cargo.dragging){
+            if (this.cargo.dragging) {
                 this.cargo.widget.sensor("DragEnd", evt.offsetX, evt.offsetY, evt);
                 this.cargo.dragging = false;
             }
         });
-        this.canvas.addEventListener("mousemove", function(evt){
+        this.canvas.addEventListener("mousemove", function (evt) {
             this.cargo.widget.sensor("MouseMove", evt.offsetX, evt.offsetY, evt);
-            if (this.cargo.dragging){
+            if (this.cargo.dragging) {
                 this.cargo.widget.sensor("DragStart", evt.offsetX, evt.offsetY, evt);
             }
         });
@@ -395,7 +436,7 @@ class CanvasDraw {
     traverseCoordinatorLayout(widget) {
         this.traverseRect(widget);
     }
-    
+
     traverseSelectorWidget(widget) {
         this.traverseRect(widget);
     }
@@ -418,125 +459,90 @@ class MouseSensor {
     }
 }
 
-class ImageWidgetMouseSensor{
-    onDragEnd(x, y, evt, widget){
-        console.log("dragend")
-        if (widget.selectorWidget){
-            let [x1New, y1New, , ] = widget.selectorWidget.toRect();
-            let [x1Old, y1Old, , ] = widget.toRect();
-            widget.move(x1New - x1Old, y1New - y1Old);
-            d.refresh = true;
-        }
-        console.log(widget);
-        
-    }
-    
-    onDragEndOut(x, y, evt, widget){
-        console.log("dragend")
-        if (widget.selectorWidget){
-            let [x1New, y1New, , ] = widget.selectorWidget.toRect();
-            let [x1Old, y1Old, , ] = widget.toRect();
-            widget.move(x1New - x1Old, y1New - y1Old);
-            d.refresh = true;
-        }
-        console.log(widget);
-    }
-}
-
-class ImageMouseSensor{
-    constructor(){
+class ImageMouseSensor {
+    constructor() {
         this.state = new ReadyState(this);
         this.oldX = 0;
         this.oldY = 0;
     }
-    
-    change(newState){
+
+    change(newState) {
         this.state = newState;
     }
-    
-    onMouseDown(x, y, evt, widget){
+
+    onMouseDown(x, y, evt, widget) {
         this.state.mousedown(x, y, evt, widget);
     }
-    
-    onMouseDownOut(x, y, evt, widget){
+
+    onMouseDownOut(x, y, evt, widget) {
         this.state.mousedown(x, y, evt, widget);
     }
-    
-    onDragStart(x, y, evt, widget){
+
+    onDragStart(x, y, evt, widget) {
         this.state.dragstart(x, y, evt, widget);
     }
-    
-    onDragStartOut(x, y, evt, widget){
+
+    onDragStartOut(x, y, evt, widget) {
         this.state.dragstart(x, y, evt, widget);
     }
-    
-    onDragEnd(x, y, evt, widget){
+
+    onDragEnd(x, y, evt, widget) {
         this.state.dragend(x, y, evt, widget);
     }
-    
-    onDragEndOut(x, y, evt, widget){
+
+    onDragEndOut(x, y, evt, widget) {
         this.state.dragend(x, y, evt, widget);
     }
-    
-    /*
-    onDragEnd(x, y, evt, widget){
-        console.log("dragEnd")
-    }
-    
-    onDragEndOut(x, y, evt, widget){
-        console.log("dragEnd")
-    }
-    */
 }
 
-class State{
-    constructor(stateController){
+class State {
+    constructor(stateController) {
         this.stateController = stateController;
     }
 }
 
-class ReadyState extends State{
-    mousedown(x, y, evt, widget){
+class ReadyState extends State {
+    mousedown(x, y, evt, widget) {
         let insideSelectedWidget = false;
-        for (let lowerWidget of widget.lowerWidgets){
-            if (lowerWidget.isInside(x, y)){
+        for (let lowerWidget of widget.lowerWidgets) {
+            if (lowerWidget.isInside(x, y)) {
                 if (!lowerWidget.selectorWidget) {
                     lowerWidget.select();
                     d.refresh = true;
                 }
-                else{
+                else {
                     insideSelectedWidget = true;
                 }
             }
-            else if (lowerWidget.selectorWidget){
-                if (lowerWidget.selectorWidget.lowerWidgets[0].isInside(x, y)){
+            else if (lowerWidget.selectorWidget) {
+                if (lowerWidget.selectorWidget.lowerWidgets[0].isInside(x, y)) {
                     this.stateController.change(new DimentionState(this.stateController, -1, -1));
                     insideSelectedWidget = true;
                 }
-                else if (lowerWidget.selectorWidget.lowerWidgets[1].isInside(x, y)){
+                else if (lowerWidget.selectorWidget.lowerWidgets[1].isInside(x, y)) {
                     this.stateController.change(new DimentionState(this.stateController, 1, -1));
                     insideSelectedWidget = true;
                 }
-                else if (lowerWidget.selectorWidget.lowerWidgets[2].isInside(x, y)){
+                else if (lowerWidget.selectorWidget.lowerWidgets[2].isInside(x, y)) {
                     this.stateController.change(new DimentionState(this.stateController, -1, 1));
                     insideSelectedWidget = true;
                 }
-                else if (lowerWidget.selectorWidget.lowerWidgets[3].isInside(x, y)){
+                else if (lowerWidget.selectorWidget.lowerWidgets[3].isInside(x, y)) {
                     this.stateController.change(new DimentionState(this.stateController, 1, 1));
                     insideSelectedWidget = true;
                 }
             }
         }
-        
-        if (!insideSelectedWidget){
-            for (let lowerWidget of widget.lowerWidgets){
-                if ((!lowerWidget.isInside(x, y)) && lowerWidget.selectorWidget){
-                    if (lowerWidget.selectorWidget.lowerWidgets[0].isInside(x, y)){
+
+        if (!insideSelectedWidget) {
+            for (let lowerWidget of widget.lowerWidgets) {
+                if ((!lowerWidget.isInside(x, y)) && lowerWidget.selectorWidget) {
+                    if (lowerWidget.selectorWidget.lowerWidgets[0].isInside(x, y)) {
                         console.log("detected inside dimentionball")
                     }
                     if ((!evt.ctrlKey) && (!lowerWidget.selectorWidget.lowerWidgets[0].isInside(x, y))) {
                         //console.log(lowerWidget, insideSelectedWidget)
-                        lowerWidget.selectorWidget = null;
+                        lowerWidget.unselect();
                         d.refresh = true;
                     }
                 }
@@ -545,66 +551,75 @@ class ReadyState extends State{
         this.stateController.oldX = x;
         this.stateController.oldY = y;
     }
-    
-    dragstart(x, y, evt, widget){
+
+    dragstart(x, y, evt, widget) {
         //console.log("dragStart", widget.lowerWidgets.filter(item => item.selectorWidget));
         let deltaX = x - this.stateController.oldX;
         let deltaY = y - this.stateController.oldY;
         this.stateController.oldX = x;
         this.stateController.oldY = y;
-        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)){
+        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)) {
             item.selectorWidget.move(deltaX, deltaY);
         }
         d.refresh = true;
     }
-    
-    dragend(x, y, evt, widget){
-        
+
+    dragend(x, y, evt, widget) {
+        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)) {
+            let [xNew, yNew, widthNew, heightNew] = item.selectorWidget.toRect();
+            let [xOld, yOld, widthOld, heightOld] = item.toRect();
+            item.move(xNew - xOld, yNew - yOld);
+            d.refresh = true;
+        }
     }
 }
 
-class DimentionState extends State{
-    constructor(stateController, factorX, factorY){
+class DimentionState extends State {
+    constructor(stateController, factorX, factorY) {
         super(stateController);
         this.factorX = factorX;
         this.factorY = factorY;
         console.log(this.factorX, this.factorY)
     }
-    mousedown(x, y, evt, widget){
+    mousedown(x, y, evt, widget) {
         this.stateController.change(new ReadyState(this.stateController));
         this.stateController.state.mousedown(x, y, evt, widget);
     }
-    
-    dragstart(x, y, evt, widget){
+
+    dragstart(x, y, evt, widget) {
         //console.log("dragstart");
         let deltaX = x - this.stateController.oldX;
         let deltaY = y - this.stateController.oldY;
         this.stateController.oldX = x;
         this.stateController.oldY = y;
-        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)){
-            if (this.factorX != 1){
+        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)) {
+            if (this.factorX != 1) {
                 item.selectorWidget.move(deltaX, 0);
             }
-            if (this.factorY != 1){
+            if (this.factorY != 1) {
                 item.selectorWidget.move(0, deltaY);
             }
             item.selectorWidget.addSize(this.factorX * deltaX, this.factorY * deltaY);
         }
         d.refresh = true;
     }
-    
-    dragend(x, y, evt, widget){
-        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)){
-            let [x1New, y1New, x2New, y2New] = item.selectorWidget.toRect();
-            let [x1Old, y1Old, x2Old, y2Old] = item.toRect();
-            let widthNew = x2New - x1New;
-            let widthOld = x2Old - x1Old;
-            let heightNew = y2New - y1New;
-            let heightOld = y2Old - y1Old;
-            console.log(widthNew, widthOld, heightNew, heightOld)
-            item.addSize((x2New - x1New) - (x2Old - x1Old), (y2New - y1New) - (y2Old - y1Old));
+
+    dragend(x, y, evt, widget) {
+        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)) {
+            let [xNew, yNew, widthNew, heightNew] = item.selectorWidget.toRect();
+            let [xOld, yOld, widthOld, heightOld] = item.toRect();
+            if (widthNew < 0) {
+                item.move(widthNew, 0);
+                //console.log(widthNew, 0)
+                widthNew = -widthNew;
+            }
+            console.log("width", widthNew, widthOld, heightNew, heightOld)
+            //console.log("x", xNew, xOld, yNew, yOld);
+            item.move(xNew - xOld, yNew - yOld);
+            item.addSize(widthNew - widthOld, heightNew - heightOld);
         }
         d.refresh = true;
+        this.stateController.change(new ReadyState(this.stateController));
     }
 }
 
@@ -620,7 +635,7 @@ let w = new CoordinatorLayout(20, 30, 300, 250, "silver", [
     ]),
     new Line(50, 350, 250, 350, "yellow"),
     new Img(0, 0, 20, 20, "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"),
-    
+
 ]);
 
 let d = new CanvasDraw(w);
@@ -633,11 +648,3 @@ d.canvas.addEventListener("contextmenu", function(evt){
 
 
 w.mouseSensor = new ImageMouseSensor();
-w.get(0).mouseSensor = new ImageWidgetMouseSensor();
-w.get(1).mouseSensor = new ImageWidgetMouseSensor();
-w.get(2).mouseSensor = new ImageWidgetMouseSensor();
-w.get(3).mouseSensor = new ImageWidgetMouseSensor();
-w.get(4).mouseSensor = new ImageWidgetMouseSensor();
-w.get(5).mouseSensor = new ImageWidgetMouseSensor();
-w.get(6).mouseSensor = new ImageWidgetMouseSensor();
-w.get(7).mouseSensor = new ImageWidgetMouseSensor();
