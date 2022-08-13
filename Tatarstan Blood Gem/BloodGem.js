@@ -99,7 +99,7 @@ class Circle extends SolidShapeBase {
     }
     
     addSize(deltaX, deltaY){
-        this.radius = this.radius + deltaX;
+        this.radius = this.radius + Math.min(deltaX, deltaY) / 2;
     }
 
     isInside(x, y) {
@@ -114,6 +114,10 @@ class Ellipse extends Rect {
 
     isInside(x, y) {
         return (x - this.x) ** 2 / this.width ** 2 + (y - this.y) ** 2 / this.height ** 2 <= 1;
+    }
+    
+    addSize(deltaX, deltaY){
+        super.addSize(deltaX / 2, deltaY / 2);
     }
 }
 
@@ -416,22 +420,26 @@ class MouseSensor {
 
 class ImageWidgetMouseSensor{
     onDragEnd(x, y, evt, widget){
+        console.log("dragend")
         if (widget.selectorWidget){
             let [x1New, y1New, , ] = widget.selectorWidget.toRect();
             let [x1Old, y1Old, , ] = widget.toRect();
             widget.move(x1New - x1Old, y1New - y1Old);
             d.refresh = true;
         }
+        console.log(widget);
         
     }
     
     onDragEndOut(x, y, evt, widget){
+        console.log("dragend")
         if (widget.selectorWidget){
             let [x1New, y1New, , ] = widget.selectorWidget.toRect();
             let [x1Old, y1Old, , ] = widget.toRect();
             widget.move(x1New - x1Old, y1New - y1Old);
             d.refresh = true;
         }
+        console.log(widget);
     }
 }
 
@@ -600,17 +608,19 @@ class DimentionState extends State{
     }
 }
 
-let w = new CoordinatorLayout(20, 30, 300, 250, "purple", [
+let w = new CoordinatorLayout(20, 30, 300, 250, "silver", [
     new Txt(100, 200, 210, 9, "Welcome to Tatarstan!", "red"),
-    new Rect(50, 100, 25, 50, "green"),
-    new Circle(95, 100, 15, "green"),
-    new Rect(215, 100, 25, 50, "green"),
+    new Rect(50, 100, 25, 50, "navy"),
+    new Circle(95, 100, 15, "olive"),
+    new Ellipse(335, 97, 32, 19, "coral"),
+    new Rect(215, 100, 25, 50, "teal"),
     new Group(300, 140, 100, 100, [
         new Rect(10, 10, 90, 70, "aquamarine"),
         new Ellipse(40, 30, 30, 20)
     ]),
     new Line(50, 350, 250, 350, "yellow"),
-    new Img(0, 0, 20, 20, "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png")
+    new Img(0, 0, 20, 20, "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"),
+    
 ]);
 
 let d = new CanvasDraw(w);
@@ -630,3 +640,4 @@ w.get(3).mouseSensor = new ImageWidgetMouseSensor();
 w.get(4).mouseSensor = new ImageWidgetMouseSensor();
 w.get(5).mouseSensor = new ImageWidgetMouseSensor();
 w.get(6).mouseSensor = new ImageWidgetMouseSensor();
+w.get(7).mouseSensor = new ImageWidgetMouseSensor();
