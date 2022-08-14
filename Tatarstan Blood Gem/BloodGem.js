@@ -29,8 +29,13 @@ class WidgetBase {
         throw new Error("Widgetbase setTopLeft cannot be accessed");
     }
 
+    getTopLeft() {
+        throw new Error("Widgetbase getTopLeft cannot be accessed");
+    }
+
     move(deltaX, deltaY) {
-        throw new Error("Widgetbase move cannot be accessed");
+        let [oldX, oldY] = this.getTopLeft();
+        this.setTopLeft(deltaX + oldX, deltaY + oldY);
     }
 
     addSize(deltaX, deltaY) {
@@ -74,9 +79,8 @@ class SolidShapeBase extends WidgetBase {
         this.y = newY;
     }
 
-    move(deltaX, deltaY) {
-        this.x = this.x + deltaX;
-        this.y = this.y + deltaY;
+    getTopLeft() {
+        return [this.x, this.y];
     }
 }
 
@@ -117,6 +121,10 @@ class Circle extends SolidShapeBase {
 
     toRect() {
         return [this.x - this.radius, this.y - this.radius, 2 * this.radius, 2 * this.radius];
+    }
+
+    getTopLeft() {
+        return [this.x, this.y];
     }
 
     addSize(deltaX, deltaY) {
@@ -186,19 +194,14 @@ class Line extends WidgetBase {
     }
 
     setTopLeft(newX, newY) {
-        let width = this.x2 - this.x1;
-        let height = this.y2 - this.y1;
         this.x1 = newX;
         this.y1 = newY;
-        this.x2 = newX + width;
-        this.y2 = newY + height;
+        this.x2 = this.x2 + newX - this.x1;
+        this.y2 = this.y2 + newY - this.y1;
     }
 
-    move(deltaX, deltaY) {
-        this.x1 = this.x1 + deltaX;
-        this.y1 = this.y1 + deltaY;
-        this.x2 = this.x2 + deltaX;
-        this.y2 = this.y2 + deltaY;
+    getTopLeft() {
+        return [this.x1, this.y1];
     }
 
     addSize(deltaX, deltaY) {
@@ -246,6 +249,11 @@ class LayoutBase extends Rect {
         this.remove(this.lowerWidgets.indexOf(widget));
     }
 
+    set(index, widget) {
+        widget.move(this.x, this.y);
+        this.lowerWidgets[index] = widget;
+    }
+
     get(index) {
         return this.lowerWidgets[index];
     }
@@ -291,6 +299,20 @@ class SelectorWidget extends CoordinatorLayout {
             new Circle(width, height, 5, "#3D81E9")
         ]);
         this.border_width = 1.25;
+    }
+
+    hideDimentionBalls() {
+        this.get(0).color = "transparent";
+        this.get(1).color = "transparent";
+        this.get(2).color = "transparent";
+        this.get(3).color = "transparent";
+    }
+
+    showDimentionBalls() {
+        this.set(0, new Circle(0, 0, 5, "#3D81E9"));
+        this.set(1, new Circle(this.width, 0, 5, "#3D81E9"));
+        this.set(2, new Circle(0, this.height, 5, "#3D81E9"));
+        this.set(3, new Circle(this.width, this.height, 5, "#3D81E9"));
     }
 }
 
@@ -358,6 +380,26 @@ class CanvasDraw {
             this.cargo.widget.sensor("MouseMove", evt.offsetX, evt.offsetY, evt);
             if (this.cargo.dragging) {
                 this.cargo.widget.sensor("DragStart", evt.offsetX, evt.offsetY, evt);
+            }
+        });
+        this.canvas.addEventListener("touchstart", function (evt) {
+            console.log("touchstart", evt.touches[0].clientX, evt.touches[0].clientY);
+            this.cargo.widget.sensor("MouseDown", evt.touches[0].clientX, evt.touches[0].clientY, evt);
+            this.cargo.dragging = true;
+        });
+        this.canvas.addEventListener("touchcancel", function (evt) {
+            if (evt.touches.length != 0) {
+                this.cargo.widget.sensor("MouseUp", evt.touches[0].clientX, evt.touches[0].clientY, evt);
+                if (this.cargo.dragging) {
+                    this.cargo.widget.sensor("DragEnd", evt.touches[0].clientX, evt.touches[0].clientY, evt);
+                    this.cargo.dragging = false;
+                }
+            }
+        });
+        this.canvas.addEventListener("touchmove", function (evt) {
+            this.cargo.widget.sensor("MouseMove", evt.touches[0].clientX, evt.touches[0].clientY, evt);
+            if (this.cargo.dragging) {
+                this.cargo.widget.sensor("DragStart", evt.touches[0].clientX, evt.touches[0].clientY, evt);
             }
         });
         setInterval(function (traverseObj) {
@@ -560,15 +602,19 @@ class ReadyState extends State {
         this.stateController.oldY = y;
         for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)) {
             item.selectorWidget.move(deltaX, deltaY);
+            item.selectorWidget.hideDimentionBalls();
         }
         d.refresh = true;
     }
 
     dragend(x, y, evt, widget) {
         for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)) {
+            console.log("dragend", item, item.toRect(), item.selectorWidget.toRect());
             let [xNew, yNew, widthNew, heightNew] = item.selectorWidget.toRect();
             let [xOld, yOld, widthOld, heightOld] = item.toRect();
+            //console.log(xNew, xOld, yNew, yOld);
             item.move(xNew - xOld, yNew - yOld);
+            item.selectorWidget.showDimentionBalls();
             d.refresh = true;
         }
     }
@@ -579,8 +625,8 @@ class DimentionState extends State {
         super(stateController);
         this.factorX = factorX;
         this.factorY = factorY;
-        console.log(this.factorX, this.factorY)
     }
+
     mousedown(x, y, evt, widget) {
         this.stateController.change(new ReadyState(this.stateController));
         this.stateController.state.mousedown(x, y, evt, widget);
@@ -600,27 +646,62 @@ class DimentionState extends State {
                 item.selectorWidget.move(0, deltaY);
             }
             item.selectorWidget.addSize(this.factorX * deltaX, this.factorY * deltaY);
+            item.selectorWidget.hideDimentionBalls();
         }
         d.refresh = true;
     }
 
+    /*
     dragend(x, y, evt, widget) {
         for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)) {
             let [xNew, yNew, widthNew, heightNew] = item.selectorWidget.toRect();
             let [xOld, yOld, widthOld, heightOld] = item.toRect();
+            console.log("before", [xNew, yNew, widthNew, heightNew], [xOld, yOld, widthOld, heightOld]);
+            //console.log(item.toPoints());
             if (widthNew < 0) {
                 item.move(widthNew, 0);
-                //console.log(widthNew, 0)
+                xNew = xNew + widthNew;
                 widthNew = -widthNew;
             }
-            console.log("width", widthNew, widthOld, heightNew, heightOld)
-            //console.log("x", xNew, xOld, yNew, yOld);
-            item.move(xNew - xOld, yNew - yOld);
+            if (heightNew < 0) {
+                item.move(0, heightNew);
+                yNew = yNew + widthNew;
+                heightNew = -heightNew;
+            }
+            console.log("after", [xNew, yNew, widthNew, heightNew], [xOld, yOld, widthOld, heightOld]);
+            item.setTopLeft(xNew, yNew);
+            item.selectorWidget.setTopLeft(xNew, yNew);
+            //item.move(xNew - xOld, yNew - yOld);
             item.addSize(widthNew - widthOld, heightNew - heightOld);
+            //item.addSize(10, 10);
+            //item.selectorWidget.addSize(widthNew - widthOld, heightNew - heightOld);
+            item.selectorWidget.showDimentionBalls();
+            console.log("effect", item.toRect());
+            console.log("effectSelectowidget", item.selectorWidget.toRect());
+            //console.log(item.toPoints());
         }
         d.refresh = true;
         this.stateController.change(new ReadyState(this.stateController));
     }
+    */
+
+    
+    dragend(x, y, evt, widget) {
+        for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)) {
+            let [xNew, yNew, widthNew, heightNew] = item.selectorWidget.toRect();
+            let [xOld, yOld, widthOld, heightOld] = item.toRect();
+            
+            console.log("width", widthNew, widthOld, heightNew, heightOld)
+            //console.log("x", xNew, xOld, yNew, yOld);
+            item.move(xNew - xOld, yNew - yOld);
+            item.selectorWidget.setTopLeft(xNew, yNew);
+            item.addSize(widthNew - widthOld, heightNew - heightOld);
+            item.selectorWidget.showDimentionBalls();
+        }
+        d.refresh = true;
+        this.stateController.change(new ReadyState(this.stateController));
+    }
+    
 }
 
 let w = new CoordinatorLayout(20, 30, 300, 250, "silver", [
