@@ -690,8 +690,17 @@ class DimentionState extends State {
         for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)) {
             let [xNew, yNew, widthNew, heightNew] = item.selectorWidget.toRect();
             let [xOld, yOld, widthOld, heightOld] = item.toRect();
-            
-            console.log("width", widthNew, widthOld, heightNew, heightOld)
+            if (widthNew < 0) {
+                item.move(widthNew, 0);
+                //xNew = xNew + widthNew;
+                widthNew = -widthNew;
+            }
+            if (heightNew < 0) {
+                item.move(0, heightNew);
+                //yNew = yNew + widthNew;
+                heightNew = -heightNew;
+            }
+            console.log("after", [xNew, yNew, widthNew, heightNew], [xOld, yOld, widthOld, heightOld])
             //console.log("x", xNew, xOld, yNew, yOld);
             item.move(xNew - xOld, yNew - yOld);
             item.selectorWidget.setTopLeft(xNew, yNew);
