@@ -183,7 +183,9 @@ class Txt extends Rect {
 class EditTxt extends Txt{
     constructor(x, y, width, height, textString, color = "black") {
         super(x, y, width, height, textString, color);
-        this.mouseSensor = new MouseSensor();
+        this.insertingLine = null;
+        this.mouseSensor = new EditTxtMouseSensor();
+        this.keySensor = new ImageKeySensor();
     }
 }
 
@@ -356,6 +358,10 @@ class ConsoleDraw {
     traverseTxt(widget) {
         console.log("Txt", widget.x, widget.y, widget.width, widget.height, widget.textString, widget.color)
     }
+    
+    traverseEditTxt(widget){
+        console.log("EditTxt(Txt)", widget.x, widget.y, widget.width, widget.height, widget.textString, widget.color)
+    }
 
     traverseLine(widget) {
         console.log("Line", widget.x1, widget.y1, widget.x2, widget.y2, widget.color, widget.border_width);
@@ -451,6 +457,10 @@ class CanvasDraw {
         this.ctx.moveTo(widget.x1, widget.y1);
         this.ctx.lineTo(widget.x2, widget.y2);
         this.ctx.stroke();
+    }
+    
+    traverseEditTxt(widget){
+        this.traverseTxt(widget);
     }
 
     traverseGroup(widget) { }
@@ -614,6 +624,18 @@ class MouseSensor {
         this.onDragEndOut = null;
         this.onDblClick = null;
         this.onDblClickOut = null;
+    }
+}
+
+class EditTxtMouseSensor{
+    onDblClick(x, y, evt, widget){
+        console.log("EditTxt ondblclick", widget);
+        widget.insertingLine = "a";
+    }
+    
+    onMouseDownOut(x, y, evt, widget){
+        console.log("EditTxt onmouseout", widget);
+        widget.insertingLine = null;
     }
 }
 
@@ -800,17 +822,38 @@ class KeyboardSensor{
 }
 
 class ImageKeySensor{
-    onKeyDown(evt){
-        console.log("down", evt);
+    constructor(){
+        this.offset = 0;
     }
     
-    onKeyUp(evt){
-        console.log("up", evt);
+    onKeyDown(evt, widget){
+        if (widget.insertingLine){
+            //widget.textString = widget.textString
+            //console.log("down", evt, widget);
+            console.log(evt.key)
+            if (evt.key == "Backspace"){
+                widget.textString = widget.textString.slice(0, -1);
+            }
+            else if (evt.key == "Tab"){
+                widget.textString = widget.textString + "    ";
+            }
+            else if (evt.key != "Shift"){
+                widget.textString = widget.textString + evt.key
+            }
+            s.drawObject.refresh = true;
+        }
     }
+    
+    /*
+    onKeyUp(evt, widget){
+        if (widget.insertingLine){
+            console.log("up", evt, widget);
+        }
+    }*/
 }
 
 let w = new CoordinatorLayout(20, 30, 300, 250, "silver", [
-    new Txt(100, 200, 210, 9, "Welcome to Tatarstan!", "red"),
+    new EditTxt(100, 200, 210, 9, "Welcome to Tatarstan!", "red"),
     new Rect(50, 100, 25, 50, "navy"),
     new Circle(95, 100, 15, "olive"),
     new Ellipse(335, 97, 32, 19, "coral"),
@@ -840,4 +883,3 @@ d.canvas.addEventListener("contextmenu", function(evt){
 
 
 w.mouseSensor = new ImageMouseSensor();
-w.get(0).keySensor = new ImageKeySensor();
