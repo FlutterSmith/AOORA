@@ -27,17 +27,8 @@ class WidgetBase {
         this.selectorWidget = null;
     }
 
-    setTopLeft(newX, newY) {
-        throw new Error("Widgetbase setTopLeft cannot be accessed");
-    }
-
-    getTopLeft() {
-        throw new Error("Widgetbase getTopLeft cannot be accessed");
-    }
-
     move(deltaX, deltaY) {
-        let [oldX, oldY] = this.getTopLeft();
-        this.setTopLeft(deltaX + oldX, deltaY + oldY);
+        throw new Error("Widgetbase move cannot be accessed");
     }
 
     addSize(deltaX, deltaY) {
@@ -67,9 +58,9 @@ class WidgetBase {
             }
         }
     }
-    
-    keySensorEvent(handlerName, evt){
-        if (this.keySensor["on" + handlerName]){
+
+    keySensorEvent(handlerName, evt) {
+        if (this.keySensor["on" + handlerName]) {
             this.keySensor["on" + handlerName](evt, this);
         }
     }
@@ -82,13 +73,9 @@ class SolidShapeBase extends WidgetBase {
         this.y = y;
     }
 
-    setTopLeft(newX, newY) {
-        this.x = newX;
-        this.y = newY;
-    }
-
-    getTopLeft() {
-        return [this.x, this.y];
+    move(deltaX, deltaY) {
+        this.x = this.x + deltaX;
+        this.y = this.y + deltaY;
     }
 }
 
@@ -129,10 +116,6 @@ class Circle extends SolidShapeBase {
 
     toRect() {
         return [this.x - this.radius, this.y - this.radius, 2 * this.radius, 2 * this.radius];
-    }
-
-    getTopLeft() {
-        return [this.x, this.y];
     }
 
     addSize(deltaX, deltaY) {
@@ -180,7 +163,7 @@ class Txt extends Rect {
     }
 }
 
-class EditTxt extends Txt{
+class EditTxt extends Txt {
     constructor(x, y, width, height, textString, color = "black") {
         super(x, y, width, height, textString, color);
         this.insertingLine = null;
@@ -210,15 +193,11 @@ class Line extends WidgetBase {
         return [this.x1, this.y1, this.x2 - this.x1, this.y2 - this.y1];
     }
 
-    setTopLeft(newX, newY) {
-        this.x1 = newX;
-        this.y1 = newY;
-        this.x2 = this.x2 + newX - this.x1;
-        this.y2 = this.y2 + newY - this.y1;
-    }
-
-    getTopLeft() {
-        return [this.x1, this.y1];
+    move(deltaX, deltaY) {
+        this.x1 = this.x1 + deltaX;
+        this.y1 = this.y1 + deltaY;
+        this.x2 = this.x2 + deltaX;
+        this.y2 = this.y2 + deltaY;
     }
 
     addSize(deltaX, deltaY) {
@@ -226,6 +205,7 @@ class Line extends WidgetBase {
         this.y2 = this.y2 + deltaY;
     }
 
+    /*
     isInside(x, y) {
         let margin = this.border_width + 5;
         let y1Top = this.y1 - margin;
@@ -235,6 +215,13 @@ class Line extends WidgetBase {
         let top = Line.cross(this.x1, y1Top, this.x2, y2Top, x, y);
         let bottom = Line.cross(this.x1, y1Bottom, this.x2, y2Bottom, x, y);
         return top <= 0 && bottom >= 0;
+    }
+    */
+
+    isInside(x, y) {
+        let result = Line.cross(this.x1, this.y1, this.x2, this.y2, x, y);
+        //console.log(result);
+        return -600 < result && result < 600;
     }
 }
 
@@ -297,8 +284,8 @@ class CoordinatorLayout extends CoordinatorLayoutBase {
             lowerWidget.sensor(handlerName, x, y, evt);
         }
     }
-    
-    keySensorEvent(handlerName, evt){
+
+    keySensorEvent(handlerName, evt) {
         super.keySensorEvent(handlerName, evt);
         for (let lowerWidget of this.lowerWidgets) {
             lowerWidget.keySensorEvent(handlerName, evt);
@@ -358,8 +345,8 @@ class ConsoleDraw {
     traverseTxt(widget) {
         console.log("Txt", widget.x, widget.y, widget.width, widget.height, widget.textString, widget.color)
     }
-    
-    traverseEditTxt(widget){
+
+    traverseEditTxt(widget) {
         console.log("EditTxt(Txt)", widget.x, widget.y, widget.width, widget.height, widget.textString, widget.color)
     }
 
@@ -458,8 +445,8 @@ class CanvasDraw {
         this.ctx.lineTo(widget.x2, widget.y2);
         this.ctx.stroke();
     }
-    
-    traverseEditTxt(widget){
+
+    traverseEditTxt(widget) {
         this.traverseTxt(widget);
     }
 
@@ -474,85 +461,85 @@ class CanvasDraw {
     }
 }
 
-class MouseSensorSystem{
-    constructor(canvas, widget){
+class MouseSensorSystem {
+    constructor(canvas, widget) {
         this.canvas = canvas;
         this.widget = widget;
         this.dragging = false;
         //this.start();
     }
-    
-    start(){
+
+    start() {
         this.canvas.mouseSensorObject = this;
         this.canvas.addEventListener("mousedown", this.onmousedown);
         this.canvas.addEventListener("mouseup", this.onmouseup);
         this.canvas.addEventListener("mousemove", this.onmousemove);
         this.canvas.addEventListener("dblclick", this.ondblclick);
     }
-    
-    onmousedown(evt){
+
+    onmousedown(evt) {
         this.mouseSensorObject.widget.sensor("MouseDown", evt.offsetX, evt.offsetY, evt);
         this.mouseSensorObject.dragging = true;
     }
-    
-    onmouseup(evt){
+
+    onmouseup(evt) {
         this.mouseSensorObject.widget.sensor("MouseUp", evt.offsetX, evt.offsetY, evt);
         if (this.mouseSensorObject.dragging) {
             this.mouseSensorObject.widget.sensor("DragEnd", evt.offsetX, evt.offsetY, evt);
             this.mouseSensorObject.dragging = false;
         }
     }
-    
-    onmousemove(evt){
+
+    onmousemove(evt) {
         this.mouseSensorObject.widget.sensor("MouseMove", evt.offsetX, evt.offsetY, evt);
         if (this.mouseSensorObject.dragging) {
             this.mouseSensorObject.widget.sensor("DragStart", evt.offsetX, evt.offsetY, evt);
         }
     }
-    
-    ondblclick(evt){
+
+    ondblclick(evt) {
         this.mouseSensorObject.widget.sensor("DblClick", evt.offsetX, evt.offsetY, evt);
     }
 }
 
-class TouchSensorSystem{
-    constructor(canvas, widget){
+class TouchSensorSystem {
+    constructor(canvas, widget) {
         this.canvas = canvas;
         this.widget = widget;
         this.dragging = false;
         //this.start();
     }
-    
-    start(){
+
+    start() {
         this.canvas.touchSensorObject = this;
         this.canvas.addEventListener("touchstart", this.ontouchstart);
         this.canvas.addEventListener("touchend", this.ontouchend);
         this.canvas.addEventListener("touchmove", this.ontouchmove);
     }
-    
-    getPositions(evt){
-        if (evt.touches.length != 0){
+
+    getPositions(evt) {
+        if (evt.touches.length != 0) {
             return [evt.touches[0].clientX, evt.touches[0].clientY];
         }
-        else{
+        else {
             return [0, 0];
         }
     }
-    
-    ontouchstart(evt){
+
+    ontouchstart(evt) {
         let [x, y] = this.touchSensorObject.getPositions(evt);
         this.touchSensorObject.widget.sensor("MouseDown", x, y, evt);
         this.touchSensorObject.dragging = true;
     }
-    
-    ontouchmove(evt){
+
+    ontouchmove(evt) {
         let [x, y] = this.touchSensorObject.getPositions(evt);
         if (this.touchSensorObject.dragging) {
             this.touchSensorObject.widget.sensor("DragStart", x, y, evt);
         }
     }
-    
-    ontouchend(evt){
+
+    ontouchend(evt) {
         let [x, y] = this.touchSensorObject.getPositions(evt);
         console.log("ontouchend", x, y)
         if (evt.touches.length != 0) {
@@ -563,32 +550,32 @@ class TouchSensorSystem{
             }
         }
     }
-    
-    
+
+
 }
 
-class KeyboardSensorSystem{
-    constructor(widget){
+class KeyboardSensorSystem {
+    constructor(widget) {
         this.widget = widget;
     }
-    
-    start(){
+
+    start() {
         window.keyboardSensorObject = this;
         window.addEventListener("keydown", this.onkeydown);
         window.addEventListener("keyup", this.onkeyup);
     }
-    
-    onkeydown(evt){
+
+    onkeydown(evt) {
         this.keyboardSensorObject.widget.keySensorEvent("KeyDown", evt);
     }
-    
-    onkeyup(evt){
+
+    onkeyup(evt) {
         this.keyboardSensorObject.widget.keySensorEvent("KeyUp", evt);
     }
 }
 
-class BloodGemGUI{
-    constructor(widget){
+class BloodGemGUI {
+    constructor(widget) {
         this.widget = widget;
         this.canvas = document.getElementById("myCanvas");
         this.drawObject = new CanvasDraw(this.canvas, this.widget);
@@ -600,8 +587,8 @@ class BloodGemGUI{
         this.keyboardSensorObject = new KeyboardSensorSystem();
         */
     }
-    
-    start(){
+
+    start() {
         new MouseSensorSystem(this.canvas, this.widget).start();
         new TouchSensorSystem(this.canvas, this.widget).start();
         new KeyboardSensorSystem(this.widget).start()
@@ -627,15 +614,19 @@ class MouseSensor {
     }
 }
 
-class EditTxtMouseSensor{
-    onDblClick(x, y, evt, widget){
-        console.log("EditTxt ondblclick", widget);
+class EditTxtMouseSensor {
+    onDblClick(x, y, evt, widget) {
         widget.insertingLine = "a";
     }
-    
-    onMouseDownOut(x, y, evt, widget){
-        console.log("EditTxt onmouseout", widget);
+
+    onMouseDownOut(x, y, evt, widget) {
         widget.insertingLine = null;
+    }
+}
+
+class TestLine {
+    onMouseMove(x, y, evt, widget) {
+        console.log("onmousemove")
     }
 }
 
@@ -704,7 +695,7 @@ class ReadyState extends State {
                 }
             }
         }
-        for (let i = widget.lowerWidgets.length - 1; i >= 0; i--){
+        for (let i = widget.lowerWidgets.length - 1; i >= 0; i--) {
             let lowerWidget = widget.lowerWidgets[i];
             if (lowerWidget.isInside(x, y)) {
                 if (!lowerWidget.selectorWidget) {
@@ -718,14 +709,14 @@ class ReadyState extends State {
             }
         }
         if ((!insideSelectedWidget) && (!evt.ctrlKey)) {
-            for (let lowerWidget of widget.lowerWidgets){
-                if (!lowerWidget.isInside(x, y)){
+            for (let lowerWidget of widget.lowerWidgets) {
+                if (!lowerWidget.isInside(x, y)) {
                     lowerWidget.unselect();
                 }
             }
             s.drawObject.refresh = true;
         }
-        
+
         this.stateController.oldX = x;
         this.stateController.oldY = y;
     }
@@ -814,36 +805,39 @@ class DimentionState extends State {
     }
 }
 
-class KeyboardSensor{
-    constructor(){
+class KeyboardSensor {
+    constructor() {
         this.onKeyDown = null;
         this.onKeyUp = null;
     }
 }
 
-class ImageKeySensor{
-    constructor(){
+class ImageKeySensor {
+    constructor() {
         this.offset = 0;
     }
-    
-    onKeyDown(evt, widget){
-        if (widget.insertingLine){
+
+    onKeyDown(evt, widget) {
+        if (widget.insertingLine) {
             //widget.textString = widget.textString
             //console.log("down", evt, widget);
             console.log(evt.key)
-            if (evt.key == "Backspace"){
+            if (evt.key == "Backspace") {
                 widget.textString = widget.textString.slice(0, -1);
             }
-            else if (evt.key == "Tab"){
+            else if (evt.key == "Tab") {
                 widget.textString = widget.textString + "    ";
             }
-            else if (evt.key != "Shift"){
+            else if (evt.key == "Enter") {
+                widget.insertingLine = null;
+            }
+            else if (evt.key != "Shift") {
                 widget.textString = widget.textString + evt.key
             }
             s.drawObject.refresh = true;
         }
     }
-    
+
     /*
     onKeyUp(evt, widget){
         if (widget.insertingLine){
@@ -883,3 +877,4 @@ d.canvas.addEventListener("contextmenu", function(evt){
 
 
 w.mouseSensor = new ImageMouseSensor();
+//w.get(6).mouseSensor = new TestLine();
