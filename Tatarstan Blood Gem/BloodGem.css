@@ -1,0 +1,29 @@
+body, ul, table, tr, td {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Lato";
+    color: #4D4D4D;
+    border-collapse: collapse;
+}
+
+.toolbar{
+    height: 37px;
+    border: .5px solid silver;
+}
+
+.toolbar td {
+    font-size: 12.45px;
+    text-align: center;
+}
+
+.toolbar td:hover {
+    background-color: #E7E7E7;
+}
+
+.side{
+    width: 10px;
+}
+
+.tool{
+    width: 27px;
+}
