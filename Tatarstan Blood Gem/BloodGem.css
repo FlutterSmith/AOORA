@@ -7,23 +7,40 @@ body, ul, table, tr, td {
 }
 
 .toolbar{
+    padding: 0 10px;
     height: 37px;
-    border: .5px solid silver;
+    border-bottom: .5px solid #dfdfdf;
+    cursor: default;
 }
 
 .toolbar td {
-    font-size: 12.45px;
+    height: 27px;
+    font-size: 12px;
     text-align: center;
 }
 
-.toolbar td:hover {
-    background-color: #E7E7E7;
-}
-
-.side{
-    width: 10px;
+.toolbar td:not(.none):hover {
+    background-color: #E1E1E1;
 }
 
 .tool{
     width: 27px;
+    border-radius: 4px;
+}
+
+#file{
+    height: 27px;
+    padding: 5px;
+    border: 1px solid #E0E0E0;
+    background: #E1E1E1;
+}
+
+#account{
+    margin-left: 10px;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    background: #b30000;
 }
