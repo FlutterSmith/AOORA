@@ -5,21 +5,32 @@
     <link rel="stylesheet" href="BloodGem.css">
 </head>
 <body>
-    <table class="toolbar"><tr>
-         <td class="side">&nbsp;</td>
-         <td width="33">File</td>
-         <td width="35">Edit</td>
-         <td width="51">Modify</td>
-         <td width="41">View</td>
-         <td width="39">Help</td>
-    </tr></table>
-    <table class="toolbar"><tr>
-        <td class="side">&nbsp;</td>
-        <td class="tool"><img width="18" src="https://img.icons8.com/material-rounded/344/save.png" alt="save"/></td>
-        <td class="tool">2</td>
-        <td class="tool">3</td>
-    </tr></table>
-    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <table width="100%">
+        <tr><td class="toolbar" colspan="3"><table width="100%"><tr>
+            <td width="35">File</td>
+            <td width="37">Edit</td>
+            <td width="53">Modify</td>
+            <td width="43">View</td>
+            <td width="41">Help</td>
+            <td class="none">&nbsp;</td>
+            <td id="file" width="51">FileName.tatar</td>
+            <td class="none" width="10">&nbsp;</td>
+            <td id="account">WT</td>
+        </tr></table></td></tr>
+        <tr><td class="toolbar" colspan="3"><table width="100%"><tr>
+            <td class="tool"><img width="21" src="https://img.icons8.com/material-rounded/344/save.png" alt="save"/></td>
+            <td class="tool"><img width="21" src="https://cdn-icons-png.flaticon.com/512/318/318339.png" alt="back"/></td>
+            <td class="tool">2</td>
+            <td class="tool">3</td>
+            <td class="none">&nbsp;</td>
+            <td width="39">aaa</td>
+        </tr></table></td></tr>
+        <tr>
+            <td></td>
+            <td><canvas id="myCanvas" width="500" height="500"></canvas></td>
+            <td></td>
+        </tr>
+    </table>
     <script src="BloodGem.js"></script>
 </body>
 </html>
