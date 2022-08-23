@@ -1,36 +1,44 @@
 <html>
 <head>
     <title>Tatarstan BloodGem</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="BloodGem.css">
 </head>
 <body>
-    <table width="100%">
-        <tr><td class="toolbar" colspan="3"><table width="100%"><tr>
-            <td width="35">File</td>
-            <td width="37">Edit</td>
-            <td width="53">Modify</td>
-            <td width="43">View</td>
-            <td width="41">Help</td>
-            <td class="none">&nbsp;</td>
-            <td id="file" width="51">FileName.tatar</td>
-            <td class="none" width="10">&nbsp;</td>
-            <td id="account">WT</td>
-        </tr></table></td></tr>
-        <tr><td class="toolbar" colspan="3"><table width="100%"><tr>
-            <td class="tool"><img width="21" src="https://img.icons8.com/material-rounded/344/save.png" alt="save"/></td>
-            <td class="tool"><img width="21" src="https://cdn-icons-png.flaticon.com/512/318/318339.png" alt="back"/></td>
-            <td class="tool">2</td>
-            <td class="tool">3</td>
-            <td class="none">&nbsp;</td>
-            <td width="39">aaa</td>
-        </tr></table></td></tr>
-        <tr>
-            <td></td>
-            <td><canvas id="myCanvas" width="500" height="500"></canvas></td>
-            <td></td>
-        </tr>
-    </table>
+    <div class="menu">
+        <div>File</div>
+        <div>Edit</div>
+        <div>Modify</div>
+        <div>View</div>
+        <div>Help</div>
+        <div id="file">FileName.tatar</div>
+        <div id="account">WT</div>
+    </div>
+    <div class="toolbar">
+        <div style="font-size: 21px;" class="material-icons">save</div>
+        <div style="font-size: 19px;" class="material-icons">undo</div>
+        <div class="p-none">&#x25BE;</div>
+        <div style="font-size: 19px;" class="material-icons">redo</div>
+        <div>-</div>
+        <div><i style="font-size: 15px;" class="material-icons">zoom_in</i><p id="size">100%</p></div>
+        <div>+</div>
+        <div style="font-size: 17px;" class="material-icons">expand</div>
+        <div style="font-size: 17px;" class="material-icons">pan_tool</div>
+        <div class="p-none">&#x25BE;</div>
+        <div><img width="21" src="https://icon-library.com/images/magnet-icon/magnet-icon-8.jpg"/></div>
+        <div class="p-none">&#x25BE;</div>
+        <div><img width="21" src="https://icon-library.com/images/cursor-icon-download/cursor-icon-download-5.jpg"/></div>
+        <div style="font-size: 19px;" class="material-icons">rectangle</div>
+        <div style="font-size: 19px;" class="material-icons">circle</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div style="font-size: 21px;" class="material-icons">output</div>
+    </div>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
     <script src="BloodGem.js"></script>
 </body>
 </html>
