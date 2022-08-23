@@ -6,30 +6,37 @@ body, ul, table, tr, td {
     border-collapse: collapse;
 }
 
-.toolbar{
-    padding: 0 10px;
-    height: 37px;
-    border-bottom: .5px solid #dfdfdf;
+div.menu, div.toolbar{
+    display: flex;
+    padding: 3px 9px;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+div.menu div{
+    margin: 0 1px;
+    padding: 7px;
+    font-size: 12px;
+    text-align: center;
     cursor: default;
 }
 
-.toolbar td {
-    height: 27px;
-    font-size: 12px;
-    text-align: center;
+div.menu div:nth-child(6){
+    margin-left: auto;
 }
 
-.toolbar td:not(.none):hover {
+div.toolbar div{
+    padding: 3px 5px;
+}
+
+div.menu div:hover, div.toolbar div:hover{
     background-color: #E1E1E1;
 }
 
-.tool{
-    width: 27px;
-    border-radius: 4px;
+.p-none{
+    padding: 0 !important;
 }
 
 #file{
-    height: 27px;
     padding: 5px;
     border: 1px solid #E0E0E0;
     background: #E1E1E1;
@@ -37,10 +44,17 @@ body, ul, table, tr, td {
 
 #account{
     margin-left: 10px;
-    width: 27px;
-    height: 27px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
+    font-size: 10px;
     color: white;
     font-weight: bold;
     background: #b30000;
+}
+
+#size{
+    margin: 0;
+    padding: 0;
+    font-size: 7px;
 }
