@@ -231,6 +231,12 @@ class LayoutBase extends Rect {
         this.lowerWidgets = [];
         this.pushMultiple(lowerWidgets);
     }
+	
+	unselectAll(){
+		for (let lowerWidget of this.lowerWidgets){
+			lowerWidget.unselect();
+		}
+	}
 
     push(widget) {
         widget.move(this.x, this.y);
@@ -617,10 +623,12 @@ class MouseSensor {
 class EditTxtMouseSensor {
     onDblClick(x, y, evt, widget) {
         widget.insertingLine = "a";
+        keyboardFocusWhole = false;
     }
 
     onMouseDownOut(x, y, evt, widget) {
         widget.insertingLine = null;
+        keyboardFocusWhole = true;
     }
 }
 
@@ -630,7 +638,7 @@ class TestLine {
     }
 }
 
-class ImageMouseSensor {
+class PrimaryMouseSensor {
     constructor() {
         this.state = new ReadyState(this);
         this.oldX = 0;
@@ -784,24 +792,59 @@ class DimentionState extends State {
             let [xOld, yOld, widthOld, heightOld] = item.toRect();
             if (widthNew < 0) {
                 item.move(widthNew, 0);
-                //xNew = xNew + widthNew;
                 widthNew = -widthNew;
             }
             if (heightNew < 0) {
                 item.move(0, heightNew);
-                //yNew = yNew + widthNew;
                 heightNew = -heightNew;
             }
-            //console.log("after", [xNew, yNew, widthNew, heightNew], [xOld, yOld, widthOld, heightOld])
-            //console.log("x", xNew, xOld, yNew, yOld);
             item.move(xNew - xOld, yNew - yOld);
-            //item.selectorWidget.move(xNew + widthNew, yNew + heightNew);
             item.addSize(widthNew - widthOld, heightNew - heightOld);
             item.selectorWidget.showDimentionBalls();
-            //console.log("item torect", item.toRect(), item.selectorWidget.toRect());
         }
         s.drawObject.refresh = true;
         this.stateController.change(new ReadyState(this.stateController));
+    }
+}
+
+class AddRectState extends State {
+    constructor(stateController) {
+        super(stateController);
+        this.canAddToLowerNodes = false;
+        this.newWidget = new Rect(0, 0, 0, 0, "black", 0);
+    }
+
+    mousedown(x, y, evt, widget) {
+        this.newWidget.move(x - widget.x, y - widget.y);
+        this.stateController.oldX = x;
+        this.stateController.oldY = y;
+        console.log("mousedown", widget, this.newWidget, this.stateController.oldX, this.stateController.oldY);
+    }
+
+    dragstart(x, y, evt, widget) {
+        if (!this.canAddToLowerNodes) {
+            this.canAddToLowerNodes = true;
+        }
+        console.log("dragstart");
+    }
+
+    dragend(x, y, evt, widget) {
+        console.log("dragend", this.canAddToLowerNodes);
+        if (this.canAddToLowerNodes) {
+            widget.push(this.newWidget)
+            let width = x - this.newWidget.x;
+            let height = y - this.newWidget.y;
+            if (width < 0) {
+                this.newWidget.move(width, 0);
+                width = -width;
+            }
+            if (height < 0) {
+                this.newWidget.move(0, height);
+                height = -height;
+            }
+            this.newWidget.addSize(width, height);
+        }
+        a.deactivateState();
     }
 }
 
@@ -846,6 +889,21 @@ class ImageKeySensor {
     }*/
 }
 
+class PrimaryKeyboardSensor {
+    constructor() { }
+
+    onKeyDown(evt, widget) {
+        if (keyboardFocusWhole) {
+            if (evt.key == "Delete") {
+                for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)) {
+                    widget.removeWidget(item);
+                }
+            }
+            s.drawObject.refresh = true;
+        }
+    }
+}
+
 let w = new CoordinatorLayout(20, 30, 300, 250, "silver", [
     new EditTxt(100, 200, 210, 9, "Welcome to Tatarstan!", "red"),
     new Rect(50, 100, 25, 50, "navy"),
@@ -867,7 +925,7 @@ d.keySensor = new ImageKeySensor();
 */
 
 let s = new BloodGemGUI(w);
-s.keySensor = new ImageKeySensor();
+//s.keySensor = new ImageKeySensor();
 
 /*
 d.canvas.addEventListener("contextmenu", function(evt){
@@ -875,6 +933,52 @@ d.canvas.addEventListener("contextmenu", function(evt){
 })
 */
 
+let keyboardFocusWhole = true;
 
-w.mouseSensor = new ImageMouseSensor();
+
+w.mouseSensor = new PrimaryMouseSensor();
+w.keySensor = new PrimaryKeyboardSensor();
 //w.get(6).mouseSensor = new TestLine();
+console.log(w);
+
+class AddWidget {
+    constructor(HTMLId, widget, mouseSensorState) {
+        this.HTMLElement = document.getElementById(HTMLId);
+        this.widget = widget;
+        this.mouseSensorState = mouseSensorState;
+    }
+
+    activateState() {
+        this.HTMLElement.className = "active";
+        this.widget.mouseSensor.change(new this.mouseSensorState(this.widget.mouseSensor));
+        this.widget.unselectAll();
+        s.drawObject.refresh = true;
+        console.log(this.HTMLElement.className);
+    }
+
+    deactivateState() {
+        this.HTMLElement.className = "";
+        this.widget.mouseSensor.change(new ReadyState(this.widget.mouseSensor));
+        s.drawObject.refresh = true;
+    }
+
+    isActiveState() {
+        return this.widget.mouseSensor.state.constructor.name == this.mouseSensorState.prototype.constructor.name;
+    }
+
+    start() {
+        this.HTMLElement.AddWidgetObj = this;
+        this.HTMLElement.addEventListener("click", function () {
+            console.log("clicked", w.mouseSensor.state, this);
+            if (this.AddWidgetObj.isActiveState()) {
+                this.AddWidgetObj.deactivateState();
+            }
+            else {
+                this.AddWidgetObj.activateState();
+            }
+        });
+    }
+}
+
+let a = new AddWidget("drawRect", w, AddRectState)
+a.start()
