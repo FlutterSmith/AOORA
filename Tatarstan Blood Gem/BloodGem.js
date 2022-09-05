@@ -789,7 +789,9 @@ class DimentionState extends State {
     dragend(x, y, evt, widget) {
         for (let item of widget.lowerWidgets.filter(item => item.selectorWidget)) {
             let [xNew, yNew, widthNew, heightNew] = item.selectorWidget.toRect();
+			console.log("new", xNew, yNew, widthNew, heightNew)
             let [xOld, yOld, widthOld, heightOld] = item.toRect();
+			
             if (widthNew < 0) {
                 item.move(widthNew, 0);
                 widthNew = -widthNew;
@@ -798,6 +800,7 @@ class DimentionState extends State {
                 item.move(0, heightNew);
                 heightNew = -heightNew;
             }
+			
             item.move(xNew - xOld, yNew - yOld);
             item.addSize(widthNew - widthOld, heightNew - heightOld);
             item.selectorWidget.showDimentionBalls();
@@ -807,14 +810,15 @@ class DimentionState extends State {
     }
 }
 
-class AddRectState extends State {
-    constructor(stateController) {
+class AddWidgetState extends State{
+	constructor(stateController) {
         super(stateController);
-        this.canAddToLowerNodes = false;
-        this.newWidget = new Rect(0, 0, 0, 0, "black", 0);
+		this.canAddToLowerNodes = false;
+        this.newWidget = null;
+		this.tool = null;
     }
-
-    mousedown(x, y, evt, widget) {
+	
+	mousedown(x, y, evt, widget) {
         this.newWidget.move(x - widget.x, y - widget.y);
         this.stateController.oldX = x;
         this.stateController.oldY = y;
@@ -831,9 +835,11 @@ class AddRectState extends State {
     dragend(x, y, evt, widget) {
         console.log("dragend", this.canAddToLowerNodes);
         if (this.canAddToLowerNodes) {
-            widget.push(this.newWidget)
-            let width = x - this.newWidget.x;
-            let height = y - this.newWidget.y;
+			widget.push(this.newWidget);
+			let [newX, newY, , ] = this.newWidget.toPoints();
+            let width = x - newX;
+            let height = y - newY;
+			console.log(width, height)
             if (width < 0) {
                 this.newWidget.move(width, 0);
                 width = -width;
@@ -844,8 +850,32 @@ class AddRectState extends State {
             }
             this.newWidget.addSize(width, height);
         }
-        a.deactivateState();
+        this.tool.deactivateState();
     }
+}
+
+class AddRectState extends AddWidgetState{
+	constructor(stateController){
+		super(stateController);
+		this.newWidget = new Rect(0, 0, 0, 0, "black", 0);
+		this.tool = a;
+	}
+}
+
+class AddCircleState extends AddWidgetState{
+	constructor(stateController){
+		super(stateController);
+		this.newWidget = new Circle(0, 0, 0, "black", 0);
+		this.tool = b;
+	}
+}
+
+class AddLineState extends AddWidgetState{
+	constructor(stateController){
+		super(stateController);
+		this.newWidget = new Line(0, 0, 0, 0, "black", 1);
+		this.tool = c;
+	}
 }
 
 class KeyboardSensor {
@@ -980,5 +1010,11 @@ class AddWidget {
     }
 }
 
-let a = new AddWidget("drawRect", w, AddRectState)
-a.start()
+let a = new AddWidget("drawRect", w, AddRectState);
+a.start();
+
+let b = new AddWidget("drawCircle", w, AddCircleState);
+b.start();
+
+let c = new AddWidget("drawLine", w, AddLineState);
+c.start();
