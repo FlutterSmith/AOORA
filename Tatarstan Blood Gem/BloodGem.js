@@ -263,6 +263,9 @@ class LayoutBase extends Rect {
     }
 
     get(index) {
+		if (index < 0){
+			return this.lowerWidgets[this.lowerWidgets.length + index];
+		}
         return this.lowerWidgets[index];
     }
 
@@ -683,26 +686,33 @@ class State {
 class ReadyState extends State {
     mousedown(x, y, evt, widget) {
         let insideSelectedWidget = false;
+		this.stateController.oldX = x;
+        this.stateController.oldY = y;
         for (let lowerWidget of widget.lowerWidgets) {
             if (lowerWidget.selectorWidget) {
                 if (lowerWidget.selectorWidget.lowerWidgets[0].isInside(x, y)) {
                     this.stateController.change(new DimentionState(this.stateController, -1, -1));
                     insideSelectedWidget = true;
+					return;
                 }
                 else if (lowerWidget.selectorWidget.lowerWidgets[1].isInside(x, y)) {
                     this.stateController.change(new DimentionState(this.stateController, 1, -1));
                     insideSelectedWidget = true;
+					return;
                 }
                 else if (lowerWidget.selectorWidget.lowerWidgets[2].isInside(x, y)) {
                     this.stateController.change(new DimentionState(this.stateController, -1, 1));
                     insideSelectedWidget = true;
+					return;
                 }
                 else if (lowerWidget.selectorWidget.lowerWidgets[3].isInside(x, y)) {
                     this.stateController.change(new DimentionState(this.stateController, 1, 1));
                     insideSelectedWidget = true;
+					return;
                 }
             }
         }
+		
         for (let i = widget.lowerWidgets.length - 1; i >= 0; i--) {
             let lowerWidget = widget.lowerWidgets[i];
             if (lowerWidget.isInside(x, y)) {
@@ -713,9 +723,11 @@ class ReadyState extends State {
                 else {
                     insideSelectedWidget = true;
                 }
+				console.log("breaking");
                 break;
             }
         }
+		
         if ((!insideSelectedWidget) && (!evt.ctrlKey)) {
             for (let lowerWidget of widget.lowerWidgets) {
                 if (!lowerWidget.isInside(x, y)) {
@@ -724,9 +736,6 @@ class ReadyState extends State {
             }
             s.drawObject.refresh = true;
         }
-
-        this.stateController.oldX = x;
-        this.stateController.oldY = y;
     }
 
     dragstart(x, y, evt, widget) {
@@ -794,13 +803,17 @@ class DimentionState extends State {
 			
             if (widthNew < 0) {
                 item.move(widthNew, 0);
+                item.selectorWidget.move(widthNew, 0);
                 widthNew = -widthNew;
+				item.selectorWidget.addSize(2*widthNew, 0)
             }
             if (heightNew < 0) {
                 item.move(0, heightNew);
+                item.selectorWidget.move(0, heightNew);
                 heightNew = -heightNew;
+				item.selectorWidget.addSize(0, 2*heightNew)
             }
-			
+			console.log("newafter", item.selectorWidget.toRect())
             item.move(xNew - xOld, yNew - yOld);
             item.addSize(widthNew - widthOld, heightNew - heightOld);
             item.selectorWidget.showDimentionBalls();
@@ -820,36 +833,56 @@ class AddWidgetState extends State{
 	
 	mousedown(x, y, evt, widget) {
         this.newWidget.move(x - widget.x, y - widget.y);
+		widget.push(this.newWidget);
         this.stateController.oldX = x;
         this.stateController.oldY = y;
+		this.newWidget.select();
+		this.newWidget.selectorWidget.hideDimentionBalls();
         console.log("mousedown", widget, this.newWidget, this.stateController.oldX, this.stateController.oldY);
+		s.drawObject.refresh = true;
     }
 
     dragstart(x, y, evt, widget) {
         if (!this.canAddToLowerNodes) {
             this.canAddToLowerNodes = true;
         }
+		
+		if (!this.newWidget.selectorWidget){
+			this.newWidget.select();
+		}
+		
+		this.newWidget.selectorWidget.addSize(x - this.stateController.oldX, y - this.stateController.oldY)
+		this.stateController.oldX = x;
+        this.stateController.oldY = y;
+		s.drawObject.refresh = true;
         console.log("dragstart");
     }
 
     dragend(x, y, evt, widget) {
         console.log("dragend", this.canAddToLowerNodes);
         if (this.canAddToLowerNodes) {
-			widget.push(this.newWidget);
 			let [newX, newY, , ] = this.newWidget.toPoints();
             let width = x - newX;
             let height = y - newY;
 			console.log(width, height)
             if (width < 0) {
                 this.newWidget.move(width, 0);
+                this.newWidget.selectorWidget.move(width, 0);
                 width = -width;
+				this.newWidget.selectorWidget.addSize(2*width, 0)
             }
             if (height < 0) {
                 this.newWidget.move(0, height);
+                this.newWidget.selectorWidget.move(0, height);
                 height = -height;
+				this.newWidget.selectorWidget.addSize(0, 2*height);
             }
             this.newWidget.addSize(width, height);
+			this.newWidget.selectorWidget.showDimentionBalls();
         }
+		else{
+			widget.remove(-1);
+		}
         this.tool.deactivateState();
     }
 }
@@ -1018,3 +1051,38 @@ b.start();
 
 let c = new AddWidget("drawLine", w, AddLineState);
 c.start();
+
+class WidgetProperty{
+	constructor(HTMLId, widget){
+		this.HTMLElement = document.getElementById(HTMLId);
+		this.widget = widget;
+		this.handler = null;
+	}
+	
+	start(){
+		this.HTMLElement.WidgetPropertyObj = this;
+		this.HTMLElement.addEventListener("change", function(){
+			if (this.WidgetPropertyObj.handler){
+				this.WidgetPropertyObj.handler();
+			}
+			else{
+				console.log(this.WidgetPropertyObj.getValue());
+			}
+		});
+	}
+	
+	setValue(value){
+		this.HTMLElement.value = value.toString();
+	}
+	
+	getValue(){
+		let value = this.HTMLElement.value;
+		if (value){
+			return parseFloat(value);
+		};
+		return 0;
+	}
+}
+
+let a1 = new WidgetProperty("widgetX", w.get(1));
+a1.start();
