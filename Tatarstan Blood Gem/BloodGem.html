@@ -49,16 +49,30 @@
         </div>
     </div>
 	<div class="meny">
-		<div>Sidebar 1</div>
-		<canvas id="myCanvas" width="500" height="500"></canvas>
-		<div>
-			<div>
+		<div style="width:21px;border:1px solid silver">Left sidebar</div>
+		<div><canvas id="myCanvas" width="500" height="500"></canvas></div>
+		<div style="width:100px;border:1px solid silver">
+			<div class="meny">
 				<div>INSPECTOR</div>
 				<div>COMMENTS</div>
 			</div>
+			<div>
+				<div>
+					<input id="widgetX" type="number" placeholder="x"/>
+					<input id="widgetY" type="number" placeholder="y"/>
+				</div>
+				<div>
+					<input id="widgetWidth" type="number" placeholder="width"/>
+					<input id="widgetHeight" type="number" placeholder="height"/>
+				</div>
+				<div>
+					<input id="widgetAngle" type="number" placeholder="angle"/>
+					<div>Transform</div>
+				</div>
+			</div>
+			<div class="hidden"></div>
 		</div>
 	</div>
-    
     <script src="BloodGem.js"></script>
 </body>
 </html>
