@@ -1,0 +1,35 @@
+Mental math
+15-9 = 6
+600*7 = 4200
+
+Addition and subtraction
+Multiplication table
+Exponents and roots:
+    x^m * x^n = x^(m+n)
+Decimal and fractions
+Algebra:
+    -4b+7a+a-10b = 8a-14b
+	2(a+b) = 2a+2b, (a+b)^2 = a^2+2ab+b^2, (a+b)^3, x^2-y^2 = (x+y)(x-y), x^7+128a7 = (x+2a)(x^6 - 2ax^5 + 4a^2x^4 - 8a^3x^3 + 16a^4x^2 - 32a^5x + 64a^6)
+	x/(x^2-4) + 3/(x+2) = x/((x+2)(x-2)) + 3/(x+2) = x/((x+2)(x-2)) + 3(x-2)/((x+2)(x-2)) = (x + 3(x-2))/((x+2)(x-2))
+	Synthetic multiplication and divition (Ruffini rule)
+Numbers and operations:
+    5+3*2 = 11
+Geometry
+Geometric solids
+Conversion of units
+Percentages
+
+Basic Exam
+Extended Exam
+Trigonometry
+Sequences
+Analitic geometry
+Statistics
+Functions
+equations:
+    <a>/<b> = <c>/<d> => <a>*<d> = <c>*<b>
+	<a>/<b> + <c>/<d> = <e>/<f> => <a'>/<n> + <c'>/<n> = <e'>/<n> => <a'> + <c'> = <e'>
+	x/8 = 3/4 => x/8 = 6/8 => x=6
+Real numbers
+
+Cubic equations

@@ -1,0 +1,94 @@
+---
+
+1. Artificiell selektrion
+2. Darwins observationer och slutsatser
+3. Naturlig selektion
+4. Experiment
+
+Evolutionära mekanismer - Darwins finkar
+
+1. Artificiell selektion = mänsklig urval, mänsklig selektion
+Människan bestämmer vem som får föra sina egenskaper vidare till nästa generation
+Man har vetat att egenskaper går i släkt
+Väljer ut individer med önskade egenskaper
+Egenskaper förändras genom tid
+
+Man har gjort med hundar fåglar getter kor grisar hästar
+även vete majs och broccoli ...
+
+vildsvin -> tamsvin (mer kött)
+kor mer mjölk, köttkor
+värphöns (mer ägg och mer kött)
+
+motståndskraft
+bättre temperament
+...
+
+Växtförädling
+Urval av växter med önskvärda egenskaper
+
+större skörd
+tåligare
+godare
+mindre skadliga ämnen
+
+2. Darwins observationer och slutsatser
+
+Fadern till evolutionsteorin
+reste runt jorden under 5 år
+observationer:
+  1. En variation i ärftlig egenskaper i en population
+  2. Alla arter producerar fler avkommor än vad nature kan försörja. Många överlever inte.
+  
+=> slutsatser:
+  1. Individer som ärver egenskaper ger större möjligheter att överleva och reproducer, lämnar fler avkommor
+  2. När naturen kan inte försörja så filtreras/urval så att de bästa stannar kvar
+
+Populationen förändras över tid och blir bättre anpassad
+selektionstryck: rovdjur, konkurrerande arter, patogener (sjukdomar), födotillgång, förändrad livsmiljö
+
+Populationskurva (normalfördelning)
+Kurvan förskjuts när det finns förändringar
+
+--- Begrepp ---
+
+art (organismer som kan fortplanta under naturliga förhållandande med fertil avkomma)
+population (individer som tillhör en viss art i viss område)
+samhälle (alla populationer inom viss område)
+ekosystem (allt med abiotiska faktorer)
+
+Gen (Avsnitt av DNA)
+Allel (genvariant, en variant av en viss gen)
+
+Neodarwinism (DNA ärvande, moderna teorin)
+
+2 förutsättninb
+variation av ärftliga egenskaper
+överproduktion
+
+variation (Yttre faktorer)
+skillnader mellan individer
+
+---
+Ärftlig variation
+slumpen påverkar egenskaper för vidare för att det är olika kromosomer som ärvs vidare.
+
+mutationer är ett sätt att skapa nya gener (slumpmässig)
+
+konkurrensen är stor 
+
+mat, boende, yta, näringa, ...
+
+---
+
+fitness: mått på fortplantningsframgång
+antal ungar en individ får och hur länge sina egna ungar får
+
+---
+Selektionstryck
+miljö som försvårar organismens överlevnad
+- brist på föda, vatten, gömställe
+- rovdjur, sjukdomar, temperatur
+
+Antibiotikaresistenta bakterie
+genetiska variation (antibiotikaresistent) -> blir större och förökar sig
