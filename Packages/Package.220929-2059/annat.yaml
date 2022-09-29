@@ -1,0 +1,1733 @@
+Platser:
+  - ett klassrum
+  - en läkarmottagning
+  
+Transportväg:
+  - en tunnel
+  - en grind
+
+- Arkitektur:
+  - Byggnadstyper:
+    - en byggnad
+    - en lokal
+  - Arkitekturdelar:
+    - en reception
+    - en korridor
+    - en trappstege
+  - Möbelform:
+    - Möbler
+    - ett möbelhandtag, en möbelfot:
+      - ett möbelhandtag
+      - en möbelfot
+  - Vanliga:
+    - en soffa, en fåtölj:
+      - en soffa
+      - en fåtölj
+    - en lampskärm, en vägglampa, en taklampa, en ljusstake, en golvlampa, en taklampa:
+      - en lampskärm
+      - en vägglampa
+      - en taklampa
+      - en ljusstake
+      - en golvlampa
+      - en taklampa
+    - ett motljus
+    - en matta, en rullmatta:
+      - en matta
+      - en rullmatta
+    - en krok
+    - en hängare, behållare, en korg, en låda:
+      - en hängare
+      - behållare
+      - en korg
+      - en låda
+    - persienner, en gardinstång, en rullgardin:
+      - persienner
+      - en gardinstång
+      - en rullgardin
+    - en djurhud
+  - Arbetssaker (Arbetskraft):
+    - en sekretär, ett arbetsrum:
+      - en sekretär
+      - ett arbetsrum
+    - en skärm
+    - ett bord, ett soffbord, ett matbord, ett skrivbord, en skolbänk, ett datorbord:
+      - ett bord
+      - ett soffbord
+      - ett matbord
+      - ett skrivbord
+      - en skolbänk
+      - ett datorbord
+    - en bordsduk, servetter:
+      - en bordsduk
+      - servetter
+    - en stol, en pall, en bänk, en barstol:
+      - en stol
+      - en pall
+      - en bänk
+      - en barstol
+    - en byrå, en bokhylla, en hylla, en hörnhylla, en bokhylla:
+      - en byrå
+      - en bokhylla
+      - en hylla
+      - en hörnhylla
+      - en bokhylla
+    - ett fristående högskåp, en vinhylla, ett småskåp, en kista:
+      - ett fristående högskåp
+      - en vinhylla
+      - ett småskåp
+      - en kista
+    - ett väggskåp
+    - en skrivbordslampa, en lampa:
+      - en skrivbordslampa
+      - en lampa
+  - Arbetsrum:
+    - en arbetsstol
+    - en skrivbordslampa
+    - en papperskorg
+    - ett kassaskåp
+    - cell
+    - celler
+  - Kök (Energi):
+    - ett köksskåp
+    - ett serveringsbord
+  - Underhållning (... Annat):
+    - ett schackbräde
+  - Sovrum:
+    - en enkelsäng, en dubbelsäng, en våningssäng:
+      - en enkelsäng
+      - en dubbelsäng
+      - en våningssäng
+    - en sänggavel
+    - en bäddsoffa, en bäddfåtölj, en schäslong:
+      - en bäddsoffa
+      - en bäddfåtölj
+      - en schäslong
+    - ett sängbord, en nattlampa:
+      - ett sängbord
+      - en nattlampa
+    - en garderob, möbelset, en klädkammare, en klädförvaring:
+      - en garderob
+      - möbelset
+      - en klädkammare
+      - en klädförvaring
+    - en kudde, en filt, ett sängdraperi:
+      - en kudde
+      - en filt
+      - ett sängdraperi
+    - sänglinnen, ett örngott, ett påslakan, ett lakan, en pläd:
+      - sänglinnen
+      - ett örngott
+      - ett påslakan
+      - ett lakan
+      - en pläd
+    - en madrass
+    - gardiner
+  - Badrum:
+    - ett badkar, en dusch:
+      - ett badkar
+      - en dusch
+    - ett handfat
+    - en tvättställsblandare
+    - en spegel
+    - en duschkabin
+    - en tvålkopp, en hängare, en klädställning:
+      - en tvålkopp
+      - en hängare
+      - en klädställning
+  - hall: []
+  - utomhus:
+    - ett parasoll, en hängmatta:
+      - ett parasoll
+      - en hängmatta
+    - en gungstol
+  Underhållning:
+    - en bastu
+    - disko
+    - en nöjespark
+    - en labyrint
+    - ett saltvattensakvarium
+  Källarvåning:
+    - ett parkeringsgarage, garage
+    - en däckmonterare
+  - Konstiga hemsaker:
+    - en vagga, en spjälsäng:
+      - en vagga
+      - en spjälsäng
+    - en lekhage, en barnstol, ett barnbord, ett skötbord:
+      - en lekhage
+      - en barnstol
+      - ett barnbord
+      - ett skötbord
+  - ett lager:
+    - en hangar
+    
+- Mekaniska maskiner:
+  - en skrivmaskin
+  - en vibrationsdämpare
+  - en spärrbult
+  - ett handtag
+  - ett grepp
+    
+- Verktyg:
+  - en kompass
+  - en kikare
+  - ett teleskop
+  - en stege
+  - en rulle
+  - en kedja
+  - en karbinhake
+
+
+- Papper:
+  - Brev:
+    - brevkorgar
+    - ett kuvert
+    - ett frimärke
+    - frimärken
+    - ett brev
+    - ett paket
+  
+  - Papperstyper:
+    - färgpapper
+    - en schablon
+    - ett anteckningsblock
+    - ett anteckningspapper, utskrivet ark
+    - ett kalkeringspapper
+    - pappersklämma
+    - ett omslag
+    - en rittavla
+    - ett ritbord
+  - Skrift:
+    - ett avtal
+    - en underskrift
+    - meritförteckning
+    - presentation
+    - diagram
+    - en enkät
+    - en kalender
+    - en dagplanerare
+    - ritning
+    - en ide
+    - en skrivplatta
+    - en dagbok
+    - ordböcker
+    - bokmärke
+    
+  - Papperträd:
+    - en mapp
+    - en fil
+    - en kartotek
+    - en brevkorg
+    - vertikal lagring
+    - ett stöd
+    
+  - Papperrelaterade:
+    - knappnålar
+    - ett gem
+    - ett häftstift
+    - pappersklämma
+    - en sax
+    - korrigeringsvätska
+    - en häftapparat
+    - ett hålslag
+    - en anslagstavla
+    
+  - Papperverktyg:
+    - Skrivande:
+      - ett pennskrin
+      - Ny:
+        - en blyertspenna
+        - en pensel
+        - färgade pennor
+        - en tuschpenna
+        - filtpennor
+        - en krita
+      - Raderande:
+        - en suddgummi
+        - korrigeringsvätska
+        - korrigeringspenna
+        - korrigeringstejp
+        - en borste
+      - en pennvässare
+      - en laserpekare
+      - tejp
+      - Bläck:
+        - refill
+    - Mätverktyg:
+      - en vinkelhake
+      - en gradskiva
+      - en linjal
+      - en passare
+      - ett förstoringsglas
+  - Stämpelform:
+    - en stämpel
+    - en nummerstämpel
+    - en stämpeldyna
+    - en fingerfuktkudde
+    - självhäftande klistermärke
+  
+- Skolan:
+  - ett övningshäfte
+
+färger:
+  - en gouache
+  - en palette
+
+
+- matematik:
+  - en formel
+  - en ekvation
+  - geometri
+  - algebra
+- fysik:
+  - astronomi
+- kemi
+- biologi
+
+- historia
+- litteratur
+- musik
+- gymnastik
+
+Saker:
+  - Portfölj
+  - Nycklar:
+    - ett visitkort
+    - en visitkorthållare
+    - en nyckelhållare
+  - ett paraply
+  
+- Arbete:
+  - Marknad:
+    - Aktier, stock:
+      - aktiemarknad
+      - aktier
+      - kurser
+    pengar:
+      - en bank
+      - en betalningsterminal
+      - en kassa
+      - en kontanträknare
+      - en streckkod
+      - en kvittorulle
+      - ett kvitto
+    
+    arbete:
+      - en utveckling
+      - ett fall
+      - en karriärstege
+      - en handskakning
+      - en inventering
+      - en pipeline
+      - en utrusning
+      - ett transportband
+    
+- Hierarki, trädstruktur
+
+- Elektriska apparater, elektronik:
+  - Krets:
+    - kabel:
+      - en strömdelare
+      - en kontakt
+      - en kabel
+      - en kontroll
+      - en adapter (transform)
+    - Komponenter:
+      - ljusavgivande dioder
+    - Kretskydd:
+      - ett överspänningsskydd
+      - en skyddande överspänningsutlösare
+    - Elmätare:
+      - en mätare
+  - Elsystem:
+    - ett uttag
+    - en stickpropp
+    - en förlängningssladd
+    - en strömbrytare
+    - en styrspak
+    - en stickkontakt
+    - en kontrollströmbrytare ombord
+    - en säkring
+    - en strömbrytare
+    - en batteriterminal
+  - Vanlig:
+    - kalkylatorer
+    - en skrivbordsklocka, en timer, en väckarklocka, en klockradio
+    - en digital väderstation
+  - Mätare:
+    - en våg
+    - en barometer
+    - en manometer
+    - en takometer
+    - en termometer
+    - en inklinometer
+    - en anemometer
+  - Musikspelare:
+    - en bandspelare
+    - en videobandspelare
+    - DVD-spelare
+    - MP3-spelare
+    - blu-ray-spelare
+    - video-tuner
+    - kassettbandspelare
+  - Ljud och musiksystem:
+    - högtalare
+    - en bas
+    - en ljudförstärkare
+    - en megafon
+    - akustiskt system kontrollpanel
+    - ett mixerbord
+    - en fonograf
+    - en radiogrammofon
+  - Kamera:
+    - en videokamera
+    - en kamera
+    - en diktafon
+  - Telekommunikation:
+    - en radio,FM-modulator
+    - en telefon
+    - telefoner
+    - en radioantenn
+    - en radiostation
+    - en walkie-talkie
+    - walkie-talkies
+    - en bildtelefon
+    - en nätverkskabel
+    - TV kabel
+    - en parabolantenn
+    - en tv-antenn
+    - en digital kabel
+  - Film:
+    - TV, en fjärrkontroll, 3-D TV
+    - ett hemmabiosystem
+    - en skivspelare, CD-spelare
+  - Skrivare:
+    - en kopiator
+    - en pekpinne
+    - fax
+    - en skrivare
+    - en fotoskrivare
+    - en skanner
+  - Hushållsapparater:
+    - Allmän:
+      - en fläkt
+      - en luftkonditionering
+    - Köket:
+      - Värmare:
+        - [en spis, en diskmaskin, en induktionshäll, en gasspis]
+        - en mikrovågsugn
+        - en vattenkokare
+        - en elektrisk vattenvärmare
+        - en rostare
+        - en pannkakslagg
+        - en glassmaskin
+        - en äggkokare
+        - en kaffemaskin
+        - en brödrost
+        - en ugn
+        - en elugn
+        - en bakmaskin
+        - en slow cooker
+        - en grill:
+          - en luftgrill
+          - en utomhusgrill
+        - en ångkokare
+        - en fritös
+        - en infravärmare
+        - en oljevärmare
+        - ett våffeljärn
+      - Kylare:
+        - en köksfläkt
+        - ett kylskåp
+        - en frys
+        - ett vinskåp
+        - en ångrengörare
+      - Blandare:
+        - en kaffekvarn
+        - en kaffebryggare
+        - en mixer
+        - en köttkvarn
+        - en hushållsassistent
+        - en brödskärare
+        - en elvisp
+        - en juicepress
+        - en youghurtberedare
+        - elektrisk samovar
+        - en youghurtberedare
+      
+    - Tvättrum:
+      - en tvättmasikin
+      - en torktumlare
+    - Badrum:
+      - en hårtork
+      - en tandborste
+      - en irregator
+      - en rakapparat
+      - en hårklippare
+      - en hårtrimmare
+      - en epilator
+      - en locktång
+      - en elektrisk hårspole
+      - en plattång
+      - en massageapparat
+    - Skåprum:
+      - ett strykjärn
+      - en dammsugare
+    - Luft:
+      - en luftjoniserare
+      - en luftfuktare
+      - en vattenvarmberedare
+      - en luftkonditionering
+      - en luftväxlare
+      - en elkamin
+      - en ånginhalator
+      - en sterilisator
+      - en strykningsmaskin
+      - en ångare
+      - en konvektor
+  - Bil:
+    - en bilstereo
+    - ett ljudsystem för bilen
+    - en bilkamera
+    - en radar detektor
+    - en GPS
+    - en digital fotoram
+  - Trädgård:
+    - en kompostkvarn
+
+- Ljus:
+  - en strålkastare
+  - en lykta
+  - ett navigationsljus
+  - en pollare
+  
+- Dator:
+  - Datortyper:
+    - Stora dator:
+      - bärbara datorer
+      - en persondator
+      - en laptop
+    - Andra typer:
+      - Robot
+      - en trådlös telefon, en smarttelefon
+      - en E-bok
+      - en surfplatta (SIM-kort)
+      - en smartklocka
+      - ett smartband
+      - ett träningsarmband
+    - Säkerhetssystem:
+      - elektrisk dörrklocka
+      - en porttelefon
+      - ett säkerhetssystem
+      - en videoövervakning
+  - Datordelar:
+    - aritmometer
+    - tangentbord
+    - en mus
+    - en webbkamera
+    - en laddare
+    - en pluggadapter
+    - dockningsstation
+    - hörlurar, ett headset
+    - en dataskärm
+    - en projektor, diaprojektor
+    - Hologram
+    - 3D film + 3D glasögon
+  - Batteri:
+    - ett laddbart batteri
+    - ett batteri
+  - Datortillbehör:
+    - ett laptopställ
+  - Lagring:
+    - USB-minne
+    - diskar
+    - en diskett
+    - ett minneskort, en minneskortläsare
+    - ett USB-minne
+  - en surfplatta
+  - en mobiltelefon
+  - server (datorformad)
+  - Nätverk:
+    - ett modem
+    - Wi-Fi router
+    - Internet
+    - e-post
+    - snabel-a
+    - en het linje
+  
+- Bilar:
+  - reservdelar
+  - en kaross
+  - en motorhuv
+  - bagageutrymme lock
+  - en bildörr
+  - en backspegel, sidospegel
+  - en stötfångare
+  - ett upphängningssytem
+  - en registreringsskylt
+  - en vindruta, vindrutetorkare
+  - billyktor, bakljus, dimljus
+  - Mekanism:
+    - en växelspak
+  - en instrumentpanel:
+    - en hastighetsmätare
+    - en takometer
+    - en odometer
+    - en bränslemätare
+    - en kylvätsketemperatur
+  - en satellitnavigation
+  - Billås:
+    - en tändningsnyckel
+    - ett tändningslås
+    - en fönsterhiss
+
+ett varningsljus
+
+en luftkonditionering
+
+en cigarettändare
+
+en värmeväxlare
+
+en klimatkontroll
+
+ett säte
+
+ett nackstöd
+
+ett armstöd
+
+ett säkerhetsbälte
+
+en bilbarnstol
+
+ett reservhjul
+
+en backspegel
+
+ett handskfack
+
+en gaspedal
+
+en bromspedal
+
+en kopplingspedal
+
+indikatoromkopplare
+
+en parkeringsbroms
+
+ett ljudsystem
+
+en högtalare
+
+en subwoofer
+
+förstärkare
+
+en antenn
+
+första hjälpen-väska
+
+en brandsläckare
+
+ett överdrag
+
+en domkraft
+
+en kompressor
+
+en hammare
+
+en flattång
+
+en hylsnyckel
+
+en hylsnyckel
+
+ett huvud
+
+en förlängningssladd
+
+en adapter
+
+en tändstiftsnyckel
+
+en fil
+
+en nålfil
+
+skruvar
+
+bultar
+
+- Transport:
+  - Bilar:
+    - vanlig bil
+    - lastbilar, ett lastbilssläp:
+      - lastbilar
+      - ett lastbilssläp
+    - traktorer
+  - Biltyper:
+    - en fyrhjulsdrift
+    - scooter, fyrhjulingar, snöskotrar, en vattenskoter:
+      - scooter
+      - fyrhjulingar
+      - snöskotrar
+      - en vattenskoter
+    - en kompaktbil, en cabriolet, en pickup, en roadster:
+      - en kompaktbil
+      - en cabriolet
+      - en pickup
+      - en roadster
+    - en miniskåpbil, en skåpbil, en terrängbil, en leveranslastbil:
+      - en miniskåpbil
+      - en skåpbil
+      - en terrängbil
+      - en leveranslastbil
+    - en jeep, en SUV, en limousine, en veteranbil:
+      - en jeep
+      - en SUV
+      - en limousine
+      - en veteranbil
+    - en truckkran, en anläggningsbil, ett bärgningsfordon:
+      - en truckkran
+      - en anläggningsbil
+      - ett bärgningsfordon
+    - en brandbil, en polisbil, ambulance:
+      - en brandbil
+      - en polisbil
+      - ambulance
+    - en produktionsbil, en racerbil, en dragster, en buggy bil, en hot-rod:
+      - en produktionsbil
+      - en racerbil
+      - en dragster
+      - en buggy bil
+      - en hot-rod
+    - en likbil, en elbil, en hybridbil:
+      - en likbil
+      - en elbil
+      - en hybridbil
+    - en skördetröska, en tankbil, en bepansrad bil, en sopbil, en behållare:
+      - en skördetröska
+      - en tankbil
+      - en bepansrad bil
+      - en sopbil
+      - en behållare
+    - en cementblandare, en mjölkbil:
+      - en cementblandare
+      - en mjölkbil
+    - en ångvält, en grävare, en lyftkran, en släpvagn:
+      - en ångvält
+      - en grävare
+      - en lyftkran
+      - en släpvagn
+  - Bildelar:
+    - en mast, en flagga, en flaggstång, en flytväst:
+      - en mast
+      - en flagga
+      - en flaggstång
+      - en flytväst
+    - en livboj, en fender, en hytt, ett hyttfönster:
+      - en livboj
+      - en fender
+      - en hytt
+      - ett hyttfönster
+    - en kil, en vagn, en åra, årklykor:
+      - en kil
+      - en vagn
+      - en åra
+      - årklykor
+    - en fotpump, en handdriven pump:
+      - en fotpump
+      - en handdriven pump
+    - ett däck, ett handräcke, en slang:
+      - ett däck
+      - ett handräcke
+      - en slang
+  - Flygplan:
+    - ett flygplan
+    - helikoptrar, jaktflygplan, ett luftskepp, en luftballong, en hängglidare:
+      - helikoptrar
+      - jaktflygplan
+      - ett luftskepp
+      - en luftballong
+      - en hängglidare
+    - ett sjöflygplan
+  - Båtar:
+    - Båttyper:
+      - motorbåtar, segelbåtar:
+        - motorbåtar
+        - segelbåtar
+    - Båtdelar:
+      - en däckslucka, en skeppspropeller, en båtmotor, en inombordsmotor, ett segelbåtsdrev:
+        - en däckslucka
+        - en skeppspropeller
+        - en båtmotor
+        - en inombordsmotor
+        - ett segelbåtsdrev
+      - en bogpropeller, en dräneringsplugg:
+        - en bogpropeller
+        - en dräneringsplugg
+  - Motorcyklar:
+    - motorcyklar
+  - Kollektivtrafik:
+    - bussar, trådbussar:
+      - bussar
+      - trådbussar
+    - en spårvagn, ett ånglok, en vagn, en balkbana:
+      - en spårvagn
+      - ett ånglok
+      - en vagn
+      - en balkbana
+    - ett tåg
+    - taxi
+  - Rymden:
+    - en raket, en rymdskyttel:
+      - en raket
+      - en rymdskyttel
+    - en rymdhiss
+  - Vanlig:
+    - en hiss, en rulltrappa:
+      - en hiss
+      - en rulltrappa
+    - en bergbana, en linbana:
+      - en bergbana
+      - en linbana
+  - Sjöfart:
+    - Typer:
+      - Vanliga båtar:
+        - skepp
+        - båtar
+        - motorbåtar
+        - en färja
+        - en ponton
+        - en motorjakt
+        - en segeljakt
+        - ett motorfartyg
+        - en kryssare
+      - Båthjälp:
+        - båtsläp
+        - luftringsbåtar
+        - en isbrytare
+      - Verksamhetsbåtar:
+        - ett tankfartyg
+        - ett containerfartyg
+        - en svävare
+        - en katamaran
+        - en flotte
+        - en fiskarbåt
+        - ett kylfartyg
+      - Hamnbåtar:
+        - ett atomkraftfartyg
+        - ett lastfartyg
+        - en linjebåt, linjefärja
+    - Hamn, kaj, pir:
+      - en plattform
+      - en fyr
+      - ett skeppsvarv
+      - en kommandobrygga
+    - Sjöverktyg:
+      - kartplotter
+      - en navigatör
+      - en radar
+      - en maskintelegraf
+    - Skeppsdelar:
+      - ett balkfartyg
+      - ett fartygsratt
+      - ett motorreglage
+      - en säkerhetslina
+      - en batteribrytare
+    - Skeppsanordning:
+      - en pråm
+      - ett ekolod
+      - en ekolods givare
+      - en båtstake
+      - en akterspegel
+      - en svivel
+      - en tross
+      - en vantskruv
+      - en tacklingskätting
+      - ett ankar
+      - ett klys
+      - ett ankarspel
+      - en stor landgång
+      - en boj
+      - en knap
+      - ett bålverk
+    
+  - Flygplan:
+    - Typer:
+      - Vanlig:
+        - ett flygplan
+        - helikoptrar
+        - ett luftskepp
+        - en luftballong
+        - en hängglidare
+        - en helikopter
+      - Verksamhetsflygplan:
+        - jaktflygplan
+        - ett sjöflygplan
+        - ett överljudsflygplan
+        - ett jaktflygplan
+        - ett fraktflygplan
+        - ett bombplan
+        - en drönare
+        - ett amfibiska flygplan
+    - Flygteknik:
+      - en avancerad flygning
+    - Flygplansdelar:
+      - en flygkropp
+      - en vinge
+      - en skruv
+      - ett chassi
+      - en svans
+      - en jetmotor
+      - en loop
+    - Flygplats:
+      - en ombordstigningsbrygga
+      
+- Trafik:
+  - vägmärken
+  - hastighetsbegränsning
+  - en parkering
+  - förbud mot att stanna, sväng i korsning, parkera fordon
+  - omkörning förbjuden
+  - endast rakt fram, förbud mot u-sväng
+  - ett övergångsställe
+  - en bensinstation
+  - en återvändsgata
+  rörelse:
+    - enkelriktad trafik
+    - en huvudled
+    - väjningsplikt
+    - stopplikt
+      
+- Skjutvapen:
+  - en pistol
+
+en revolver
+
+en kulsprutepistol
+
+ett överfallsgevär
+
+en karbin
+
+en winchester
+
+en hagelbössa
+
+ett raketgevär
+
+en granatpistol
+
+ett maskingevär
+
+en patron
+
+en hylsa
+
+en kula
+
+ett krut
+
+en granat
+
+en bomb
+
+en dynamit
+
+en säkring
+
+en atombomb
+
+ett smalborrat gevär
+
+en sportpistol
+
+ett gevär
+
+en signalpistol
+
+en tunna
+
+en slutare
+
+en mottagare
+
+en ljuddämpare
+
+ett sikte
+
+ett kikarsikte
+
+ett lasersikte
+
+en avtryckare
+
+en säkring
+
+en avtryckare
+
+en ammunition
+
+ett magasin
+
+en cylinder
+
+en måltavla
+
+ett kamouflage
+
+en kolv
+
+en kolv
+
+ett skjutstift
+
+ett sikte
+
+en avtryckarstång
+
+en återföringsfjäder
+
+ett utlösningsskydd
+
+en drivfjäder
+
+en lyftfjäder
+
+ett utlösningsfält och en spännhävarm
+
+en flamdämpare
+
+en brandpinne
+
+en rem
+
+Militärutrustning:
+  - Stridsvagn:
+    - en stridsvagn
+    - ett pansarskyttefordon
+    - en pansarbil
+  - Flygplan:
+    - en helikopter
+    - ett jaktflygplan
+    - ett fraktflygplan
+    - ett bombplan
+    - en drönare
+    - ett amfibiska flygplan
+  - Båtar:
+    - en ubåt
+    - ett hangarfartyg
+    - en missilkryssare
+  - Raketer:
+    - en ballistisk raket
+    - ett raketsystem
+    - ett raketsystem med flera lanseringar
+
+- Domare:
+  - en visselpipa, en poängtavla:
+    - en visselpipa
+    - en poängtavla
+  - en piedestal, en guldmedalj, en silvermedal, en bronsmedalj, en medaljong:
+    - en piedestal
+    - en guldmedalj
+    - en silvermedal
+    - en bronsmedalj
+    - en medaljong
+  - en domare
+  - gult kort, rött kort:
+    - gult kort
+    - rött kort
+
+- Sporter:
+  - fotboll
+  - rugby
+  - Amerikansk fotboll
+  - tennis
+  - badminton
+  - volleyboll
+  - basketboll:
+     - en basketkorg
+     - en basketplatta
+     - ett basketnät
+  - ishockey:
+    - en hockeyklubba
+    - en puck
+  - cricket:
+    - ett cricketslagträ
+    - en cricketplan
+  - baseboll:
+    - ett basebollträ
+    - en basebollhandske
+    - en basebollhjälm
+  - kampsport:
+    - en slagpåse
+    - ett tandskydd
+    - makiwara
+    - svart bälte
+  - Anordningar:
+    - en fotbollsplan
+    - en stadion
+    - tribuner
+    - ett mål
+    - ett nät
+    - racketar
+  - Urustning:
+    - ett benskydd
+    - ett halsskydd
+    - ett armbågsskydd
+    - hockeyhandskar
+    - hjälm med mask
+  - Avdelning:
+    - en målvakt
+    - en hörnspark
+
+- Anonymous, self:
+  - skidsport
+  - skidor
+  - stavar
+  - skidpjäxor
+  - bindningar
+  - en slalombacke
+  - en sittlift
+  - en bergbana
+  - ett skidspår
+  - skidportar
+  - en kälke
+  - en släde
+  - en sparkcykel
+  - friidrott
+  - gympaskor
+  - en utrustning
+  - en stadion
+  - ett spår
+  - en kula
+  - ett spjut
+  - discus
+  - startblock
+  - en stafettpinne
+  - en hinderlöpning
+  - en stafettlöpning
+  - ett höjdhopp
+  - ett längdhopp
+  - ett räcke
+  - en bygelhäst
+  - en stock
+  - en spång
+  - romerska ringar
+  - ojämna barrar
+  - barrar
+  - en studsmatta
+  - ett målfoto
+  - ridsport
+  - hästar
+  - en galoppbana
+  - ett hinder
+  - ett stall
+  - hästsko
+  - en damsadel
+  - en stigbygel
+  - en piska
+  - en grimma
+  - en ridhjälm
+  - golf
+  - klubbor
+  - en golfboll
+  - en golfbana
+  - ett hål
+  - en bunker
+  - en flagga
+  - en handske
+  - buggy
+  - ett golfparaply
+  - en golfvagn
+  - styrketräning
+  - ett styrketräningsgym
+  - ett löpband
+  - en motionscykel
+  - en elliptisk träningsmaskin
+  - en roddapparat
+  - en gåmaskin
+  - en räckstång
+  - en skivstång
+  - en kulstång
+  - hantel
+  - en kettlebell
+  - en bänk
+  - skivstångslås
+  - en skivstång
+  - ett tyngdlyftband
+  - en matta
+  - ett rep
+  - ett spjut
+  - fäktning
+  - en bordtennis
+  - ett bordtennisracket
+  - en bordtennisboll
+  - biljard
+  - en biljardkö
+  - biljardbollar
+  - en talk
+  - bowling
+  - ett bowlingklot
+  - en kägla
+  - käglor
+  - landhockey
+  - skidskytte
+  - curling
+  - handboll
+  - maraton
+  - rodd
+  - kulstötning
+  - konståkning
+  - skridskoåkning
+  - bågskytte
+  - kappsegling
+  - en cup
+  - en medalj
+  - finish
+  - sportutrustning
+- Extremsport:
+  - surfing
+  - wakeboarding
+  - dykning
+  - kitesurfing
+  - vindsurfning
+  - skateboarding
+  - snowboarding
+  - alpin skidåkning
+  - BMX
+  - mountainbike
+  - klättring
+  - bergsklättring
+  - en fallskärmshoppning
+  - skärmflygning, glidflygning:
+    - skärmflygning
+    - glidflygning
+  - rep hoppning, BASE hoppning:
+    - rep hoppning
+    - BASE hoppning
+  - kayaking
+  - forsränning
+  - styrketävlingar
+  - bilmodellering
+  - fjäderstyltor
+  - wingsuiting
+  - zorbing
+  - mountain boarding
+  - pogo stick jumping
+  - snow kiting
+  - caving
+  - slackline
+  - cyklar
+  - en ram
+  - ett hjul
+  - en sadel
+  - snowboard
+  - Alpin skidor
+  - bindningar
+  - stavar
+  - skidpjäxor
+  - ett par skidglasögon
+  - en ramp
+  - en ramp
+  - en bräda
+  - hjul
+  - stötdämpare
+  - en cyklop
+  - en snorkel
+  - simfötter
+  - en våtdräkt
+  - kängor
+  - handskar
+  - en flytväst
+  - ishacka
+  - karbinhakar
+  - ett hjälm
+  - en luftringsbåt
+  - en kajak
+  - en kanot
+  - paddlar
+  - en fallskärm
+  - wakeboarding
+  - kite
+  - kiteboard
+  - en kanadensare
+  - en fjädring
+  - lager
+  - en ruggad yta
+  - en framgaffel
+  - pedaler
+  - en kedja
+  - ett lager
+  - en fälg
+  - en eker
+  - ett bildäck
+  - en innerslang
+  - en däckventil
+  - handtag
+  - en hjälm
+  - ballong
+  - bojar
+  - en ficklampa
+  - ett fodral
+  - ett isverktyg
+  - ett rep
+  - klättringsskor
+  - en broms
+  - en bromsskiva
+  - ett bromsbelägg
+  - en rattstång
+  - vevstake
+  - en invecklad mekanism
+  - en bogserare
+  - ett reglage
+  - manometer
+  - tyngd bälte
+  - flytkraftkompensator
+  - ett spjut
+  - en krok
+  - streber
+  - nedfirningsdon
+  - sling
+  - roller
+  - ett rep
+  - kamkil
+  - riggplatta
+  - svängtapp
+  - klämma
+  - stopper
+  - excenterskiva
+  - slingskärare
+  - en innerfallskärmspåse
+  - en slutare
+  - en studioutrustning
+  - ett stroboskop
+  - ett objektiv
+  - en blixt
+  
+- Rymden:
+  - Solsystemet:
+    - Solen
+    - Jorden
+    - Månen
+    - Merkurius
+    - Venus
+    - Mars
+    - Jupiter
+    - Saturnus
+    - Uranus
+    - Neptunus
+    
+  - Rymden:
+    - en stjärnkarta
+    - Vintergatan
+    - ett svart hål
+    - Stora björnen
+    - Lilla björnen
+    - galaxer
+    - en kvasar
+    - en nebulosa
+    
+  - Typer:
+    - universum, en världsrymd, en himmel
+    - stjärnor
+    - en galax
+    - asteroid
+    - en meteor
+    - en komet
+    - en konstellation
+    - en polstjärna
+    - oidentifierat flygande föremål
+    - en krater
+    
+  - Celest mekanik:
+    - en omloppsbana
+    - solförmörkelse
+  - Arbete:
+    - astronauter
+    
+  - Rymdmaskiner:
+    - en raket
+    - en satellit
+    - ett observatorium
+    - en rymdsond
+    - en rymddräkt
+    - ett rymdskepp
+    - en rymdplattform
+    - en planetparad
+    - rymdteleskopet Hubble
+    - ett spektroskop
+    
+  - Planetväder:
+    - ett meteorregn
+    - en meteorit
+    - en geomagnetisk storm
+    - en radiation
+
+Musikinstrument:
+  - Stränginstrument:
+    - en gitarr
+    - en elgitarr
+    - en elbas
+    - en balalajka
+    - en banjo
+    - en gusli
+    - en domra
+    - en luta
+    - en kontrabas
+  - Pianoformad instrument:
+    - ett piano
+    - en xylofon
+    - en orgel
+    - en flygel
+    - en synthesizer
+    - en harpa
+    - en violin
+    - en vibrafon
+    - en cembalo
+  - Blåsinstrument:
+    - en trumpet
+    - en flöjt
+    - ett klockspel
+    - en fiol
+    - en violin
+    - en tvärflöjt
+    - en klarinett
+    - en saxofon
+    - ett dragspel
+    - ett munspel
+    - en trombon
+    - en säckpipa
+    - ett valthorn
+    - ett helikon
+    - en sousafon
+    - en oboe
+    - en svirel
+    - en mungiga
+    - ett jägarhorn
+
+  - Slaginstrument:
+    - en trumma
+    - en tamburin
+    - en triangel
+    - cymbaler
+    - maracas
+    - en gonggong
+    - kastanjetter
+    - bongotrummor
+
+Musikteori:
+  - en not
+  - en musiknot
+  - en notrad
+  - en diskantklav
+  - en basklav
+  - en kornett
+  
+Hantverk:
+  - Tygformer:
+    - Verktyg:
+      - en nål
+      - en symaskin
+      - en fingerborg
+      - en hyska
+      - en hake
+    - Material:
+      - Trådar:
+        - ett garn
+        - ett nystan
+        - en trådrulle
+      - Tyger (vävning):
+        - ett tyg
+        - en bomull
+        - en ull
+        - ett siden
+        - ett lin
+        - mohair
+        - en syntetfiber
+      - Sammanfogning:
+        - elastisk tråd
+        - ett band
+        - ett blixtlås
+      - Tillbehör:
+        - en tråd
+        - en knapp
+      - Dekor:
+        - glaspärlor
+    - Arkitektur konstruktion:
+      - decoupage
+      - modellering
+      - application
+      - lappteknik
+    - Former:
+      - stickor
+      - en sömnad
+      - ett broderi, en broderbåge
+      - en stickning
+    - Design:
+      - Designformer
+  - pyrografi
+  - en träskulptur
+  - en mosaik
+  - glasmålning
+  - pärlvävning
+  - macramé
+  - batik
+  - scrapbooking
+  - tvålframställning
+  
+Djur:
+  - en snigel
+  - en groda
+  - en mula
+  - en jak
+  - en lama
+  - en alpacka
+  - en vaktel
+  - en grå jako
+  - en kameleont
+  - en silkesspinnare
+  
+Avskyvärd:
+  - en spindel
+  - kackerlackor
+  
+
+Husdjur:
+  - en hund:
+    - en valp
+  - en katt:
+    - en kattunge
+  - en råtta
+  - en kanin
+  - hamstrar
+  - en undulat
+  - en guldfisk
+  - akvariefiskar
+  - ett marsvin
+
+Boskap:
+  - en häst
+  - en ko
+  - ett får
+  - en get
+  - en gris:
+    - en griskulting
+  - en höna
+  - en gås
+  - en anka:
+    - en ankunge
+  - en åsna
+  - en get
+  - en bock
+  - ett lamm
+  - en buffel
+  - en tjur
+  - ett föl
+  - en kalv
+  - en ponny
+  - en kamel
+  - en ren
+  - en iller
+  - en tupp
+  - en kyckling
+  - en kalkon
+  - en påfågel
+  
+Fåglar:
+  - Vanliga:
+    - en duva
+    - en svala
+    - en gök
+    - en trast
+    - en bofink
+    - en korsnäbb
+    - en järpe
+    - en härfågel
+  Små fåglar:
+    - en undulat
+    - en sparv, stork
+    - en lärka
+    - en kanariefågel
+  - Hackande fåglar:
+    - en hackspett
+    - en trana
+    - en kolibri
+  - Färgglada:
+    - en ara
+    - en påfågel
+  - Gående:
+    - en ripa
+    - en vaktel
+    - en orre
+    - en fasan
+  - Flygande:
+    - en tornseglare
+  - Stora fåglar:
+    - en korp, kråka, kaja, råka
+    - en uggla, berguv, slaguggla, hornuggla
+    - en örn, hök, falk, kungsörn, jaktfalk, kejsarörn, havsörn
+    - en harpyja
+    - en gam
+  - Vattenfåglar:
+    - en pelikan, krävstork
+    - en mås, albatross
+    - skarv
+    - en häger, svan, anka
+    - en grågås, gräsand, mandarinand, dykand
+    - en lom, svartsnäppa, vadare, fisktärna
+    - en rördrom
+  Kall:
+    - en pingvin
+  Sällsynta:
+    - en struts
+    - en emu
+    - en flamingo
+    - en tukan
+    - en stortrapp
+    - papegojor
+    - en kondor
+    - en sekreterarfågel
+    - en kohäger
+    - en tjäder
+    - en kiwi
+    - en tordmule
+    
+Kräldjur:
+  - krokodiler:
+    - en kajman
+  - sköldpaddor:
+    - en havssköldpadda
+    - en vattensköldpadda
+    - en landsköldpadda
+  - ödlor:
+    - en grön leguan
+    - kameleont
+    - en varan
+    - en geckoödla
+  - ormar:
+    - en kobra
+    - en huggorm
+    - en anakonda
+    - en kungsboa
+    - en pytonorm
+    - en snok, hasselsnok
+    - en mamba
+    - en basilisk
+    
+Fiskar:
+  - en haj
+
+en forell
+
+en Atlantlax
+
+en lax
+
+en havskatt
+
+en rödbukspiraya
+
+en rocka
+
+en bläckfisk
+
+en snigel
+
+en kräfta
+
+en krabba
+
+en sjöhäst
+
+en fena
+
+gälar
+
+ett fjäll
+
+en svärdfisk
+
+en hälleflundra
+
+en ansjovis
+
+en barracuda
+
+en belugastör
+
+en brax
+
+en gös
+
+en mört
+
+en puckellax
+
+en svärdfisk
+
+en gärs
+
+en tångsnälla
+
+en havstunga
+
+en spätta
+
+en karp
+
+en hundlax
+
+en guldsparid
+
+mugil
+
+Alaska pollack
+
+en guppy
+
+en clownfisk
+
+en kardinaltetra
+
+en stör
+
+en makrill
+
+en saira
+
+en tonfisk
+
+en pansarmal
+
+en ål
+
+en sardin
+
+en sill
+
+en sandkrypare
+
+en blåmussla
+
+ett ostron
+
+en räka
+
+en manet
+
+en bläckfisk
+
+en hummer
+
+en sutare
+
+en abborre
+
+en gädda
+
+en karp
