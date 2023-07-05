@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.full {
+    padding-left: 19%;
+    padding-right: 19%
+}
+
+.heading {
+    padding-bottom: 31px;
+}
+
+.bar {
+    background: #efefef;
+}
+
+table.DEMOTable{
+    border: 1px solid silver;
+    border-collapse: collapse;
+}
+
+table.nav {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #efefef;
+}
+
+td.nav {
+    font-size: 19px;
+}
+
+td.box {
+    padding: 37px 25px;
+    border: 1px solid silver;
+}
+
+th.DEMOitem, td.DEMOitem{
+    padding: 3px 5px;
+    border: 1px solid silver;
+}
+
+button {
+    border: none;
+    font-size: 17px;
+}
+
+    button.add {
+        background: #ef9000;
+        padding: 7px 11px;
+        color: white;
+    }
+
+    button.learnmore {
+        background: #2eb451;
+        color: white;
+        padding: 7px 33px;
+    }
+
+h1.bar {
+    padding: 11px 0;
+    font-size: 27px;
+    color: #7f8384;
+}
+
+p.about {
+    font-size: 19px;
+}
+
+a.nav {
+    color: black;
+    text-decoration: none;
+    color: #7f8384;
+}

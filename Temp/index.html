@@ -1,0 +1,158 @@
+<html>
+<head>
+	<title>ActivityController</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<table width = "100%" height = "100%">
+	<tr height = "45">
+		<td width = "200" style = "background :#86a829;"><center><h1 style = "color: white;">Controller</h1></center></td>
+		<td style = "background :#98be2e;">
+			<form><input class = "searchbar" placeholder = "type to search"/></form>
+		</td>
+	</tr>
+	<tr>
+		<td class = "tools" valign = "top"><table width = "100%">
+			<tr><td height = "10"></td></tr>
+			<tr><td class = "current tool"><a href = "">Dashboard</a></td></tr>
+			<tr><td class = "tool"><a href = "">Data management</a></td></tr>
+			<tr><td class = "tool"><a href = "">Data visualization</a></td></tr>
+			<tr><td class = "tool"><a href = "">To-dos</a></td></tr>
+			<tr><td class = "tool"><a href = "">Improvements</a></td></tr>
+			<tr><td class = "tool"><a href = "">Tickets</a></td></tr>
+			<tr><td class = "tool"><a href = "">Alerts</a></td></tr>
+			<tr><td class = "tool"><a href = "">Stoppers</a></td></tr>
+			<tr><td class = "tool"><a href = "">Devices</a></td></tr>
+			<tr><td class = "tool"><a href = "">Websites</a></td></tr>
+			<tr><td class = "tool"><a href = "">Customers</a></td></tr>
+			<tr><td class = "tool"><a href = "">Online backup</a></td></tr>
+			<tr><td class = "tool"><a href = "">Mail security</a></td></tr>
+			<tr><td class = "tool"><a href = "">Reports</a></td></tr>
+			<tr><td class = "tool"><a href = "">Admin</a></td></tr>
+		</table></td>
+		<td valign = "top" class = "contents"><table class = "dashboard" width ="100%">
+			<tr><td colspan = "3"><h1>Dashboard</h1></td></tr>
+			<tr><td colspan = "3" height = "10"></td></tr>
+			<tr><td colspan = "3"><h2>Important messages</h2></td></tr>
+			<tr class = "cards" width = "100%" height = "70">
+				<td width = "33.333%" class = "small-card"><table>
+					<tr><td><h5 id="Activity1">Activity Title 1</h5></td></tr>
+					<tr><td height = "7"></td></tr>
+					<tr><td><p id="Activity1Title">Title 1</p></td></tr>
+				</table></td>
+				<td width = "33.333%" class = "small-card"><table>
+					<tr><td><h5 id="Activity2">Activity Title 2</h5></td></tr>
+					<tr><td height = "7"></td></tr>
+					<tr><td><p id="Activity2Title">Title 2</p></td></tr>
+				</table></td>
+				<td width = "33.333%" class = "small-card"><table>
+					<tr><td><h5 id="Activity3">Activity Title 3</h5></td></tr>
+					<tr><td height = "7"></td></tr>
+					<tr><td><p id="Activity3Title">Title 3</p></td></tr>
+				</table></td>
+			</tr>
+			<tr><td colspan = "3" height = "21"></td></tr>
+			<tr>
+				<td valign = "top"><table width = "100%">
+					<tr><td><h2>Alert</h2></td></tr>
+					<tr><td height = "10"></td></tr>
+					<tr><td><table width = "100%" class = "visual-table" id="Alert">
+						<tr>
+							<th width = "30%">Datetime</th>
+							<th width = "30%">Course</th>
+							<th width = "40%">Title</th>
+						</tr>
+					</table></td></tr>
+				</table></td>
+				<td valign = "top"><table width = "100%">
+					<tr><td><h2>Stopper</h2></td></tr>
+					<tr><td height = "10"></td></tr>
+					<tr><td><table width = "100%" class = "visual-table" id="Stopper">
+						<tr>
+							<th width = "30%">Datetime</th>
+							<th width = "30%">Course</th>
+							<th width = "40%">Title</th>
+						</tr>
+					</table></td></tr>
+				</table></td>
+				<td valign = "top"><table width = "100%">
+					<tr><td><h2>Förhör</h2></td></tr>
+					<tr><td height = "10"></td></tr>
+					<tr><td valign = "top"><table width = "100%" class = "visual-table" id="Examination">
+						<tr>
+							<th width = "30%">Datetime</th>
+							<th width = "30%">Course</th>
+							<th width = "40%">Title</th>
+						</tr>
+					</table></td></tr>
+				</table></td>
+			</tr>
+			<tr><td colspan = "3" height = "50"></td></tr>
+			<tr>
+				<td valign = "top"><table width = "100%">
+					<tr><td><h2>Uppgift</h2></td></tr>
+					<tr><td height = "10"></td></tr>
+					<tr><td><table width = "100%" class = "visual-table" id="Schooltasks">
+						<tr>
+							<th width = "30%">Datetime</th>
+							<th width = "30%">Course</th>
+							<th width = "40%">Title</th>
+						</tr>
+					</table></td></tr>
+				</table></td>
+				<td valign = "top"><table width = "100%">
+					<tr><td><h2>Tickets</h2></td></tr>
+					<tr><td height = "10"></td></tr>
+					<tr><td><table width = "100%" class = "visual-table" id="Tickets">
+						<tr>
+							<th width = "30%">Datetime</th>
+							<th width = "30%">Course</th>
+							<th width = "40%">Title</th>
+						</tr>
+					</table></td></tr>
+				</table></td>
+				<td valign = "top"><table width = "100%">
+					<tr><td><h2>Improvements</h2></td></tr>
+					<tr><td height = "10"></td></tr>
+					<tr><td><table width = "100%" class = "visual-table" id="Improvements">
+						<tr>
+							<th width = "30%">Datetime</th>
+							<th width = "30%">Course</th>
+							<th width = "40%">Title</th>
+						</tr>
+					</table></td></tr>
+				</table></td>
+			</tr>
+			<tr>
+				<td valign = "top" colspan = "3"><table width = "100%">
+					<tr><td><h2>Reminder</h2></td></tr>
+					<tr><td height = "10"></td></tr>
+					<tr><td valign = "top"><table width = "100%" class = "visual-table" id="Reminder">
+						<tr>
+							<th width = "30%">Datetime</th>
+							<th width = "30%">Course</th>
+							<th width = "40%">Title</th>
+						</tr>
+					</table></td></tr>
+				</table></td>
+			</tr>
+			<tr>
+				<td valign = "top" colspan = "3"><table width = "100%">
+					<tr><td><h2>Daily</h2></td></tr>
+					<tr><td height = "10"></td></tr>
+					<tr><td valign = "top"><table width = "100%" class = "visual-table" id="Daily">
+						<tr>
+							<th width = "30%">Datetime</th>
+							<th width = "30%">Course</th>
+							<th width = "40%">Title</th>
+						</tr>
+					</table></td></tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+<script src = "data.js"></script>
+<script src = "main.js"></script>
+</body>
+</html>

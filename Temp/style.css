@@ -1,0 +1,55 @@
+*{
+	font-family: Helvetica;
+	color: #555555;
+}
+body, table, tr, td, h1, h2, h3, h4, h5, h6, p{
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+}
+.main{
+	color: white;
+}
+a{
+	color: inherit;
+	text-decoration: inherit;
+}
+.tools{
+	background: #f4f4f4;
+}
+.tool{
+	padding: 7px 11px;
+}
+.tool:hover, .current{
+	background: #e3e3e3;
+}
+.current{
+	border-left: 3px solid #98be2e;
+}
+.searchbar{
+	width: 120px;
+	height: 30px;
+	background: #adcb58;
+	border: none;
+}
+.contents{
+	padding: 20px 15px;
+}
+table.dashboard{
+	border-collapse: separate;
+}
+.small-card{
+	border: 1px solid silver;
+	border-radius: 5px;
+}
+.visual-table{
+	border: 1px solid #98be2e;
+}
+.visual-table th{
+	background: #98be2e;
+	color: white;
+}
+.visual-table td{
+	border: 1px solid #98be2e;
+	text-align: center;
+}
