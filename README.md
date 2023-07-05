@@ -1,5 +1,5 @@
-# SEVENTEEN
+# AOORA
 
-## SVG Editor description
+## AOORA Software Overview
 
-Tatarstan Blood Gem - New SVG Editor
+AOORA Web Application software to deal with everyday life.
