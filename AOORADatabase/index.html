@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>AOORADatabase</title>
+        <link rel = "stylesheet" href = "style.css" />
+        <link rel = "stylesheet" href = "../styles/styles2.css">
+        <script src = "main.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=500, initial-scale=1" />
+    </head>
+    <body class = "sections">
+        <table width = "951" height = "65">
+            <tr>
+                <td width = "181"><a href = "../"><img width = "161" src = "../images/AOORA-logo.svg"/></a></td>
+                <td width = "401"><input class = "neo" id = "search"/></td>
+                <td width = "81"><button class = "neo" id = "submit">Search</button></td>
+                <td>&nbsp;</td>
+                <td width = "91"><button class = "neo">Log in</button></td>
+            </tr>
+        </table>
+        <center><img width = "951" src="../images/background images/database background.png"/></center>
+        <table width = "951">
+            <tr>
+                <td width = "93"><button class = "small neo" id = "AscendButton">Ascend</button></td>
+                <td class = "VisualPath" id = "VisualPath">&nbsp;</td>
+            </tr>
+        </table>
+        <table class = "VisualTable" width = "951">
+            <thead>
+                <tr>
+                    <th width = "91">ID</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody id = "VisualTable"></tbody>
+        </table>
+        <p id = "debug"></p>
+    </body>
+</html>

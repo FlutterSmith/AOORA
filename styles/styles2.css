@@ -1,0 +1,76 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #555555;
+    text-decoration: inherit;
+}
+
+body, table, tbody, tr, th, td, input, h1, h2, h3, h4, h5, h6, p, a{
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica;
+    border: none;
+    border-collapse: collapse;
+}
+
+body.sections > table, img{
+    text-align: center;
+    margin: 0 auto;
+}
+
+body.main-segmented > table{
+    margin: 11px auto 11px;
+}
+
+table.icons{
+    width: 546px;
+}
+
+table.icons > td{
+    width: 91px;
+}
+
+h1.header{
+    margin: 0;
+    color: #883996;
+    font-size: 55px;
+    text-align: center;
+}
+
+input {
+    margin-right: 5px;
+    width: 100%;
+    height: 38px;
+    border: 0;
+}
+
+button{
+    margin: 11px;
+    padding: 11px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #e36dab;
+    border: 0;
+}
+
+button.small{
+    margin: 5px;
+    padding: 9px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+button.neo {
+    border-radius: 5px;
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    box-shadow: 2px 2px 4px #d9d9d9, -2px -2px 4px #ffffff;
+}
+
+button.neo:hover{
+    color: #eaadab;
+}
+
+button.neo:hover, input.neo{
+    border-radius: 5px;
+    background: #ffffff;
+    box-shadow: inset 3px 3px 6px #d9d9d9, inset -3px -3px 6px #ffffff;
+}

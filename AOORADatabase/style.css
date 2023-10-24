@@ -1,0 +1,30 @@
+table.VisualTable th, table.VisualTable td{
+    padding: 5.5px;
+}
+
+table.VisualTable th{
+    color: white;
+    background: #be69e4;
+}
+
+table.VisualTable td{
+    text-align: left;
+    border: 0.5px solid #be69e4;
+}
+
+.VisualPath{
+    font-size: 17px;
+    font-weight: bold;
+    color: #be69e4;
+}
+
+button{
+    color: #645487;
+}
+
+.ProblemView{
+    padding: 3px 7px;
+    font-weight: bolder;
+    color: #f44336;
+    border: 0.5px solid #f44336;
+}

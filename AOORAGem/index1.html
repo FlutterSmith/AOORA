@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.2/math.js"></script>
+  </head>
+<body>
+
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML canvas tag.</canvas>
+
+<script>
+  // koda.nu/labbet/14238869
+  class Graph{
+    constructor(){
+      this.canvas = document.getElementById("myCanvas");
+      this.context = this.canvas.getContext("2d");
+    }
+    
+    bind(name, handler){
+      this.canvas.addEventListener(name, handler);
+    }
+    
+    setSize(width, height){
+      const scale = window.devicePixelRatio;
+      this.canvas.style.width = `${width}px`;
+      this.canvas.style.height = `${height}px`;
+      this.canvas.width = Math.floor(width * scale);
+      this.canvas.height = Math.floor(height * scale);
+      this.context.scale(scale, scale);
+    }
+  }
+  
+  class Shape{
+    constructor(color){
+      if (this.constructor === Shape){
+        throw new Error('Cannot create instance of abstract class Shape');
+      }
+      this.color = color;
+      this.borderColor = 'transparent';
+      this.borderWidth = 0;
+      this.rotation = 0;
+    }
+
+    draw(ctx){
+      ctx.save();
+      ctx.transform(...decompose(this.getTransform()));
+      this._draw(ctx);
+      ctx.restore();
+      ctx.fillStyle = this.color;
+      ctx.strokeStyle = this.borderColor;
+      ctx.lineWidth = this.borderWidth;
+      ctx.fill();
+      ctx.stroke();
+    }
+    
+    transform(matrix){
+      throw new Error("Method .transform is not implemented");
+    }
+    
+    getTransform(){
+      let [pivotX, pivotY] = this.getPivot();
+      let sinValue = Math.sin(this.rotation);
+      let cosValue = Math.cos(this.rotation);
+      let t1 = math.matrix([[1, 0, -pivotX], [0, 1, -pivotY], [0, 0, 1]]);
+      let t = math.matrix([[cosValue, -sinValue, 0], [sinValue, cosValue, 0], [0, 0, 1]]);
+      let t2 = math.matrix([[1, 0, pivotX], [0, 1, pivotY], [0, 0, 1]]);
+      return math.multiply(t2, t, t1)
+    }
+    
+    getPivot(){
+      throw new Error("Method .getPivot is not implemented");
+    }
+    
+    _draw(ctx){
+      throw new Error("Method ._draw is not implemented");
+    }
+
+    isInside(x, y){
+      throw new Error("Method .isInside is not implemented");
+    }
+    
+    _isInside(x, y){
+      throw new Error("Method ._isInside is not implemented");
+    }
+  }
+  
+  class BoxShape extends Shape{
+    constructor(x, y, width, height, color){
+      super(color);
+      if (this.constructor === BoxShape){
+        throw new Error('Cannot create instance of abstract class BoxShape');
+      }
+      this.dimensions = math.matrix([[width, 0, x], [0, height, y], [0, 0, 1]]);
+    }
+    
+    transform(matrix){
+      let fullDimensions = math.multiply(this.getTransform(), this.dimensions);
+      let newFullDimensions = math.multiply(matrix, fullDimensions);
+      let newPivot = math.multiply(newFullDimensions, math.matrix([[0.5], [0.5], [1]]));
+      let newPivotX = newPivot.get([0, 0]);
+      let newPivotY = newPivot.get([1, 0]);
+      let sinValue = Math.sin(this.rotation);
+      let cosValue = Math.cos(this.rotation);
+      let t1 = math.matrix([[1, 0, -newPivotX], [0, 1, -newPivotY], [0, 0, 1]]);
+      let t = math.matrix([[cosValue, -sinValue, 0], [sinValue, cosValue, 0], [0, 0, 1]]);
+      let t2 = math.matrix([[1, 0, newPivotX], [0, 1, newPivotY], [0, 0, 1]]);
+      let newTransform = math.multiply(t2, t, t1);
+      this.dimensions = math.multiply(math.inv(newTransform), newFullDimensions)
+    }
+    
+    getPivot(){
+      let result = math.multiply(this.dimensions, math.matrix([[0.5], [0.5], [1]]));
+      return [result.get([0, 0]), result.get([1, 0])];
+    }
+    
+    getTopLeft(){
+      let result = math.multiply(this.getTransform(), this.dimensions, math.matrix([[0], [0], [1]]));
+      return [result.get([0, 0]), result.get([1, 0])];
+    }
+    
+    surroundRect(){
+      let p1 = math.multiply(this.getTransform(), this.dimensions, math.matrix([[0], [0], [1]]));
+      let p2 = math.multiply(this.getTransform(), this.dimensions, math.matrix([[1], [0], [1]]));
+      let p3 = math.multiply(this.getTransform(), this.dimensions, math.matrix([[0], [1], [1]]));
+      let p4 = math.multiply(this.getTransform(), this.dimensions, math.matrix([[1], [1], [1]]));
+      let xMin = Math.min(p1.get([0, 0]), p2.get([0, 0]), p3.get([0, 0]), p4.get([0, 0]));
+      let yMin = Math.min(p1.get([1, 0]), p2.get([1, 0]), p3.get([1, 0]), p4.get([1, 0]));
+      let xMax = Math.max(p1.get([0, 0]), p2.get([0, 0]), p3.get([0, 0]), p4.get([0, 0]));
+      let yMax = Math.max(p1.get([1, 0]), p2.get([1, 0]), p3.get([1, 0]), p4.get([1, 0]));
+      return [xMin, yMin, xMax, yMax]
+    }
+    
+    _draw(ctx){
+      ctx.transform(...decompose(this.dimensions))
+      this._drawShape(ctx);
+    }
+    
+    _drawShape(ctx){
+      throw new Error("Method ._drawShape is not implemented");
+    }
+  }
+  
+  class Rect extends BoxShape{
+    _drawShape(ctx){
+      ctx.beginPath();
+      ctx.rect(0, 0, 1, 1);
+      ctx.closePath();
+    }
+  }
+  
+  let g = new Graph();
+  g.setSize(1000, 800);
+  
+  let s = new Rect(220, 30, 20, 40, "red");
+  let r = new Rect(220, 30, 20, 40, "rgba(152, 29, 38, 0.5)");
+  let d = new Rect(280, 30, 20, 40, "green");
+  
+  s.borderColor = "purple";
+  s.borderWidth = 1;
+  s.rotation = Math.PI/12;
+  r.rotation = Math.PI/12;
+  
+  let surrond = s.surroundRect();
+  let n = new Rect(surrond[0], surrond[1], surrond[2]-surrond[0], surrond[3]-surrond[1], "transparent")
+  n.borderColor = "yellow";
+  n.borderWidth = 1;
+
+  let [poX, poY, poW, poH] = r.surroundRect();
+  console.log(poX, poY);
+  r.transform(math.multiply(math.matrix([[1, 0, poX], [0, 1, poY], [0, 0, 1]]), math.matrix([[2, 0, 0], [0, 1.5, 0], [0, 0, 1]]), math.matrix([[1, 0, -poX], [0, 1, -poY], [0, 0, 1]])));
+  
+  s.draw(g.context);
+  d.draw(g.context);
+  n.draw(g.context);
+  r.draw(g.context);
+  
+  g.bind("mousemove", function(event){
+    console.log(event.offsetX, event.offsetY)
+  })
+  
+  function decompose(matrix){
+    if (JSON.stringify(matrix._size) != JSON.stringify([3, 3])){
+      throw new Error("Invalid matrix size");
+    }
+    let [[a, c, e], [b, d, f], _] = matrix._data
+    return [a, b, c, d, e, f];
+  }
+</script>
+
+</body>
+</html>
