@@ -233,6 +233,10 @@
       - Infinitesimalkalkyl:
         - Infinitesimalkalkyl symboler:
           - APR(Approximation)
+        - Derivbarhet:
+          - Kontinuerlig
+          - Inga vassa spetsar f'(x) = g'(x)
+          - Inga hopp
         - Limited (lim x->n) [LIM]:
           - ...
         - Summa (Σf(x)):
@@ -251,7 +255,7 @@
           - f"[  <0    >0     0   ]
           - AGI(f(x) f'(x1)x+m)
         - Integral (∫f(x)*dx) [INT]:
-          - ...
+          - Primitiv funktion F(x)
         - Serier:
           - e^x = 1+x+x²/2!+x³/3!+...
           - sin(x) = x-x³/3!+x^5/5!-x^7/7!+...
@@ -291,8 +295,12 @@
           - Solsystemrörelser:
             - Solförmörkelse
             - Månförmörkelse (Blodmåne (Rödfärgad måne))
+          - Stjärnor:
+            - Protostjärna
+            - 2H -> H2
+            - (Röd-jätte Vit Svart-dvärg)
+            - (Röd-superjätte Supernova Neutronstjärna/Svart hål)
         - Solsystemet:
-          - ...
           - Solen:
             - 99.8% av massan
             - Fusion (H2 -> He)
@@ -352,11 +360,6 @@
           - Kuiperbältet:
             - Kuiperbältet
         - Stjärnor:
-          - Stjärnor:
-            - Protostjärna
-            - Väte blir helium
-            - Stjärnan går sönder (Röd jätte -> Vit dvärg -> Svart dvärg)
-            - Stjärnan går sönder (Röd superjätte -> Supernova -> Neutronstjärna/Svart hål)
           - Konstellation:
             - Stora björnen
             - Lilla björnen
@@ -431,169 +434,106 @@
           - Ff (Friktion)
           - FT = kx (Spänning)
         - Krafter:
-          - FG1 + FN21 + Ff21 + F31 = F
+          - (Ff21 + F31)+(FG1 + FN21)= F
           - F31x+Ff21 =F  FG1+FN21+F31y=0
           - F31x+µFN21=ma m1g+(⊥B)+F31y=0
-          - F1l1 = F2l2
-        - Rörelser:
+        - Tryckmekanik:
+          - m = ρV
+          - p1=p2=p3 (Pascal/Kommunicerande)
+          - F/A = P0+ρ0gh0 = P1+ρ1gh1
+          - F1/A1 = F2/A2 (Kraftförstärkning)
+          - F = ρl*Vl*g (Arkimedes princip)
+        - Linjär rörelse:
           - s(t) = ½at²+v0t+s0
           - v(t) = at+v0 = √(v0²+2as)
+          - v = v1+v2 (Mot) v1-v2 (Samma)
+        - Centralrörelse:
+          - τ1 = τ2
+          - I1α1 = I2α2
+          - F1l1*sin(α) = F2l2*sin(α)
+          - v(T) = 2πr/T
+          - a(T) = v²/r
+          - θ(t) = ½αt²+ω0t+θ0
+          - ω(t) = αt+ω0
+        - Pendelrörelse:
+          - T = 2π√(L/g)
         - Energi:
           -  EK0  + EP0  + W =   EK1  + EP1
           - ½mv0² + mgh0 + Fs = ½mv1² + mgh1
           - P = W/t η = W/W1
         - Impuls/Rörelsemängd:
-          - p1 = p2 I = Δp FΔt = mΔv
-          - m1v11 + m2v21 = m1v12n+ m2v22
-        - Centralrörelse:
-          - τ [(Fr*sin(α) 0 Iα)]
-          - T [(2π√(L/g))]
-          - v [(2πr/T)]
-          - a [(v²/r)]
-          - θ [θ0 Δθ θ1](½at²+v0t+s0)
-          - ω [ω0 Δω ω1](at+v0)
-          - α [α0 Δα α1]
-        - Tryckmekanik:
-          - ρ [ρ  -- ρ ](m/V)
-          - p [P0-ρgy](F/A p1=p2=p3)
-          - F [ρl*Vl*g]
-          - F [F1/A1=F2=A2]
-          - Kommunicerande kärl
+          - p1 = p2
+          - m1v11 + m2v21 = m1v12+ m2v22
+          - I = Δp
+          - FΔt = m(v2-v1)
         - Collections:
           - Fri fall
-          - Uppkast
-          - Nedkast
-          - Projektil
-          - Pendelrörelse
+          - Uppkast (Avstanna + Fri fall)
+          - Nedkast (Fri fall från sträcka)
+          - Projektil (x(likformig) y (kast))
           - Lutande plan (x_∥B y_⊥B)
-          - Kedja (EK+EP)
-        - Stel objekt:
-          - Likformig rörelse: 
-            - v= [v1+v2 (Motsatt)][v1-v2 (Samma)]
-        - Stel mekanik modeller:
-          - 2 objekt sträcka:
-            - ...
-          - Nedfall:
-            - E_K0+E_P0=E_K1+E_P1
-            - mgh = ½mv_1²
-            - v_1 = √(2gh)
-            - h = v_0²/2g
-          - Lutande plan(Nedfall):
-            - F_G + F_f + F_N = 0
-            - F_Gx = F_f = F_G*sin(α)
-            - F_Gy = F_N = F_G*cos(α)
-            - F_f = F_G*sin(α) = μ*F_N = μ*F_G*cos(α)
-            - μ*F_G*cos(α) = F_G*sin(α) => μ = tan(α)
-          - Fri fall(Nedfall):
-            - h = ½at² + v_0t = ½gt² => t = √(2h/g)
-            - v1 = at + v_0 = gt = g*√(2h/g) = √(2gh)
-          - Kaströrelser(Nedfall):
-            - h = ½at² + v_0t = -½gt² + v_0t
-            - a = (v_1-v_0)/t => gt = v_0 => t = v_0/g
-            - h = v_0(v_0/g) - ½g(v_0/g)² = v_0²/2g
-          - Pendelrörelse(Nedfall):
-            - ΔF_D = ∫mg*sin(α) Δx
-          - Flertal objekt [Cirkulära]:
-            - E_KA0 + E_PA0 + E_PB0 + E_PB1 = E_KA1 + E_PA1 + E_KB1 + E_PB1
-            - m1gh = ½m_A*v² + ½m_Bv² + m_A*gl
-            - v = √(2gh(m_B - m_A)/(m_A + m_B))
-          - Infinitesimalkalkyl:
-            - Fjäder W_PT = ∫F*s Δx = ∫kxs Δx = ½kx²
-            - Kedja (E_P0 = mg(½l) => E_P1 = 0)
+          - Kedja (EK0+EP0 = EK1+EP1)
         - Experiment:
-          - Klothalvor (2 klothalvor med vakuum)
-          - Vatten med film (Vattenkopp med film)
+          - 2 Klothalvor i vakuum
+          - Vattenkopp vänd + film klistrad
           - Cartesianska dykaren
-          - Vätsketryck tryckskillnader (2 rör med vätskor)
+          - 2 rör med vätskor
       - Vätskemekanik:
-        - Vätskemekanik:
-          - ...
-        - Vätskeobjekt:
-          - Kraft:
-            - Kraft Vätskemekanik
-          - Rörelse:
-            - Q=dVdt
-            - A1v1=A2v2
-            - Laminär
-            - Turbulens (Vortex)
-          - Kraftrörelse:
-            - Kraftrörelse...
-        - Allmänna gaslagen/Ideala gaslagen:
-          - Egenskaper:
-            - PV = nRT
-            - P1/T1 = P2/T2
-            - V1/T1 = V2/T2
-            - P1V1 = P2V2
-            - Ökad temperatur = Ökad tryck
-          - Väderballong:
-            - V0 = 1 m³
-            - P0 = 101300 Pa
-            - P1 = 50000 Pa, V1 = ?
-            - P0*V0 = P1*V1
-            - 101300*1 = 50000*V1
-            - V1 = 101300/50000 = 10.13/5 = 2.026
-          - Gasbehållare i eld:
-            - P0/T0 = P1/T1
-            - 101300/293 = P1/573
-            - P1 = 101300*573/293 = 198105 Pa
+        - Kraft:
+          - Kraft Vätskemekanik
+        - Rörelse:
+          - Q1   = Q2
+          - V1t1 = V2t2
+          - A1v1 = A2v2
+        - Laminär:
+          - Laminär
+        - Turbulens:
+          - (Vortex)
+        - Kraftrörelse:
+          - Kraftrörelse...
+        - Allmänna/Ideala gaslagen:
+          - PV = nRT
       - Elektricitet/Ellära:
-        - Statisk elektricitet:
-          - Statisk elektricitet:
-            - Underskott(+)/överskott(-) av elektroner
-            - Friktionsladdning, Kattskinn och ebonitstav
-            - Polythene rod (-), perspex rod (+)
-            - Åska (naturlig urladdning)
-            - Metaller är ledare, glas är insulator
-            - Elektroner lossnar lätt, elektronöverföring vid gnidande
-            - Insulator (valenselektroner hålls fast)
-            - Ledare (valenselektroner är lösa)
-            - Influens ((+)<->(- +))
-            - Electron(q = 1.602e-19 C)
-            - Kontakt/Jordning (q = (q1+q2)/2)
-          - Laddningar:
-            - Attraktion (+ -><- -, + -><- 0, - -><- 0)
-            - Repulsion (+ <-> +, - <-> -)
-            - Colombs lag (F=KQq/r² (K=8.99e9))
-          - Elektrisk fält:
-            - 1punkt (KQqx/(2√(x²+y²)), KQqy/(2√(x²+y²)))
-            - 2punkt1 (x²+y²+4, 2xy)
-            - 2punkt2 ...
-            - Homolog (Fältlinjer paraell mot ytan)
-            - Faradays bur (Ingen fält insida)
-          - Krafter och energi:
-            - F = KQq/r²
-            - Fc -> W_ab -> E_Pa - E_Pb
-            - E -> U_ab -> V_a - V_b
-        - Statisk elektricitet modeller:
-          - 1punktmodell:
-            - E_Pa = KQq/a
-            - (m, α)[1, 2] (tan(α) = Fc/F_G)
-            - (x_i)/(y_i) = (F_T1*sin(α_i)=F_c1)/(F_T1*cos(α_i)=F_G1)
-            - tan(α1)/tan(α2) = m2/m1
-          - Homologmodell:
-            - Fc = Eq
-            - E = Fc/q = U/d = 4πkQ/(εs)
-            - E_Pa = Eq(d-a)
-            - F_c + F_T + F_G = 0
-            - d = ½a_x*t² -> t = √((2d²m)/(uq))
-            - t -> v_x, v_y
-            - E_K1 + E_P1 + E_EP1 = E_K2 + E_P2 + E_EP2
+        - Elektricitet:
+          - Under(+)/Överskott(-) e-
+          - Valenselektron(lättlossnad)
+          - Ledare(lösa e- Metall)
+          - Insulator(fast e- Glas)
+          - Överföring(Ff)
+          - Kattskinn(-) + Erbonitstav(+)
+          - Polythene(-) + Perspex(+)
+          - Åska (naturlig urladdning)
+          - Influens ((+)<->(- +))
+          - Attraktion (+- +0 -0)
+          - Repulsion (++ --)
+          - Faradays bur (Ingen fält)
+        - Elektrisk fält:
+          - 1punkt
+          - 2punkt
+          - Homolog
+        - Elektrisk partikel:
+          - F = K*Q1*Q2/r² (Colombs lag)
+          - Q = (Q1+Q2)/2 (Jorning)
+          - É = F/Q
+          - EPx = KQq/x² = Éq(s-x)
+        - Andra kretsformel:
+          - Q = CV
+          - τ = RC
+          - ε = Φ/t
+        - Kretsar:
+          - Kabel (Homolog fält)
+          - VA + U1 - R1I - R2I = VA (E/Q)
+          - Serie (U=ΣUi I=Ii R=ΣR_i)
+          - Paraell (U=Ui I=ΣIi R=Σ(1/Ri))
+          - Serie (U = ΣU)
+          - Paraell (I=ΣI, Kapacitet ökar)
+          - I = dQ/dt = neAv
+          - R = ρL/A
+          - P = UI
+        - Annat:
+          - Elementarladdning(e = 1.602e-19 C)
+          - K=8.99e9
         - Elektriska kretsar:
-          - Elektriska kretsar:
-            - I=Δq/Δt=neAv
-            - R=ρL/A
-            - P=UI
-            - Q=CV
-            - τ=RC
-            - ε=Φ/t
-          - Kretsar:
-            - Kabel -> Homolog fält
-            - A -(U=IR)-> B -> C -> D
-            - Serie U=ΣU_i, I=I_i, R=ΣR_i
-            - Paraell U=U_i = I=I_i, R=Σ(1/R_i)
-          - Batterikoppling:
-            - Serie (U = ΣU)
-            - Paraell (I=ΣI, Kapacitet ökar)
           - Kretskomponenter:
             - Cell batteri (Cell)
             - Container/Accumulator
@@ -620,6 +560,7 @@
             - en skyddande överspänningsutlösare
           - Elmätare:
             - en mätare
+      - Magnetism:
         - Magnetism:
           - Magnetisk fält:
             - Magnetisk fält
@@ -904,6 +845,7 @@
           - K = ([C]^c*[D]^d)/([A]^a*[B]^b)
           - Ka = K[H2O] = [H3O+][A-]/[HA]
           - Kb = K[H2O] = [HB+][OH-]/[B]
+          - Ks = K[A] = [C][D]
           - Kw = [H3O+][OH-] = 1e14M
           - pKw = pKa + pKb = pH + pOH = 14
         - Termodynamik/termokemi:
@@ -947,21 +889,15 @@
             - N2(g) + 3H2(g) -> 2NH3(g)
             - ΔG -> (T_H Icke-spontan, T_L Spontan)
       - Atomer/Grundämnen:
-        - Utseende[TRA]
-        - (Utseende m(u) r(*e-11m) Smält Kok(°C) 1st-jon(kJ/mol))
-        - (Utseende, m, r, smält, kok, 1st-jon, ρ, electroneg, ...)
-        - (TRA 1.008 2.5 -259.1 -252.9 1312 90 2.20 0.1805)
-        - H()
+        - X(Namn m r(e-11m) 1st-jon Elec-)
+        - H(Väte 1.008 .25 1312 2.20)
+        - He(Helium 4.003 .31 2373 -)
         - 1 (H~He):
           - 1(H) Väte:
             - Genomskinlig gas
-            - Atommassa 1.008
-            - Atomradie 2.5e-11m
             - Smältpunkt (-259.1°C)
             - Kokpunkt (-252.9°C)
-            - 1st joniseringsenergi 1312kJ/mol
             - Densitet 90kg/m³
-            - Elektronegativitet 2.20
             - 0.1805 W/mK
             - 72.8kJ/mol
             - Brandfarlig, lättbrinnande, lättaste och vanligaste
@@ -2286,18 +2222,18 @@
             - Färglös, vitlökslukt
             - Släpps av eukaryoter, Jordgasningsmedel
           - (1+2(2S)) Etylmetyldisulfid:
-            - ?
+            - ...
           - (2+2(2S)) Dietyldisulfid:
-            - ?
+            - ...
           - (1+3(2S)) Metylpropyldisulfid:
-            - ?
+            - ...
           - (2+3(2S)) Etylpropyldisulfid:
-            - ?
+            - ...
           - (3+3(2S)) Dipropyldisulfid:
-            - ?
+            - ...
         - (-COOH) Karboxylsyra:
           - Karboxylsyra:
-            - ?
+            - ...
           - (1) Metansyra:
             - Myrsyra
           - (2) Etansyra:
@@ -2443,6 +2379,14 @@
             - (HSO4-) + H2O <-> CO4 (2-) + (H3O+)
             - NaOH + H2O -> (Na+) + (OH-) + H2O
             - ([Bas] + H2O <-> [B]H (n+) + (OH-))
+          - Salters protolys:
+            - HCO3- + H2O <-> H2CO3 + OH-
+            - HCO3- + H2O <-> CO3 (2-) + H3O+
+            - CO3 (2-) + H2O <-> HCO3- + OH-
+            - Ac- + H2O <-> HAc + OH-
+            - NH4+ + H2O <-> NH3 + H3O+
+            - Al(H2O)6 3- + H2O <-> AlOH(H2O)5 2+ + H3O+
+            - AlOH(H2O)5 2+ + H2O <-> Al(OH)2(H2O)4 2+
           - Vattnets autoprotolys:
             - H2O + H2O <-> (H3O+) + (OH-)
             - c_(H3O+) = c_(OH-) = 1*10^-7 M
@@ -2838,6 +2782,66 @@
           - Kloroplast:
             - Yttre + inre membran (blågrön bakterie)
             - Fotosyntes -> sockermolekyl
+        - Virus:
+          - Virus:
+            - DNA och RNA-virus
+            - Lever intracellulärt (kidnappar cellens maskineri)
+            - Flest infektionsjukdomar
+            - Akuta (Vinterkräksjuka), kroniska (Herpes)
+            - Sprids vid luft, droppar, kroppskontakt
+            - Svårt att leva på egen hand
+            - Inte cell (Arvsmassa i proteinskal/membranhölje)
+          - Struktur:
+            - 100x mindre än en bakterie (20~300nm)
+            - Minsta smittsamma ämne
+            - Obligat intracellulära parasiter (Kan endast leva inne i en cell)
+            - Består av genetisk material, kapsid, spikprotein, hölje(membran)
+            - Arvsmassa mycket mindre (Kapsid -> ihålig tub (helix))
+          - DNA-Virus:
+            - Genetisk stabil
+            - Persisterar (Klarar sig av att gömma)
+            - Adrenovirus, Herpes, Vårtvirus
+          - RNA-Virus:
+            - Vanligare
+            - Elimineras snabbt av immunförsvar -> Smittar mycket snabbt
+            - Ofta ytliga infektioner i luftvägar & tarm, kort inkubationstid
+            - Ingen korrektionsläsning -> Mutation -> Svår immunitet
+          - Virus med hölje:
+            - Membran omsluter kapsid
+            - Tidigare infekterad cell
+            - Spikprotein sticker ut från hölje -> Målceller
+            - Tvål förstör dess hölje (e.g. Herpes, hepatit B/C, HIV, mässling)
+          - Utan hölje:
+            - Ytterst av kapsid
+            - Kapsid inkluderar protein -> Värdcells yta
+            - Högre motståndskraft mot kemisk/fysisk påverkan
+            - Kan klara sig under långa tid på olika ytor
+            - Svårare att hantera ur hygiensynpunkt
+          - Sjukdomar:
+            - Förkylning, covid, mässling, röda hund, påssjuka, vinterkräksjuka
+            - Vaccin, anti-virala sprutor (Antibiotika fungerar inte)
+            - (Hepatit, mässling, polio) Smittkoppor utrotad
+          - Specialisering:
+            - HIV -> T-celler
+            - Herpes -> Nervceller
+            - Rabies (Nervsystem och hjärnan) (Däggdjur -> Människor)
+            - Influenssjuka (Fågel/gris) e.g. Spanska sjukan
+            - TBE -> (Fästingar -> Människor)
+          - Livscykel:
+            - Akut (Lytisk cykel Föröker i cell snabbt -> Lämnar)
+            - Persistent/Latent (Virus kvar i värdcell under lång tid)
+            - -> Låga nivåer/Inga nya virus -> Lytisk cykel
+          - Virusreplikation:
+            - Kan inte infektera alla celler (Vissa celltyper och vävnader)
+            - Oftast artbundna
+            - Vissa virus använder egna enzymer för replikation
+            - 1. Vidhäftning (Adsorption) - Fastnar på värdcellen (Binder till en receptor på värdcellens cellmembran)
+            - 2. Passage - Tar sig in i värdcellen (Endocytos) (Vissa hål i cellmembran -> Injicera)(Sammansmälta membranhölje (Exocytos))
+            - 3. Avkapsling - Släpper lös nukleinsyror (Kapsidprotein  + Virusgenom)
+            - 4. Replikation (DNA -> Cellkärnan -> DNA fogas -> mRNA -> Nya virusprotein)
+            - 5. Sammansättning - Nya virioner tillverkas
+            - 6. Frisläppande - Nya viruspartiklar bildas spontant
+            - Cellmembran går sönder/avknoppas - Nya viruspartikel har med sig värdcellens cellmembran
         - Cellandning:
           - Cellandning:
             - Utvinner energi från energirika kemiska föreningar
@@ -15525,6 +15529,7 @@
                   - Rowboats
                 - Recreational:
                   - Motor:
+                    - ...
                   - Sailboat:
                     - Catamaran
                     - Fishing boat
@@ -24004,7 +24009,7 @@
       - Tror att de är odödliga, hög dödrisk
     - Ung person (18~25):
       - 25 år hjärnan färdigutvecklad
-    - '*' (25~39):
+    - (25~39):
       - ...
     - Äldre (40~47):
       - Nostalgi
