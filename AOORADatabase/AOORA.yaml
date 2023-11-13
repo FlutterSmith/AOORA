@@ -246,9 +246,6 @@
           - DER(lim h->0(f(x+h)-f(x))/h)
           - APR(h=0.001)
           - POS(+h) NEG(-h) CEN(±h/2)
-          - d/dx kx^n = knx^(n-1)
-          - d/dx e^kx = ke^kx
-          - d/dx a^x = a^x*ln(a)
           - x [.  x  .  y  .  z  .]
           - f [/ MAX \ MIN / TER /]
           - f'[+  0  -  0  +  0  +]
@@ -256,6 +253,13 @@
           - AGI(f(x) f'(x1)x+m)
         - Integral (∫f(x)*dx) [INT]:
           - Primitiv funktion F(x)
+          - ∫f(x)*dx = [F(x)] = F(b) - F(a)
+          - A = ∫(f(x)-g(x))*dx
+        - Derivlagar:
+          - [F(x) f(x) f'(x)]
+          - [kx^(n+1)/(n+1) kx^n nkx^(n-1)]
+          - [e^kx/k e^kx ke^kx]
+          - [a^x/ln(a) a^x a^x*ln(a)]
         - Serier:
           - e^x = 1+x+x²/2!+x³/3!+...
           - sin(x) = x-x³/3!+x^5/5!-x^7/7!+...
@@ -516,23 +520,21 @@
           - Q = (Q1+Q2)/2 (Jorning)
           - É = F/Q
           - EPx = KQq/x² = Éq(s-x)
+        - Kretsar:
+          - Kabel (Homolog fält)
+          - VA + U1 - R1I - R2I = VA (E/Q)
+          - I=Q/t=neAv R=ρL/A P=UI
+          - Serie (U=ΣUi I=Ii R=ΣRi)
+          - Paraell (U=Ui I=ΣIi R=Σ(1/Ri))
+          - Serie (U = ΣU)
+          - Paraell (I=ΣI, Kapacitet ökar)
+        - Annat:
+          - Elementarladdning(e = 1.602e-19 C)
+          - K=8.99e9
         - Andra kretsformel:
           - Q = CV
           - τ = RC
           - ε = Φ/t
-        - Kretsar:
-          - Kabel (Homolog fält)
-          - VA + U1 - R1I - R2I = VA (E/Q)
-          - Serie (U=ΣUi I=Ii R=ΣR_i)
-          - Paraell (U=Ui I=ΣIi R=Σ(1/Ri))
-          - Serie (U = ΣU)
-          - Paraell (I=ΣI, Kapacitet ökar)
-          - I = dQ/dt = neAv
-          - R = ρL/A
-          - P = UI
-        - Annat:
-          - Elementarladdning(e = 1.602e-19 C)
-          - K=8.99e9
         - Elektriska kretsar:
           - Kretskomponenter:
             - Cell batteri (Cell)
@@ -825,11 +827,79 @@
           - Centrifugering (Snurrande)
           - Destillation
           - Papperskromatografi
+      - Kemiska principer:
+        - Atomer:
+          - ...
+        - Bindningar:
+          - Elektrostatiska krafter
+          - Skärmning (Nedre elektroner stöter valenselektroner)
+          - Effektiv kärnladdning (Atomkärnan laddstyrka hos valenselektroner)
+          - Elektronegativitet (Elektroner attraktionförmåga (Proton, kärnavstånd, skämning))
+          - Joniseringsenergi
+          - Sp2(S Px Py) Sp3(S Px Py Pz)
+        - Bindningar:
+          - Enkla atombindningar:
+            - 2 Atomer:
+              - Fas I (Lång avstånd, Ingen påverkan)
+              - Fas II (Stor attraktion)
+              - Fas III (Minst energitillstånd)
+              - Fas IV (Fusion, repellering)
+          - Intramolekylära bindningar:
+            - Jonbindning:
+              - Δ elektronegativitet ≥ 2
+              - Jonföreningar innehåller katjoner(+) och anjoner(-) => kristall
+              - Jonföreningar bildar en kristall 
+              - Lika stor attraktion i alla riktningar (Stark attraktionskraft)
+              - Spröda (Påtryck -> Likladdade repellerar)
+            - Metallbindning:
+              - Skärmade elektroner (lösa), attraheras av andra atomkärnor
+              - Delokaliserade elektroner => Hav av elektroner/gemensamt elektronmoln
+              - => Elektrisk laddning
+              - => Värmeledning (Fria elektroner)
+              - => Formbara (Oriktad bindning, atomlagren kan flyttas)
+              - => Hög densitet
+            - Kovalent bindning:
+              - Δ elektronegativitet < 2 (Icke-metaller)
+              - Elektronerna delas mellan atomer
+              - Dålig strömledning
+            - Polära kovalenta bindningar:
+              - Δ elektronegativitet > 0.4
+              - X2 (I2, O2, N2) -> Opolär bindning, opolär molekyl
+              - XY (XF, HI, HCl) -> Polär bindning, polär molekyl
+              - XY2 (CO2, CS2) -> Polär bindning, opolär molekyl
+              - XY2 (SO2, H2O, H2S) -> Polär bindning, polär molekyl
+              - XY3 (BF3) -> Polär bindning, opolär molekyl
+              - XY3 (NH3, PCl3) -> Polär bindning, polär molekyl
+              - XY4 (CH4, CCl4) -> Polär bindning, opolär molekyl
+              - XY4 (CH3Cl, CH2Cl2) -> Polär bindning, polär molekyl
+            - Delokaliserade elektroner:
+              - Delokaliserade elektroner vandrar runt
+              - Ger resonans (Överskottlig elektron)
+          - Intermolekylära bindingar:
+            - Vätebindning:
+              - H -> N, O, F
+              - Mer elektronegativa atomen drar väteatomens elektron
+              - H2O H(δ+), O(δ-) (H-O), N(δ+), H(δ-) (H-N), DNA, Protein
+            - Dipol-dipolbindning:
+              - Nätverk mellan dipoler (Deltaladdningar)
+              - HCl H(δ+), Cl(δ-)
+            - Jon-dipol bindning (Hydratisering):
+              - Salter löses i vatten (O -> (+), H -> (-))
+              - Hydrofila, hydrofoba och amfifila molekyler
+              - Om jonbindning är svagare än vattenbindning löses saltet upp
+            - Dispersionskraft/London-dispersionskraft:
+              - Tillfälliga dipol av slump av snedfördelade elektroner
+              - Större yta -> Starkare bindning
+              - Geckoödla hårstrå på utskott
+              - CO2, N2, O2, Ädelgaser
+        - Reaktioner:
+          - ...
       - Kemiska beräkningar:
+        - Balansera reaktionsformel:
+          - ...
         - Stökiometri:
           - 1mol(NA)=6.022e23 (Avogadro)
           - Atom/Formelmassa(M(AB)=MA+MB)
-          - Balansera reaktionsformel
           -   aA + bB -> cC + dD (V ΔH)
           - m[mA + mB  = mC + mD](m=Mn P=t/m)
           - M[MA   MB    MC   MD]
@@ -848,871 +918,221 @@
           - Ks = K[A] = [C][D]
           - Kw = [H3O+][OH-] = 1e14M
           - pKw = pKa + pKb = pH + pOH = 14
-        - Termodynamik/termokemi:
-          - +c(cH -> cL)
-          - +P(nΣH -> nΣL)
-          - +T(Endoterm)
+        - Titrering:
+          - idt [1(0%) 2(50%) 3(100%)]
+          - name[Start ½titer Ekvivalens]
+          - [HA][100%  [A-]   0%]
+          - pH  [pH1   pKa    pH3(=7)]
+      - Termodynamik:
+        - Termodynamik:
           - G° = -RT*ln(K)
           - ΔG = ΔG°+RT*ln(Q) = RT*ln(Q/K)
           - ln(K) ~ -1/T (ΔT>0, ΔK>0)(ΔH>0)
           - ln(K) ~ -T (ΔT<0, ΔK>0)(ΔH<0)
+        - Reaktion:
+          - Kollisionsteori (Snabb, stark, Gynnsam geometisk)
+          - Övergångsteori (Aktiverat komplex/Tillstånd)
+          - Strävan efter energiminimum
         - Reaktionshastigheter:
           - v = dn/dt = dc/dt
-          - 1. Bind (Fria joner, molekyl(flera steg))
-          - 2. Kontaktytan (Fast + Vätska/gas finfördelning)
-          - 3. Partiklar rörlighet (Vattenlöst, fast)
-          - 4. Temperatur (T_H (Fler kollisioner), T_L)
-          - 5. Koncentration (Tätt -> Fler kollisioner)
-          - 6. Katalysator (Deltar i reaktion utan förbruk)
-        - Reaktionstyper:
-          - Reaktion:
-            - Kollisionsteori (Snabb, stark, Gynnsam geometisk)
-            - Övergångsteori (Aktiverat komplex/Tillstånd)
-            - Strävan efter energiminimum
-          - Jämviktsreaktioner:
-            - 1. Reaktionstart (A+B) Hög Hastighet
-            - 2. Δ[A]&[B]<0 Δ[C]&[D]>0
-            - 3. Dynamisk jämvikt (Fortfarande reaktion)
-            - 4. Hastigheter(v_AB=v_CD)
-          - Exotermisk reaktion (ΔH<0)(ΔS>0):
-            - 2H2 + O2 -> 2H2O(g)
-            - ΔG<0 -> Spontan
-            - Q1 -> Q2(H)(Aktivering) -> Q3(L)
-          - Endotermisk reaktion (ΔH>0)(ΔS<0):
-            - 2HI(g) -> H2(g) + I2(g)
-            - ΔG<0 -> Icke-spontan
-            - Q1(L) -> Q2(H)(Aktivering) -> Q3
-          - Jämvikt reaktion 1 (ΔH>0)(ΔS>0):
-            - H2CO3(aq) <-> H2O(l) + CO2 (g)
-            - ΔG -> (T_H Spontan, T_L Icke-spontan)
-          - Jämvikt reaktion 2 (ΔH<0)(ΔS<0):
-            - N2(g) + 3H2(g) -> 2NH3(g)
-            - ΔG -> (T_H Icke-spontan, T_L Spontan)
-      - Atomer/Grundämnen:
-        - X(Namn m r(e-11m) 1st-jon Elec-)
-        - H(Väte 1.008 .25 1312 2.20)
-        - He(Helium 4.003 .31 2373 -)
-        - 1 (H~He):
-          - 1(H) Väte:
-            - Genomskinlig gas
-            - Smältpunkt (-259.1°C)
-            - Kokpunkt (-252.9°C)
-            - Densitet 90kg/m³
-            - 0.1805 W/mK
-            - 72.8kJ/mol
-            - Brandfarlig, lättbrinnande, lättaste och vanligaste
-            - Biobränsle (Vätgasbilar)
-          - 2(He) Helium:
-            - Färg?
-            - Atommassa 4.003
-            - Atomradie 3.1e-11m
-            - Smältpunkt (-272.2°C)
-            - Kokpunkt (-268.9°C)
-            - 1st joniseringsenergi 2372kJ/mol
-            - Densitet 180kg/m³
-            - Elektronegativitet -
-            - Luftballonger, luftskepp, Skyddsgaser
-        - 2 (Li~Ne):
-          - (Li) Litium:
-            - Atommassa 6.941
-            - Atomradie 1.45e-10m
-            - Smältpunkt 180.5°C
-            - Kokpunkt 1347°C
-            - 1st joniseringsenergi 520.2kJ/mol
-            - Densitet 540kg/m³
-            - Elektronegativitet 0.98
-          - (Be) Beryllium:
-            - Atommassa 9.012
-            - Atomradie 1.05e-10m
-            - Smältpunkt 1287°C
-            - Kokpunkt 2970°C
-            - 1st joniseringsenergi 899.5kJ/mol
-            - Densitet 1850kg/m³
-            - Elektronegativitet 1.57
-          - (B) Bor:
-            - Atommassa 10.811u
-            - Atomradie 8.5e-11m
-            - Smältpunkt 2076°C
-            - Kokpunkt 3927°C
-            - 1st joniseringsenergi 800.6kJ/mol
-            - Densitet 2460kg/m³
-            - Elektronegativitet 2.04
-          - (C) Kol:
-            - Svart pulver
-            - Atommassa 12.011u
-            - Atomradie 7e-11m
-            - Smältpunkt 3527°C
-            - Kokpunkt 4027°C
-            - 1st joniseringsenergi 1087kJ/mol
-            - Densitet 2260kg/m³
-            - Elektronegativitet 2.55
-            - Bränsle, levande byggsten
-            - Armoft kol (Luftrening)
-            - Grafit (Blyertspennor)
-            - Diamant (Hårdaste material)
-            - Fulleren (C-60)
-            - Nanorör
-          - (N) Kväve:
-            - Atommassa 14.007
-            - Atomradie 6.5e-11m
-            - Smältpunkt (-210°C)
-            - Kokpunkt (-195.8°C)
-            - 1st joniseringsenergi 1402kJ/mol
-            - Densitet 1250kg/m³
-            - Elektronegativitet 3.04
-            - Kylmedel, Konstgödsel, Läkemedel
-          - (O) Syre:
-            - Genomskinlig gas
-            - (-218°C), (-183°C)
-            - 15.999u, 6e-11m, 1314kJ/mol, 1430kg/m³, 3.44
-            - Andning, Eld, Medikal syrgas
-            - Ståltillverkning, Pappersblekning, Svetsning
-          - (F) Flour:
-            - Atommassa 18.998u
-            - Atomradie 5e-11m
-            - Smältpunkt (-219.7°C)
-            - Kokpunkt (-188.1°C)
-            - 1st joniseringsenergi 1681kJ/mol
-            - Densitet 1700kg/m³
-            - Elektronegativitet 3.98
-          - (Ne) Neon:
-            - Atommassa 20.180u
-            - Atomradie 3.8e-11m
-            - Smältpunkt (-248.6°C
-            - Kokpunkt -246°C)
-            - 1st joniseringsenergi 2081kJ/mol
-            - Densitet 900kg/m³
-            - Elektronegativitet -
-            - Reklamskyltar, Bildskärmar
-        - 3 (Na~Ar):
-          - (Na) Natrium:
-            - Atommassa 22.990u
-            - Atomradie 1.8e-10m
-            - Smältpunkt 97.79°C
-            - Kokpunkt 882.9°C
-            - 1st joniseringsenergi 495.8kJ/mol
-            - Densitet 970kg/m³
-            - Elektronegativitet 0.93
-          - (Mg) Magnesium:
-            - Grå metall
-            - Atommassa 24.305u
-            - Atomradie 1.5e-10m
-            - Smältpunkt 650°C
-            - Kokpunkt 1090°C
-            - 1st joniseringsenergi 737.7kJ/mol
-            - Densitet 1740kg/m³
-            - Elektronegativitet 1.31
-          - (Al) Aluminium:
-            - Ljussilver metall
-            - Atommassa 26.982u
-            - Atomradie 1.25e-10m
-            - Smältpunkt 660.3°C
-            - Kokpunkt 2470°C
-            - 1st joniseringsenergi 577.5kJ/mol
-            - Densitet 2700kg/m³
-            - Elektronegativitet 1.61
-          - (Si) Kisel:
-            - Atommassa 28.086u
-            - Atomradie 1.1e-10m
-            - Smältpunkt 1414°C
-            - Kokpunkt 3265°C
-            - 1st joniseringsenergi 786,5kJ/mol
-            - Densitet 2330kg/m³
-            - Elektronegativitet 1.90
-          - (P) Fosfor:
-            - Atommassa 30.974u
-            - Atomradie 1e-10m
-            - Smältpunkt 44.15°C
-            - Kokpunkt 277°C
-            - 1st joniseringsenergi 1012kJ/mol
-            - Densitet 1820kg/m³
-            - Elektronegativitet 2.19
-          - (S) Svavel:
-            - Helgul pulver
-            - Atommassa 32.065u
-            - Atomradie 1e-10m
-            - Smältpunkt 95.3°C
-            - Kokpunkt 444.6°C
-            - 1st joniseringsenergi 999.6kJ/mol
-            - Densitet 1960kg/m³
-            - Elektronegativitet 2.58
-            - Vapen, krut, ...
-          - (Cl) Klor:
-            - Gulgrön gas
-            - Atommassa 35.453u
-            - Atomradie 1e-10m
-            - Smältpunkt (-101.5°C)
-            - Kokpunkt (-34.04°C)
-            - 1st joniseringsenergi 1251kJ/mol
-            - Densitet 3210kg/m³
-            - Elektronegativitet 3.16
-            - Stridsgas, vattenrening
-            - Giftig, tyngre än luft
-          - (Ar) Argon:
-            - Atommassa 39.948u
-            - Atomradie 7.1e-11m
-            - Smältpunkt (-189.3°C)
-            - Kokpunkt (-185.8°C)
-            - 1st joniseringsenergi 1521kJ/mol
-            - Densitet 1780kg/m³
-            - Elektronegativitet -
-        - 4 (K~Kr):
-          - (K) Kalium:
-            - Atommassa 39.098u
-            - Atomradie 2.2e-10m
-            - Smältpunkt 63.5°C
-            - Kokpunkt 759°C
-            - 1st joniseringsenergi 418.8kJ/mol
-            - Densitet 860kg/m³
-            - Elektronegativitet 0.82
-          - (Ca) Kalcium:
-            - Atommassa 40.078u
-            - Atomradie 1.8e-10m
-            - Smältpunkt 842°C
-            - Kokpunkt 1484°C
-            - 1st joniseringsenergi 589.8kJ/mol
-            - Densitet 1550kg/m³
-            - Elektronegativitet 1.00
-          - (Sc) Skandium:
-            - Atommassa 44.956u
-            - Atomradie 1.6e-10m
-            - Smältpunkt 1541°C
-            - Kokpunkt 2836°C
-            - 1st joniseringsenergi 633.1kJ/mol
-            - Densitet 2990kg/m³
-            - Elektronegativitet 1.36
-          - (Ti) Titan:
-            - Atommassa 47.867u
-            - Atomradie 1.4e-10m
-            - Smältpunkt 1668°C
-            - Kokpunkt 3287°C
-            - 1st joniseringsenergi 658.8kJ/mol
-            - Densitet 4510kg/m³
-            - Elektronegativitet 1.54
-          - (V) Vanadin:
-            - Atommassa 50.942u
-            - Atomradie 1.35e-10m
-            - Smältpunkt 1910°C
-            - Kokpunkt 3407°C
-            - 1st joniseringsenergi 650.9kJ/mol
-            - Densitet 6110kg/m³
-            - Elektronegativitet 1.63
-          - (Cr) Krom:
-            - Atommassa 51.996u
-            - Atomradie 1.4e-10m
-            - Smältpunkt 1907°C
-            - Kokpunkt 2482°C
-            - 1st joniseringsenergi 652.9kJ/mol
-            - Densitet 7140kg/m³
-            - Elektronegativitet 1.66
-          - (Mn) Mangan:
-            - Atommassa 54.938u
-            - Atomradie 1.4e-10m
-            - Smältpunkt 1246°C
-            - Kokpunkt 2061°C
-            - 1st joniseringsenergi 717.3kJ/mol
-            - Densitet 7470kg/m³
-            - Elektronegativitet 1.55
-          - (Fe) Järn:
-            - Vit metall, röstbrun rost
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1538°C
-            - Kokpunkt 2861°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Co) Kobolt:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1495°C
-            - Kokpunkt 2927°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Ni) Nickel:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1455°C
-            - Kokpunkt 2730°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Cu) Koppar:
-            - Rödbrun metall
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1058°C
-            - Kokpunkt 2562°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Zn) Zink:
-            - Silver/grå metall
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 419.5°C
-            - Kokpunkt 907°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Ga) Galium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 29.76°C
-            - Kokpunkt 2400°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Ge) Germanium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 938.3°C
-            - Kokpunkt 2833°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (As) Arsenik:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 817°C
-            - Kokpunkt 614°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Se) Selen:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 221°C
-            - Kokpunkt 685°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Br) Brom:
-            - Orangebrun vätska
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt (-7.3°C)
-            - Kokpunkt 58.8°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Kr) Krypton:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt (-157.4°C)
-            - Kokpunkt (-153.4°C)
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-        - 5 (Rb~Xe):
-          - (Rb) Rubidium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 39.3°C
-            - Kokpunkt 688°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Sr) Strontium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 777°C
-            - Kokpunkt 1382°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Y) Yttrium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1526°C
-            - Kokpunkt 2930°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Zr) Zirkonium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1855°C
-            - Kokpunkt 4377°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Nb) Niob:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 2477°C
-            - Kokpunkt 4744°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Mo) Molybden:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 2623°C
-            - Kokpunkt 4639°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Tc) Teknetium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 2157°C
-            - Kokpunkt 4265°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Ru) Rutenium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 2334°C
-            - Kokpunkt 4150°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Rh) Rodium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1964°C
-            - Kokpunkt 3695°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Pd) Palladium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1555°C
-            - Kokpunkt 2963°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Ag) Silver:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 961.8°C
-            - Kokpunkt 2210°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Cd) Kadmium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 321.1°C
-            - Kokpunkt 767°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (In) Indium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 156.6°C
-            - Kokpunkt 2072°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Sn) Tenn:
-            - Grå metall
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 231.9°C
-            - Kokpunkt 2602°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Sb) Antimon:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 630.6°C
-            - Kokpunkt 1635°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Te) Tellur:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 449.5°C
-            - Kokpunkt 988°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (I) Jod:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 113.7°C
-            - Kokpunkt 184.3°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Xe) Xenon:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt (-111.8°C)
-            - Kokpunkt (-108.1°C)
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-            - Bilstrålkastare, Bildskärmar
-        - 6 (Cs~Rn):
-          - (Cs) Cesium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 28.5°C
-            - Kokpunkt 671°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Ba) Barium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 727°C
-            - Kokpunkt 1640°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (La) Lantan:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 920°C
-            - Kokpunkt 3464°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Ce) Cerium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 795°C
-            - Kokpunkt 3443°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Pr) Praseodym:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 935°C
-            - Kokpunkt 3130°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Nd) Neodym:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1024°C
-            - Kokpunkt 3074°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Pm) Prometium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1042°C
-            - Kokpunkt 3000°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Sm) Samarium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1072°C
-            - Kokpunkt 1900°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Eu) Europium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 826°C
-            - Kokpunkt 1529°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Gd) Gaddinium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1312°C
-            - Kokpunkt 3000°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Tb) Terbium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1356°C
-            - Kokpunkt 3123°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Dy) Dysprosium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1407°C
-            - Kokpunkt 2567°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Ho) Holmium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1461°C
-            - Kokpunkt 2600°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Er) Erbium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1529°C
-            - Kokpunkt 2868°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Tm) Tulium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1545°C
-            - Kokpunkt 1730°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Yb) Ytterbium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 824°C
-            - Kokpunkt 1196°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Lu) Lutetium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1652°C
-            - Kokpunkt 3402°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Hf) Hafrium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 2233°C
-            - Kokpunkt 4603°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Ta) Tantal:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 3017°C
-            - Kokpunkt 5458°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (W) Wolfram:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 3422°C
-            - Kokpunkt 5930°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Re) Rhenium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 3186°C
-            - Kokpunkt 5596°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Os) Osmium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 3033°C
-            - Kokpunkt 5012°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Ir) Iridium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 2446°C
-            - Kokpunkt 4130°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Pt) Platina:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1768°C
-            - Kokpunkt 3825°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Au) Guld:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 1064°C
-            - Kokpunkt 2970°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Hg) Kvicksilver:
-            - Silver/Ljus vitgrå metallvätska
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt (-38.83°C)
-            - Kokpunkt 356.7°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Tl) Tallium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 304°C
-            - Kokpunkt 1473°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Pb) Bly:
-            - Grå metall
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 327.5°C
-            - Kokpunkt 1749°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Bi) Vismut:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 271.5°C
-            - Kokpunkt 1564°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Po) Polonium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 254°C
-            - Kokpunkt 962°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (At) Astat:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 302°C
-            - Kokpunkt 337°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Rn) Radon:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt (-71°C)
-            - Kokpunkt (-61.7°C)
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-            - Markradon, byggradon
-            - Radioaktiv, orsakar lungcancer
-        - 7 (Fr~Og):
-          - (Fr) Francium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 27°C
-            - Kokpunkt 677°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-          - (Ra) Radium:
-            - Atommassa 
-            - Atomradie undefined
-            - Smältpunkt 696°C
-            - Kokpunkt 1737°C
-            - 1st joniseringsenergi undefined
-            - Densitet undefined
-            - Elektronegativitet undefined
-      - Bindningar:
-        - Enkla atombindningar:
-          - Grundläggande Elektrostatiska Krafter:
-            - Partiklar med motsatta laddningar attraherar
-            - Partiklar med lika laddningar repellerar
-          - Hybridiseringar:
-            - Sp2 (S, Px och Py)
-            - Sp3 (S, Px, Py och Pz)
-          - Inom atom:
-            - Skärmning (Nedre elektroner stöter valenselektroner)
-            - Effektiv kärnladdning (Atomkärnan laddstyrka hos valenselektroner)
-            - Elektronegativitet (Elektroner attraktionförmåga (Proton, kärnavstånd, skämning))
-            - Joniseringsenergi (Energi att separera en elektron från en atom)
-          - 2 Atomer:
-            - Fas I (Lång avstånd, Ingen påverkan)
-            - Fas II (Stor attraktion)
-            - Fas III (Minst energitillstånd)
-            - Fas IV (Fusion, repellering)
-        - Intramolekylära bindningar:
-          - Jonbindning:
-            - Δ elektronegativitet ≥ 2
-            - Jonföreningar innehåller katjoner(+) och anjoner(-) => kristall
-            - Jonföreningar bildar en kristall 
-            - Lika stor attraktion i alla riktningar (Stark attraktionskraft)
-            - Spröda (Påtryck -> Likladdade repellerar)
-          - Metallbindning:
-            - Skärmade elektroner (lösa), attraheras av andra atomkärnor
-            - Delokaliserade elektroner => Hav av elektroner/gemensamt elektronmoln
-            - => Elektrisk laddning
-            - => Värmeledning (Fria elektroner)
-            - => Formbara (Oriktad bindning, atomlagren kan flyttas)
-            - => Hög densitet
-          - Kovalent bindning:
-            - Δ elektronegativitet < 2 (Icke-metaller)
-            - Elektronerna delas mellan atomer
-            - Dålig strömledning
-          - Polära kovalenta bindningar:
-            - Δ elektronegativitet > 0.4
-            - X2 (I2, O2, N2) -> Opolär bindning, opolär molekyl
-            - XY (XF, HI, HCl) -> Polär bindning, polär molekyl
-            - XY2 (CO2, CS2) -> Polär bindning, opolär molekyl
-            - XY2 (SO2, H2O, H2S) -> Polär bindning, polär molekyl
-            - XY3 (BF3) -> Polär bindning, opolär molekyl
-            - XY3 (NH3, PCl3) -> Polär bindning, polär molekyl
-            - XY4 (CH4, CCl4) -> Polär bindning, opolär molekyl
-            - XY4 (CH3Cl, CH2Cl2) -> Polär bindning, polär molekyl
-          - Delokaliserade elektroner:
-            - Delokaliserade elektroner vandrar runt
-            - Ger resonans (Överskottlig elektron)
-        - Intermolekylära bindingar:
-          - Vätebindning:
-            - H -> N, O, F
-            - Mer elektronegativa atomen drar väteatomens elektron
-            - H2O H(δ+), O(δ-) (H-O), N(δ+), H(δ-) (H-N), DNA, Protein
-          - Dipol-dipolbindning:
-            - Nätverk mellan dipoler (Deltaladdningar)
-            - HCl H(δ+), Cl(δ-)
-          - Jon-dipol bindning (Hydratisering):
-            - Salter löses i vatten (O -> (+), H -> (-))
-            - Hydrofila, hydrofoba och amfifila molekyler
-            - Om jonbindning är svagare än vattenbindning löses saltet upp
-          - Dispersionskraft/London-dispersionskraft:
-            - Tillfälliga dipol av slump av snedfördelade elektroner
-            - Större yta -> Starkare bindning
-            - Geckoödla hårstrå på utskott
-            - CO2, N2, O2, Ädelgaser
-      - Enkla kemiska föreningar:
-        - Joner:
-          - Reagens på positiva joner:
-            - Metalljoner ger färger vid upphettning i eld
-            - (Li+) Litium (Röd)
-            - (Na+) Natrium (Gul)
-            - (K+) Kalium (Lila)
-            - (Ba+) Barium (Grön)
-            - Ca (2+) Kalcium (Orange)
-            - Cu (2+) Koppar (Blå-grön)
-            - Sr (2+) Strontium (Röd)
-        - Enkla föreningar:
-          - (O2) Syrgas:
-            - ...
-          - (O3) Ozon:
-            - Ozonskiktet absorberar ultraviolett ljus
-            - Giftig, lungor skadas
+          - Bind (Joner+ molekyl(flera steg))
+          - Kontaktytan (Fast + Vätska/gas finfördelning)
+          - Partiklar rörlighet (Vattenlöst, fast)
+          - Temperatur (T_H (Fler kollisioner), T_L)
+          - Koncentration (Tätt -> Fler kollisioner)
+          - Katalysator (Deltar i reaktion utan förbruk)
+        - Exotermisk (ΔH<0)(ΔS>0):
+          - 2H2 + O2 -> 2H2O(g)
+          - ΔG<0 -> Spontan
+          - Q1 -> Q2(H)(Aktivering) -> Q3(L)
+        - Endotermisk (ΔH>0)(ΔS<0):
+          - 2HI(g) -> H2(g) + I2(g)
+          - ΔG<0 -> Icke-spontan
+          - Q1(L) -> Q2(H)(Aktivering) -> Q3
+        - Jämviktsreaktioner:
+          - Start (A+B) Hög Hastighet
+          - Δ[A]&[B]<0 Δ[C]&[D]>0
+          - Dynamisk jämvikt (vAB=vCD)
+        - Jämvikt 1 (ΔH>0)(ΔS>0):
+          - H2CO3(aq) <-> H2O(l) + CO2 (g)
+          - Spontan ΔG->(TH+ TL-)
+        - Jämvikt 2 (ΔH<0)(ΔS<0):
+          - N2(g) + 3H2(g) -> 2NH3(g)
+          - ΔG -> (T_H Icke-spontan, T_L Spontan)
+        - Jämviktsförskjutning:
+          - +c(H->L)
+          - +p(nΣH->nΣL)
+          - +T(ΔH>0)
+      - Kemiska ämnen:
+        - Symboler:
+          - B(Brandfarlig)
+          - LB(Lättbrinnande)
+          - V (Vanligast)
+          - L (Lättast)
+        - Atomer/Grundämnen:
+          - nX(m r 1st-jon Elec-)
+          - .X[u e-10m kJ/mol .]
+          - 1H(1.008 .25 1312 2.20)
+          - 2He(4.003 .31 2372 -)
+          - 3Li(6.941 1.45 520.2 .98)
+          - 4Be(9.012 1.05 899.5 1.57)
+          - 5B(10.811 .85 800.6 2.04)
+          - 6C(12.011 .7 1087 2.55)
+          - 7N(14.007 .65 1402 3.04)
+          - 8O(15.999 .6 1314 3.44)
+          - 9F(18.998 .5 1681 3.98)
+          - 10Ne(20.180 .38 2081 -)
+          - 11Na(22.990 1.8 495.8 .93)
+          - 12Mg(24.305 1.5 737.7 1.31)
+          - 13Al(26.982 1.25 577.5 1.61)
+          - 14Si(28.086 1.1 786.5 1.90)
+          - 15P(30.974 1 1012 2.19)
+          - 16S(32.065 1 999.6 2.58)
+          - 17Cl(35.453 1 1251 3.16)
+          - 18Ar(39.948 7.1 1521 -)
+          - 19K(39.098 2.2 418.8 0.82)
+          - 20Ca(40.078 1.8 589.8 1.00)
+          - 21Sc(44.956 1.6 633.1 1.36)
+          - 22Ti(47.867 1.4 658.8 1.54)
+          - 23V(50.942 1.35 650.9 1.63)
+          - 24Cr(51.996 1.4 652.9 1.66)
+          - 25Mn(54.938 1.4 717.3 1.55)
+          - 26Fe
+          - 27Co
+          - 28Ni
+          - 29Co
+          - 30Zn
+          - 31Ga
+          - 32Ge
+          - 33As
+          - 34Se
+          - 35Br
+          - 36Kr
+          - 37Ru
+          - 38Sr
+          - 39Y
+          - 40Zr
+          - 41Nb
+          - 42Mo
+          - 43Tc
+          - 44Ru
+          - 45Rh
+          - 46Pd
+          - 47Ag
+          - 48Cd
+          - 49In
+          - 50Sn
+          - 51Sb
+          - 52Te
+          - 53I
+          - 54Xe
+          - 55Cs
+          - 56Ba
+          - 57La
+          - 58Ce
+          - 59Pr
+          - 60Nd
+          - 61Pm
+          - 62Sm
+          - 63Eu
+          - 64Gd
+          - 65Tb
+          - 66Dy
+          - 67Ho
+          - 68Er
+          - 69Tm
+          - 70Yb
+          - 71Lu
+          - 72Hf
+          - 73Ta
+          - 74W
+          - 75Re
+          - 76Os
+          - 77Ir
+          - 78Pt
+          - 79Au
+          - 80Hg
+          - 81Tl
+          - 82Pb
+          - 83Bi
+          - 84Po
+          - 85At
+          - 86Rn
+          - 87Fr
+          - 88Ra
+        - Grundämne:
+          - TRA (Genomskinlig)
+          - GRE (Grå)
+          - BLA (Svart)
+          - SIL (Silver)
+          - YEL (Gul)
+          - GRE (Grön)
+          - WHI (Vit)
+          - RE  (Röd)
+          - ORA (Orange)
+          - X(Utseende Smält Kok Densitet ...)
+          - X[SYM °C °C kg/m³ SYM...]
+          - H2(TRA -259.1 -252.9 90 (L)B V L)
+          - B(... 2076 3927 2460)
+          - C(BLA 3527 4027 2260)
+          - N(... -210 -195.8 1250)
+          - O2(TRA -218 -183 1430)
+          - O3(*... Giftig(lungor skadas) Absorberar skadlig UV)
+          - F2(... -219.7 -188.1 1700)
+          - P(... 44.15 277 1820)
+          - S(YEL 95.3 444.6 1960 Vapen/Krut)
+          - Cl2(*GRE -101.5 -34.04 3210 Giftig Stridsgas/Vattenrening)
+          - Se(... 221 685)
+          - Br2(ORA -7.3 58.8)
+          - I2(... 113.7 184.3)
+        - Ädelgaser:
+          - He(TRA -272.2 -268.9 180 Luftballonger/skepp Skyddsgaser)
+          - Ne(... -248.6 -246 900 Reklamskyltar, Bildskärmar)
+          - Ar(... -189.3 -185.8 1780)
+          - Kr(... -157.4 -153.4 ...)
+          - Xe(... -111.8 -108.1 Bilstrålkastare, Bildskärmar)
+        - Metaller:
+          - Li(GRE 180.5 1347 540)
+          - Be(... 1287 2970 1850)
+          - Na(... 97.79 882.9 970)
+          - Mg(GRE 650 1090 1740)
+          - Al(SIL 660.3 2470 2700)
+          - Si(... 1414 3265 2330)
+          - K(... 63.5 759 860)
+          - Ca(... 842 1484 1550)
+          - Sc(... 1541 2836 2990)
+          - Ti(... 1668 3287 4510)
+          - V(... 1910 3407 6110)
+          - Cr(... 1907 2482 7140)
+          - Mn(... 1246 2061 7470)
+          - Fe(WHI 1538 2861)
+          - Co(... 1495 2927)
+          - Ni(... 1455 2730)
+          - Cu(... 1058 2562)
+          - Zn(GRE 419.5 907)
+          - Ga(... 29.76 2400)
+          - Ge(... 938.3 2833)
+          - As(... 817 614)
+          - Rb(... 39.3 688)
+          - Sr(... 777 1382)
+          - Y(... 1526 2930)
+          - Zr(... 1855 4377)
+          - Nb(... 2477 4744)
+          - Mo(... 2623 4639)
+          - Tc(... 2157 4265)
+          - Ru(... 2334 4150)
+          - Rh(... 1964 3695)
+          - Pd(... 1555 2963)
+          - Ag(... 961.8 2210)
+          - Cd(... 321.1 767)
+          - In(... 156.6 2072)
+          - Sn(GRE 231.9 2602)
+          - Sb(... 630.6 1635)
+          - Te(... 449.5 988)
+          - Cs(... 28.5 671)
+        - Metalljoner:
+          - Fe2+(RE1)
+        - Små kemiska föreningar:
           - (CO) Kolmonoxid:
             - Luktlös gas
             - Sker vid ofullständig förbränning
@@ -1725,6 +1145,168 @@
             - Ger surt regn
           - (NO) Kvävedioxid:
             - Ger surt regn
+        - (C) Kol:
+          - Bränsle, levande byggsten
+          - Armoft kol (Luftrening)
+          - Grafit (Blyertspennor)
+          - Diamant (Hårdaste material)
+          - Fulleren (C-60)
+          - Nanorör
+        - (N) Kväve:
+          - Kylmedel, Konstgödsel, Läkemedel
+        - (O) Syre:
+          - Andning, Eld, Medikal syrgas
+          - Ståltillverkning, Pappersblekning, Svetsning
+      - Kvarstående:
+        - 6 (Cs~Rn):
+          - (Ba) Barium:
+            - Smältpunkt 727°C
+            - Kokpunkt 1640°C
+            - Densitet undefined
+          - (La) Lantan:
+            - Smältpunkt 920°C
+            - Kokpunkt 3464°C
+            - Densitet undefined
+          - (Ce) Cerium:
+            - Smältpunkt 795°C
+            - Kokpunkt 3443°C
+            - Densitet undefined
+          - (Pr) Praseodym:
+            - Smältpunkt 935°C
+            - Kokpunkt 3130°C
+            - Densitet undefined
+          - (Nd) Neodym:
+            - Smältpunkt 1024°C
+            - Kokpunkt 3074°C
+            - Densitet undefined
+          - (Pm) Prometium:
+            - Smältpunkt 1042°C
+            - Kokpunkt 3000°C
+            - Densitet undefined
+          - (Sm) Samarium:
+            - Smältpunkt 1072°C
+            - Kokpunkt 1900°C
+            - Densitet undefined
+          - (Eu) Europium:
+            - Smältpunkt 826°C
+            - Kokpunkt 1529°C
+            - Densitet undefined
+          - (Gd) Gaddinium:
+            - Smältpunkt 1312°C
+            - Kokpunkt 3000°C
+            - Densitet undefined
+          - (Tb) Terbium:
+            - Smältpunkt 1356°C
+            - Kokpunkt 3123°C
+            - Densitet undefined
+          - (Dy) Dysprosium:
+            - Smältpunkt 1407°C
+            - Kokpunkt 2567°C
+            - Densitet undefined
+          - (Ho) Holmium:
+            - Smältpunkt 1461°C
+            - Kokpunkt 2600°C
+            - Densitet undefined
+          - (Er) Erbium:
+            - Smältpunkt 1529°C
+            - Kokpunkt 2868°C
+            - Densitet undefined
+          - (Tm) Tulium:
+            - Smältpunkt 1545°C
+            - Kokpunkt 1730°C
+            - Densitet undefined
+          - (Yb) Ytterbium:
+            - Smältpunkt 824°C
+            - Kokpunkt 1196°C
+            - Densitet undefined
+          - (Lu) Lutetium:
+            - Smältpunkt 1652°C
+            - Kokpunkt 3402°C
+            - Densitet undefined
+          - (Hf) Hafrium:
+            - Smältpunkt 2233°C
+            - Kokpunkt 4603°C
+            - Densitet undefined
+          - (Ta) Tantal:
+            - Smältpunkt 3017°C
+            - Kokpunkt 5458°C
+            - Densitet undefined
+          - (W) Wolfram:
+            - Smältpunkt 3422°C
+            - Kokpunkt 5930°C
+            - Densitet undefined
+          - (Re) Rhenium:
+            - Smältpunkt 3186°C
+            - Kokpunkt 5596°C
+            - Densitet undefined
+          - (Os) Osmium:
+            - Smältpunkt 3033°C
+            - Kokpunkt 5012°C
+            - Densitet undefined
+          - (Ir) Iridium:
+            - Smältpunkt 2446°C
+            - Kokpunkt 4130°C
+            - Densitet undefined
+          - (Pt) Platina:
+            - Smältpunkt 1768°C
+            - Kokpunkt 3825°C
+            - Densitet undefined
+          - (Au) Guld:
+            - Smältpunkt 1064°C
+            - Kokpunkt 2970°C
+            - Densitet undefined
+          - (Hg) Kvicksilver:
+            - Silver/Ljus vitgrå metallvätska
+            - Smältpunkt (-38.83°C)
+            - Kokpunkt 356.7°C
+            - Densitet undefined
+          - (Tl) Tallium:
+            - Smältpunkt 304°C
+            - Kokpunkt 1473°C
+            - Densitet undefined
+          - (Pb) Bly:
+            - Grå metall
+            - Smältpunkt 327.5°C
+            - Kokpunkt 1749°C
+            - Densitet undefined
+          - (Bi) Vismut:
+            - Smältpunkt 271.5°C
+            - Kokpunkt 1564°C
+            - Densitet undefined
+          - (Po) Polonium:
+            - Smältpunkt 254°C
+            - Kokpunkt 962°C
+            - Densitet undefined
+          - (At) Astat:
+            - Smältpunkt 302°C
+            - Kokpunkt 337°C
+            - Densitet undefined
+          - (Rn) Radon:
+            - Smältpunkt (-71°C)
+            - Kokpunkt (-61.7°C)
+            - Densitet undefined
+            - Markradon, byggradon
+            - Radioaktiv, orsakar lungcancer
+        - 7 (Fr~Og):
+          - (Fr) Francium:
+            - Smältpunkt 27°C
+            - Kokpunkt 677°C
+            - Densitet undefined
+          - (Ra) Radium:
+            - Smältpunkt 696°C
+            - Kokpunkt 1737°C
+            - Densitet undefined
+      - Enkla kemiska föreningar:
+        - Joner:
+          - Reagens på positiva joner:
+            - Metalljoner ger färger vid upphettning i eld
+            - Li+(RE1) Litium (Röd)
+            - Na+(YEL) Natrium (Gul)
+            - K+(...) Kalium (Lila)
+            - (Ba+) Barium (Grön)
+            - Ca (2+) Kalcium (Orange)
+            - Cu (2+) Koppar (Blå-grön)
+            - Sr (2+) Strontium (Röd)
         - Syra:
           - pH och pOH:
             - pH = 7, pOH = 7(Neutral)
@@ -2222,18 +1804,18 @@
             - Färglös, vitlökslukt
             - Släpps av eukaryoter, Jordgasningsmedel
           - (1+2(2S)) Etylmetyldisulfid:
-            - ...
+            - ?
           - (2+2(2S)) Dietyldisulfid:
-            - ...
+            - ?
           - (1+3(2S)) Metylpropyldisulfid:
-            - ...
+            - ?
           - (2+3(2S)) Etylpropyldisulfid:
-            - ...
+            - ?
           - (3+3(2S)) Dipropyldisulfid:
-            - ...
+            - ?
         - (-COOH) Karboxylsyra:
           - Karboxylsyra:
-            - ...
+            - Mättad(fast enkelbindning) Omätttad(flytande flerbindning)
           - (1) Metansyra:
             - Myrsyra
           - (2) Etansyra:
@@ -2267,89 +1849,88 @@
             - Banansmak
           - (5+5) Isopentylanoat:
             - Äppelsmak
-      - Biokemi:
-        - Socker:
-          - Glykos:
-            - ...
-          - Fruktos:
-            - ...
-          - Stäkelse:
-            - Potatis, Mjöl, Gryn
-          - Laktos:
-            - ...
-          - Cellulosa:
-            - Växtskelett
-            - Trä, Papper, Bomull
-            - Vetekli, Fullkorn, Grönsaker och frukter
-        - Aminosyror:
-          - Aminosyror:
-            - 20 Essensiella aminosyror
-            - Organisk förening som ingår som byggstenar i proteiner
-        - Protein/Äggviteämnen:
-          - Egenskaper:
-            - Organisk molekyl uppbyggd av aminosyror
-            - Människan bildar 80000 ~ 400000 proteiner, 50 ~ 34000 aminosyror
-            - Protein koagulerar vid värme
-          - Kollagen:
-            - Kollagen bygger upp hud, hår, naglar, ben och brosk.
-            - Skelettleder rör sig flytande
-          - Insulin (Hormon):
-            - ...
-          - Insulin receptor (Receptor):
-            - ...
-          - Hemoglobin:
-            - ...
-        - Vitamin:
-          - A-vitamin:
-            - Bra för ögat
-          - D-vitamin:
-            - Hjälp med hormontillverkning
-          - Hemoglobin:
-            - Transportera syre
-        - DNA:
-          - DNA (Struktur):
-            - ...
-        - Lipidform:
-          - Lipid (Fett):
-            - Mättad fett (Alla 3 fettsyror är mättad)
-            - Enkelomättad fett (1 av fettsyror är omättad)
-            - Fleromättad fett
-          - Testosteron (Lipid):
-            - ...
-        - Enzymer:
-          - Egenskaper:
-            - Kontrollerar reaktioner utan att reagera
-          - Proteas:
-            - Protein -> Aminosyror
-          - Syntas:
-            - ...
-          - Amylas:
-            - Stäkelse -> Socker
-          - Lipas:
-            - Fett -> Fettsyor
-          - Laktas:
-            - ...
-          - Pepsin:
-            - ...
+      - Biomolekyler:
+        - Kolhydater [CAH] (-~´):
+          - Energikälla/reserv, cellvägg, vanligast i mat, 1% i kroppen
+          - 5(Fruktos)
+          - 5´(Ribos)
+          - 5´´(Deoxyribos)
+          - 6(Glykos)
+          - 5+6(Sackaros Sockerrör/betor)
+          - 6+6(Laktos)
+          - 2*6(Maltos)
+          - n6(Stäkelse Växtcell Potatis Mjöl Gryn)
+          - n61(Amylos...)
+          - n62(Amylopektin...)
+          - n6G(Glykogen Djurcell)
+          - n6C(Cellulosa Kostfiber Växtbyggnad Växtskelett Trä, Papper, Bomull Vetekli, Fullkorn, Grönsaker och frukter)
+          - n6I(Inulin Kostfiber jordärtskockor)
+        - Lipider [LIP]:
+          - Energilagring(rik) Djur(fettceller)
+          - -> Fettsyror (-COOH)
+          - 3(nCOOH)(Triglycerid)
+          - 2COOH-PO4(Fosfolipid)
+          - Steroid(Testosteron Östradiol Hormoner Signalmolekyl Stabiliserande-funktion)
+          - Vax
+          - Karetonider(Färgpigment(Ljusabsorberande, orangeröda) morötter)
+        - Proteiner [PRO] ({X}):
+          - Protein koagulerar vid värme
+          - 8e4~4e5 proteiner(5e1~3.4e4 aminosyror)
+          - AMI(Aminosyror 23st NH2 - C - COOH - H (R))
+          - KE(Keratin Hår/Naglar)
+          - AK(Aktin Muskler)
+          - TB(Tubilin)
+          - H1(Hemoglobin Blod)
+          - KL(Kollagen hud hår naglar ben brosk leder)
+          - HEM(Hemoglobin Transportera O2)
+          - INS(Insulin)
+          - KIN(Kinesin)
+          - DYN(Dynelin)
+          - MYS(Myosin)
+          - {ST}(Struktur Byggmaterial)
+          - {F0}(Försvar Igenkänning&förstör skadämne)
+          - {SI}(Signal Hormoner)
+          - {R0}(Receptor Reception{SI})
+          - {L0}(Lagring Lagra-aminosyra)
+          - {T0}(Transport Aktiv-transport)
+          - {G0}(Genreglering)
+        - Enzymer [ENZ] (-^):
+          - Livets katalysator (1e3~1e6 snabbare)
+          - Enzym-substrat-komplex (Aktiv centrum bind)
+          - Kofaktor (Hemogrupp i hemoglobin/koenzym vissa vitamin)
+          - +^(Syntas ATP+^)
+          - -^(Lysas PRO^ PEP^)
+          - AMY^(Amylas n6->5+6)~´
+          - LIP^(Lipas [LIP]->nCOOH)
+          - LAK^(Laktas Laktos/Pepsin->(Peptidbindning))
+          - PRO^(Proteas [PRO]->[AMI])
+          - PEP^(Pepsin...)
+        - Nukleinsyror [NUC]:
+          - N4(Nukleotid PO4-Socker-(N)bas)
+          - NA(Adenosin Adenin)
+          - NG(Guanosin Guanin)
+          - NC(Cytidin Cytosin)
+          - NT(Tymidin Tymin)
+          - NU(... Uracil)
+          - RNA(1sträng (AUCG) Ribomsom mRNA)
+          - DNA(2sträng (ATCG))
+        - Vitaminer [VIT]:
+          - A(Bra för ögat)
+          - D(Hjälp hormontillverkning)
+      - Syntetisk biokemi:
         - Läkemedel:
-          - Ibuprofen:
-            - ...
-          - Paracetamol:
-            - ...
-          - Aspirin:
-            - ...
-          - Vaccin:
-            - ...
-          - Penicillin:
-            - Alexander Fleming (1928)
-          - Hormonshärmande läkemedel:
-            - ...
-          - Smärtstillande läkemedel:
-            - ...
-          - Cellgifter:
-            - Cellhämmande medel
-          - Giftiga ämnen:
-            - ...
+          - Ibuprofen
+          - Paracetamol
+          - Aspirin
+          - Vaccin
+          - Penicillin (Alexander Fleming (1928))
+        - Cellmedel:
+          - Hormonshärmande läkemedel
+          - Smärtstillande läkemedel
+          - Cellgifter (Cellhämmande medel)
+        - Giftiga ämnen(Toxiner):
+          - Toxiner...
+      - Biokemi:
         - Reaktionkarta:
           - Citronsyracykeln:
             - Glykos
@@ -2488,51 +2069,65 @@
             - (Na+) (aq) + (e-) -> Na (s) (E0 = -2.71)
             - (Li+) (aq) + 2(e-) -> Li (s) (E0 = -3.04)
     - Biologi:
-      - Mikrobiologi:
-        - Mikrobiologi:
-          - Celler (Levande organismer minsta beståndsdelar/enhet)
-          - Mikrobiologer (Encelliga organismer funktioner)
-          - Molekylärbiologi (Makromolekyler uppbyggnad och cellfunktion)
-          - 1600-talet Robert Hooke (Träkork)
-          - Antoine de Leeukehoek (Levande organismer)
-        - Cellens byggstenar:
-          - Nukleinsyror:
-            - Lagrar genetiska information för cellen
-            - DNA/RNA (Celler(DNA+RNA), Virus(DNA/RNA))
-            - Nukleotid -> DNA(Dubbelsträngad)/RNA
-            - Socker, fosfat, kvävebas* (1% kroppsvikt)(Vätebindning)
-            - Pyrimidiner (Cytosin(2ring) Tymin Uracil)
-            - Pyriner (Adenin (1ring) Guanin)
-          - Kolhydrater:
-            - Kroppen (1% kolhydrat -> Energi), Vanligast i mat
-            - Glykogen -> Muskler kort/snabb energikälla, omvandla till fetter
-            - Cellvägg hos växter
-            - Monosackarid (Trioser(3) Tetros(4) Pentos(5 Fruktos) Hexos(6 Glykos Galaktos))
-            - Disackarid ((Glykos + Glykos) Maltos (Glykos + Galaktos))
-            - Polysackarid (Cellulosa Stäkelse(vanlig) Glykogen(djur) Sackaros(sockerrör) Insulin (Jordärtkockor))
-            - Kostfibrer (Polysackarid som inte bryts ner i magtarm (Cellulosa))
-          - Proteiner:
-            - Byggmaterial, enzymer
-            - Aminosyra (23) (H2N - C +(COOH) -(R(Sidokedja)) - H)
-            - Struktur (Byggmaterial, försvar)
-            - Försvar (Känner igen och förstör skadliga ämnen)
-            - Signal (Hormon)
-            - Receptor (Tar emot kemi signal)
-            - Lagring (Lagrar aminosyra)
-            - Transport (genom membran)
-            - Genreglering
-            - Keratin(Hår naglar) Aktin(Muskel) Hemoglobin(Blod)
-          - Enzymer:
-            - Protein -> Katalyserar reaktioner i cellen (10^3~10^6 gånger snabbare)
-            - Enzym + Substrat -> Enzym-substrat-kompex (Bind i aktiv centrum)
-            - Bryter(Lyaser) Sammanfoga(Syntas)
-            - Kofaktor (Hemogrupp i hemoglobin/koenzym vissa vitamin)
-            - Laktas -> Laktos, Pepsin -> (Peptidbindning)
-          - Lipider:
-            - Energilagring, membran, signalmolekyl, pigment
-            - Triglycerin
-            - Fetter, fosfolipid, steroid (testosteron, östradiol), vax, karetenoid
-            - Opolära förutom fosfolipid
+      - Cellbiologi:
+        - Cellbiologi:
+          - Livets minsta beståndsdelar/enhet
+          - Cellteori (Består, enhet, enbart)
+          - 1665 Robert Hooke (Träkork)
+          - Antoine de Leeukehoek (Organismer)
+        - Symboler:
+          - MEM(Membran)
+          - CYT(Cytoplasma)
+          - RIB(Ribosomer)
+          - CEV(Cellvägg)
+          - CES(Cellskelett/Cytoskelett)
+          - MTI(Mikrotubili)
+          - MFI(Mikrofilament/Aktinfilament)
+          - IMF(Intermediärfilament)
+          - ECM(Extraceullär matrix)
+          - IC1(Intercellulär förbindelse)
+        - Strukturer:
+          - MEM(Avgräns skydd in-utsida flytande)
+          - CYT(Grundsubstans/lösning reaktion)
+          - RIB(Proteinsyntes)
+          - CEV(Fastform struktur skydd)
+          - CES([PRO]tråd [Motor[PRO]] 3D-nätverk)
+          - MTI(TB[KIN+DYN] Transrör Δl cellstöd)
+          - MFI(AK[MYS]Upphakning Cellcellform)
+          - IMF(KE Hållfast Håller-organeller Stabil Mellanstorlek)
+          - ECM(Håller-CellVävnad + CES via membranprotein)
+          - IC1(Direkt kontakt kommunikation)
+          - KAP([CAH]+[PRO] Skydd uttorkning energi föda)
+          - FLA([PRO]-trådar)
+        - Organeller:
+          - KER(>DNA Proteinstyrd Nukleoplasma ...)
+          - ER([MEM]labyrint(>½) Sammanhängande rör+säck)
+          - RER(+RIB Grovkorn Mod[PRO] pack+adress->trans)
+          - SER(-RIB Slät)
+          - GOL(Tillplattad membransäckar...)
+          - PER(H2O2 Avknoppning ER Nedbryt-toxiner+Enzymer)
+          - LYS(Avknoppning Golgi)
+          - VAK
+          - MIT
+          - PLA(Inner/Yttermembran Stroma GRA>TYL)
+          - KLO()
+          - TYL(Lumen)
+        - Celltransport:
+          - ...
+        - Prokaryota:
+          - ...
+        - Bakterier:
+          - ...
+        - Arkeer:
+          - ...
+        - Eukaryota:
+          - ...
+        - Djurcell:
+          - ...
+        - Växtcell:
+          - ...
+        - Svampcell:
+          - ...
         - Cellmembran:
           - Membran:
             - Avgränsning och skydd, Tonicitet
@@ -2983,6 +2578,10 @@
             - 1 signalämne -> 1/2+ effekter
             - 1+ signalämne -> 1 effekt
             - 1 signaleffekt -> olika effekt i olika celler
+      - Mikrobiologi:
+        - Encelliga organismer funktioner
+      - Molekylärbiologi:
+        - Makromolekyler uppbyggnad och cellfunktion
       - Mänskliga kroppen/Humanfysiologi:
         - Celler:
           - Stamceller:
@@ -15529,7 +15128,6 @@
                   - Rowboats
                 - Recreational:
                   - Motor:
-                    - ...
                   - Sailboat:
                     - Catamaran
                     - Fishing boat
@@ -19387,6 +18985,71 @@
         - The <more adv (adv-er)> <subj> do ..., the <more adv (adv-er)> <subj> do ...:
           - The harder we do, the more greatly we reach.
     - Reading
+    - POTUS:
+      - Happy Birthday, Marines!:
+        - Happy Birthday, \#Marines!
+        - For 248 years, Marines have been the first to fight.
+        - >>> That legacy now rests on your shoulders. <<<
+      - Padding profits:
+        - Even during a moment of global conflict, gas prices are down $1.60 from their peak — providing breathing room to families ahead of holiday travel.
+        - But Big Oil profits are still elevated.
+        - Instead of padding profits, companies should invest to get more relief to consumers.
+        - Padding profits, cost-padding (The extra cost that doesn't come from the vendor)
+      - Amtrak:
+        - Millions of Americans rely on Amtrak — but I’ll bet you Amtrak would tell you they rely on families like the Rapposellis.
+        - Mutual reliance
+      - Law tenues:
+        - Last night we celebrated the confirmation of 150 life-tenured federal judges since I took office.
+        - These men and women are highly-qualified, come from professional backgrounds underrepresented on the bench, and reflect the diversity that makes America strong.
+        - We have more work to do, and I am committed to filling every vacancy with appointees whose credentials, ability, and impartiality are beyond question.
+        - ...
+    - English in School:
+      - Reading and word comprehension:
+        - 1. The quiz:
+          - ...
+        - Word test:
+          - ...
+      - Books:
+        - The secret life of bees:
+          - "the whole fabric of honey bee society depends on communication – on an innate ability to send and receive messages to encode and decode information" (p 205). Does this ring a bell?
+          - On page 206, on the radio, we get to know of some things that happened in July 1964. “August turned it off. Enough was enough. You cannot fix the world”. Is she right, what do you think of the news today on TV and on the radio? How much can you take?
+          - (211-212) Is there enough opportunities today for us to stop and just don’t do anything – just lay down, sit down, and do NOTHING? Let our brain mind its own business.
+          - "a little highway of broken graham crackers and marshmallow bits /…/ The roaches will follow this out the door, May said. ‘It works every time" (p 214). What’s happening? What does Lily ask May?
+          - Cockroach and Lily’s dream? Does it have a meaning or (p 217)? Why is Lily still ambivalent of telling everybody about her mother? 
+          - "To this day August and June wonder how our lives would have been different if one of them had answered the phone instead of May" (p 231). What do you think will happen? + What happens? Would their lives have been different – how, in what way do you think? + Talk about May, why did she decide to do what she did?
+          - Introduction book talk(The March On Washington https://www.youtube.com/watch?v=5Q_I_2m5TbA)
+          - How do you think Lilly and Rosaleen handle the police after the tragic accident?  "See? you aren’t the only one who can concoct lies at the drop of a hat" (p 246).
+          - Page 254, “blame would find a way to stick to them. That’s how blame was”. Philosophize about guilt and blame and do you have experiences of these feelings, in what way, if you feel like you want to tell ;)
+          - What is a vigil? Do you think this is a nice way of dealing with the death of a loved one?
+          - Why did the old Greeks make their tombs in the shape of beehives? (p 256)
+          - Has Zach changed after coming out of jail? How?
+          - Talk about Lily telling everything to August. + Why did June hate Lily’s mother? + Why does Lily think “I was an unwanted baby” (p 308) + And “from now on when people asked me what I wanted to be when I grew up, I planned to say, Amnesiac. Explain
+      - Presentations:
+        - Presentation of Ignobel price winners:
+          - ...
+      - Listening exercises and notes:
+        - Being a badger + other listenings:
+          - Take Lazy Notes and retell, in your groups, the story after you’ve listened to it. Take turns, everyone talks, help each other to remember. 
+          - https://www.thisamericanlife.org/521/bad-baby
+        - Halloween listening exercies:
+          - https://www.youtube.com/watch?v=-tn05ro0aQU
+      - Activities:
+        - American book ban:
+          - Talk show (https://www.youtube.com/watch?v=TwKasIh7qtA)
+        - Female or Male author:
+          - Read mini paragraphs, write your answer and why after each text.
+          - 1. Little Women. - Louisa May Alcott
+          - 2. The Shining - Stephen King 
+          - 3. The Great Gatzby - F.Scott Fitzgerald
+          - 4. Frankenstein - Mary Wollstonecraft Shelley
+          - 5. Jane Eyre. -Charlotte Bronte
+          - 6. Alice in Wonderland - Lewis Carroll
+        - Self-esteem, self-image and society norms:
+          - Self-esteem, self-image and society norms
+            Many people values both self-esteem and self-image, as if these are one of the identity of oneself. One is worthless with low self-esteem and self-image. For me, there is no exception. I also believe the importance of self-esteem and self-image and I have to struggle to work on with it. Mostly, the self-esteem and self-image isn't very much influenced by the societal norms.
+            My self-esteem and self-image wasn't influenced by societal norms because I have stayed almost all my life alone. In seventeen years I have lived a life ... 
+            I am a perfectionist and this character has influenced on my view of self-esteem and self-image. I believe that a good self-esteem means that one must have confidence to do things and not feeling worthless about. To achieve the self-esteem, I believe that one must have a good self-image. Because if one is bad and constantly doing mistakes, it isn't possible to be confident in oneself. Therefore, a good self-image is the same as being perfect. For example, ... because the life is nothing but a race. My everyday quote is "If one can do anything, one must do everything". To achieve for having both good self-esteem and self-image, I have to be perfect. Then I have to solve the riddle of the life for being it because the human brain was never designed for being a decoration.
+            
   - Franska:
     - Ord:
       - Mots essentiel:
@@ -22781,6 +22444,35 @@
           - Super !
           - Au revoir, Papa !
           - Oui ! Désolé, Junior. Le match est très intéressant ! Junior ? Junior ! Où es-tu ?
+    - Quick app 1:
+      - Traveler:
+        - Communicate with coworkers, use the imperfect:
+          - 1:
+            - Je viens de partir.
+            - Je viens de le voir.
+            - Il vient d'arriver.
+            - J'ai beaucoup d'e-mails.
+            - Je vais envoyer ces lettres.
+            - Il vient de demander un stylo.
+            - Elle est en train de préparer un gâteau pour ses enfants.
+            - Tu peux répondre à leur lettre.
+            - Tu dois répondre à tes e-mails.
+            - Nous venons de finir le projet.
+            - Vous allez parler au chef? Non, nous venons de répondre à son e-mail.
+            - Nous venons de finir la réunion.
+          - 2:
+            - Tu envoies quoi?
+            - J'attends un e-mail.
+            - J'attends mes collègues.
+            - tu peux prendre le déjuner avec moi? J'attends mon collègue. Il peut venir aussi?
+            - Je réponds à ce message.
+            - Je réponds à mes e-mails.
+            - Je réponds à cet e-mail maintenant.
+            - Il dit des choses intéressantes.
+            - Ces entreprises sont française.
+            - Il vient donner sa réponse.
+            - Nous venons de donner notre réponse.
+            - Elle envoie une lettre.
   - Oväsentlig 1:
     - La familia:
       - Descripción:
@@ -24009,7 +23701,7 @@
       - Tror att de är odödliga, hög dödrisk
     - Ung person (18~25):
       - 25 år hjärnan färdigutvecklad
-    - (25~39):
+    - '*' (25~39):
       - ...
     - Äldre (40~47):
       - Nostalgi
@@ -24041,3 +23733,149 @@
         - Samma tankar och förnuft
         - Point of value
         - Visa kompetens och styrka
+        
+- Roadmaps and future planning:
+  - Roadmaps:
+  - KOZMODEMIANSK 1:
+    - https://mobilejazz.com/blog/how-to-handle-errors-properly-ux/
+  - Matte:
+    - https://mathleaks.se/utbildning/digitala_verktyg_-_TI-raknare
+    - https://www.onlinemath4all.com/
+    - https://www.youtube.com/watch?v=dSReuauiAG0
+    - https://www.youtube.com/watch?v=Y5xcWjluUIw
+    - https://www.youtube.com/@MindYourDecisions
+    - https://www.youtube.com/@blackpenredpen
+    - https://www.youtube.com/@bprpfast
+    - https://www.youtube.com/@PreMath
+  - Fysik:
+    - https://physics.info/
+    - https://www.kjell.com/se/kunskap/hur-funkar-det/elelektronik/starkstrom/elen-i-hemmet
+    - http://www.vattendag.org/tips-och-material-vattenpaketet/roligt-med-vatten/vattentryck/)
+    - https://www.electrical4u.com/dc-current/
+    - https://www.youtube.com/watch?v=7cnAyDg4oLg
+  - Kemi:
+    - https://dinkemi.com/
+  - Biologi:
+    - https://www.slideshare.net/abdallahyakoub/bar-charts-quickstudy-microbiology
+    - https://ib.bioninja.com.au/higher-level/topic-10-genetics-and-evolu/101-meiosis/random-assortment.html
+    - https://www.genteknik.se/genetik-och-genteknik/
+    - https://www.chegg.com/flashcards/ekologi-begrepp-22e2d6a6-847a-491b-8906-ba61b449e11e/deck
+    - https://docplayer.se/15798709-Vad-ar-en-population-egentligen-spira-kap-11-sid-182-191.html
+    - https://www.logistikteamet.se/pdf/97891teng539.pdf?c=1646237717
+    - https://www.youtube.com/watch?v=FGnR1nI6Wew
+    - https://slideplayer.se/slide/14061577/
+  - Franska ord:
+    - Escalade 3
+  - Engelska ord:
+    - Word couch
+    - https://www.ef.se/engelska-ovningar/engelska-ordlistor/1000-orden/
+    - https://www.isof.se/stod-och-sprakrad/spraktjanster/engelska-ord-pa-svenska/ordlista-engelska-ord-pa-svenska
+    - https://www.speaklanguages.com/english/phrases/
+    - https://conversationstartersworld.com/topics-to-talk-about/
+    - Engelska ord (skolan)
+    - https://languagecardgames.com/product/language-guardians/
+    - https://www.oysterenglish.com/cosmetics-vocabulary.html
+    - https://www.youtube.com/watch?v=UkOONjClb3g
+    - https://leverageedu.com/blog/daily-used-english-words/
+    - https://gonaturalenglish.com/1000-most-common-words-in-the-english-language/
+    - https://grammar.yourdictionary.com/word-lists/most-commonly-spoken-words-in-english.html
+    - Regular talking words...
+  - Engelska:
+    - https://www.bbc.co.uk/learningenglish/english/course/emw
+    - https://learnenglish.britishcouncil.org/general-english/magazine-zone
+    - https://www.youtube.com/watch?v=dnn6VVzk2t4
+    - https://www.youtube.com/watch?v=wvfmAizX-_0
+  - Computer hardware:
+    - https://www.youtube.com/watch?v=-aQH0ybMd3U
+    - https://www.vlsifacts.com/binary-to-gray-code-conversion-and-vice-versa/
+  - Programming:
+    - https://realpython.com/lessons/positional-and-keyword-arguments/
+  - Psykologi:
+    - https://psychology.fandom.com/wiki/Psychology_Wiki
+  - Verksamhet:
+    - https://slideplayer.se/slide/1904305/
+  - Rayan Lifestyle:
+    - https://www.youtube.com/watch?v=-6hW0-_az_s
+    - https://www.youtube.com/watch?v=gYRctHPOiPQ
+    - https://www.youtube.com/watch?v=YoB4Vkvceo0 (Katyusha)
+    - https://www.youtube.com/watch?v=7K_OWmGM8eU (Лучшие Песни 2023)
+    - https://www.youtube.com/watch?v=Mo-zXQP0Z4g (Сахалыы ырыалар 14)
+    - https://www.youtube.com/@vavii8596/videos (Vavii (Türkçe Çeviri))
+    - https://www.youtube.com/watch?v=8DfrwBjjW2w (НеИгрушки – Ай я яй)
+  - Bundles:
+    - https://tutors.com/lesson/topic-sentences
+    - https://www.teachoo.com/10704/3113/Direct-Current-DC-and-Alternating-Current-AC/category/Concepts/
+    - https://carolinenygard.blogg.se/2011/september/v-38-ekologi.html
+    - https://en.wikipedia.org/wiki/Lenticular_printing)
+    - https://sopaknorra.wordpress.com/ak-8/aktuell-lektioner-och-lektionsmaterial/
+  - TempDB (ShouldBeDeleted):
+    - https://www.ica.se/recept/milkshake-med-mjolkchoklad-726887/
+    - https://www.tastesoflizzyt.com/how-to-make-a-milkshake-with-ice-cream/
+    
+- Kollationeringsstruktur:
+  - Krav:
+    - Fully competent in any form
+    - Intelligence strength
+    - Genious good characteristics
+  - Sequence:
+    - Compressed...
+    - (Symbol Multiplicators)
+  - Intrasurface:
+    - Hur fungerar databas(Select, insert, update, delete)...
+    - (KeyValue Table Graph OOP Triplestore)
+  - Ramstrukturer:
+    - (PHP + JS for AOORA)...
+  - Interlingual (Speciell kollationering):
+    - (Språkkomparationer)...
+        
+- Roadmaps:
+  - Abstrakt kollationering (Struktur):
+    - Sektion 1:
+      - @$DECORATOR(Struct Tidlinje)
+      - $SYM1[1 2 3 4 5 6 n]
+      - $SYM2[1 4 9 16 25 n^2]
+      - $SYM3[S1 S2 3*S3 2*S4 S5]
+    - New:
+      - 1. Select, insert, update, delete...
+      - 2. Graph + SmartArt...
+      - 3. Design Pattern...
+      - 4. Synthetic sugar, syntax...
+      - [T] Abstract question-answer(Pattern)
+      - => Hjärnstruktur...
+      - => Stimuleringslära (hjärna)...
+  - Estetodekorativ:
+    - ...
+  - DELSTRÄCKA 1 (CHEBOKSARY):
+    - 1. Database Refactory + Framing
+    - 2. Entropy + Barn och ungas utveckling
+    - 3. Unga mår sämre i digital värld -> Verksamhetsstruktur
+    - 1. Hjärnstruktur...
+    - 2. Stimuleringslära (hjärna)...
+  - DELSTRÄCKA 2 (KOZMODEMIANSK):
+    - 1. Data convergence (Old data)
+    - 2. File zipping (Old data)
+    - 3. KOZMODEMIANSK (Towards exam bundle)
+  - DELSTRÄCKA 3&4 (...):
+    - ...
+  - DELSTRÄCKA 5 (VOLZHSK):
+    - ...
+  - Objektiv:
+    - Kemi extra?
+  - Franska ord:
+    - Escalade 3
+  - Engelska ord:
+    - 1. https://www.speaklanguages.com/english/phrases/
+    - 2. (https://conversationstartersworld.com/topics-to-talk-about/)
+    - 3. Engelska ord (skolan)
+    - 5. https://languagecardgames.com/product/language-guardians/
+    - (6. https://www.oysterenglish.com/ https://www.oysterenglish.com/cosmetics-vocabulary.html (STORE IN HALF-NODES))
+    - 7. https://www.youtube.com/watch?v=7cnAyDg4oLg
+  - Annat:
+    https://realpython.com/lessons/positional-and-keyword-arguments/
+  - Sammanställning före:
+    - (Objektiv) 8656 (31.92%)
+    - (Samhälle) 926 (3.42%)
+    - (Verksamhet) 629 (2.32%)
+    - (Estetik) 255 (0.94%)
+    - (Språk) 16357 (60.33%)
+    - (Annat) 291 (1.07%)
